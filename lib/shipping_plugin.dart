@@ -14,7 +14,7 @@ class ShippingPlugin {
   SuperShipBloc superShipBloc;
   GHNBloc ghnBloc;
 //  SuperShipEstimateFee superShipEstimateFee;
-  GHNEstimateFee ghnEstimateFee;
+//  GHNEstimateFee ghnEstimateFee;
 
   getShipProvider() {
     return ShippingProviderList();
@@ -35,7 +35,7 @@ class ShippingPlugin {
   }
 
 //tinh cuoc phi Giao hang nhanh
-  Future<GHNEstimateFee> getGHNEstimateFee(
+  Future<dynamic> getGHNEstimateFee(
       String token,
       int fromDistrictID,
       int toDistrictID,
@@ -46,7 +46,7 @@ class ShippingPlugin {
       int insuranceFee,
       int couponCode) async {
     ghnBloc = new GHNBloc();
-    ghnEstimateFee = await ghnBloc.getEstimateInfo(
+    var ghnEstimateFee = await ghnBloc.getEstimateInfo(
         token,
         fromDistrictID,
         toDistrictID,

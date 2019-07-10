@@ -100,7 +100,6 @@ class _ShowOptionsState extends State<ShowOptions> {
   getGHNData() async {
     var fee = await shippingPlugin.getGHNEstimateFee(
         "TokenStaging", 1443, 1452, 53319, 10000, null, null, null, null);
-    print(fee.status);
-    print(fee.fee);
+    print(fee);
   }
 }

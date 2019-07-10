@@ -8,7 +8,7 @@ import '../models/ghn_estimate_fee.dart';
 class GHNBloc {
   GhnApiProvider ghnApiProvider = new GhnApiProvider();
 
-  Future<GHNEstimateFee> getEstimateInfo(
+  Future<dynamic> getEstimateInfo(
       String token,
       int fromDistrictID,
       int toDistrictID,
@@ -29,7 +29,7 @@ class GHNBloc {
     params['Length'] = length;
     params['InsuranceFee'] = insuranceFee;
 
-    GHNEstimateFee ghnEstimateFee =
+    var ghnEstimateFee =
         await ghnApiProvider.gHNEstimateInfo(params);
     return ghnEstimateFee;
   }

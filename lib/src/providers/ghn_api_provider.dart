@@ -11,9 +11,10 @@ class GhnApiProvider extends ApiProvider {
     apiBaseUrl = "https://apiv3-test.ghn.vn/api/v1/apiv3/CalculateFee";
   }
 
-  Future<GHNEstimateFee> gHNEstimateInfo(Map params) async{
+  Future<dynamic> gHNEstimateInfo(Map params) async{
     var gHNJsonData = await this.postData("", params);
-    return compute(parseGHNEstimateFee, {"json" : gHNJsonData});
+//    return compute(parseGHNEstimateFee, {"json" : gHNJsonData});
+  return gHNJsonData;
   }
 
 
