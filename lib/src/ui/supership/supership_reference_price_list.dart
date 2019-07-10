@@ -11,12 +11,11 @@ class _SuperShipReferencePriceListState
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text("Bảng giá tham khảo"),
-        ),
-        body: DataTable(
-
-          columns:  <DataColumn>[
+      appBar: AppBar(
+        title: Text("Supership - Bảng giá tham khảo"),
+      ),
+      /*body: DataTable(
+          columns: <DataColumn>[
             DataColumn(label: Text("Người nhận")),
             DataColumn(label: Text("Nội tỉnh")),
             DataColumn(label: Text("Nội miền")),
@@ -53,6 +52,110 @@ class _SuperShipReferencePriceListState
               DataCell(Text("50.000")),
             ]),
           ],
-        ));
+        )*/
+      body: Container(
+        child: Column(
+          mainAxisSize: MainAxisSize.max,
+          children: <Widget>[
+            Row(
+              children: <Widget>[
+                Expanded(
+                  child: Container(color: Colors.green, child: Text("Người nhận")),
+                ),
+                Expanded(
+                  child: Container(color: Colors.red, child: Text("Nội tỉnh")),
+                ),
+                Expanded(
+                  child:
+                      Container(color: Colors.green, child: Text("Nội miền")),
+                ),
+                Expanded(
+                  child: Container(color: Colors.red, child: Text("Đặc biệt")),
+                ),
+                Expanded(
+                  child: Container(color: Colors.green, child: Text("Ngoại miền")),
+                ),
+              ],
+            ),
+            Row(
+              children: <Widget>[
+                Expanded(
+                  child: Container( child: Text("Nội thành")),
+                ),
+                Expanded(
+                  child: Container( child: Text("20.000")),
+                ),
+                Expanded(
+                  child: Container( child: Text("30.000")),
+                ),
+                Expanded(
+                  child: Container(child: Text("32.000")),
+                ),
+                Expanded(
+                  child: Container( child: Text("35.000")),
+                ),
+              ],
+            ),
+            Row(
+              children: <Widget>[
+                Expanded(
+                  child: Container( child: Text("Nội thành")),
+                ),
+                Expanded(
+                  child: Container( child: Text("20.000")),
+                ),
+                Expanded(
+                  child: Container(child: Text("30.000")),
+                ),
+                Expanded(
+                  child: Container( child: Text("32.000")),
+                ),
+                Expanded(
+                  child: Container( child: Text("35.000")),
+                ),
+              ],
+            ),
+            Row(
+              children: <Widget>[
+                Expanded(
+                  child: Container(child: Text("Nội thành")),
+                ),
+                Expanded(
+                  child: Container( child: Text("20.000")),
+                ),
+                Expanded(
+                  child: Container(child: Text("30.000")),
+                ),
+                Expanded(
+                  child: Container( child: Text("32.000")),
+                ),
+                Expanded(
+                  child: Container( child: Text("35.000")),
+                ),
+              ],
+            ),
+            Row(
+              children: <Widget>[
+                Expanded(
+                  child: Container( child: Text("Nội thành")),
+                ),
+                Expanded(
+                  child: Container(child: Text("20.000")),
+                ),
+                Expanded(
+                  child: Container(child: Text("30.000")),
+                ),
+                Expanded(
+                  child: Container(child: Text("32.000")),
+                ),
+                Expanded(
+                  child: Container( child: Text("35.000")),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }

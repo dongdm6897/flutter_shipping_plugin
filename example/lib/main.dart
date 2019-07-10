@@ -16,16 +16,91 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  ShippingPlugin shippingPlugin;
+
   @override
   void initState() {
     super.initState();
+    shippingPlugin = new ShippingPlugin();
   }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: "Home page", home: ShipEstimateFee());
+      title: "Home page",
+      home: ShowOptions(),
+      routes: <String, WidgetBuilder>{
+        '/screen1': (BuildContext context) => ShippingProviderList(),
+      },
+//        home: ShippingProviderList(),
+    );
   }
 }
 
+class ShowOptions extends StatefulWidget {
+  @override
+  _ShowOptionsState createState() => _ShowOptionsState();
+}
 
+class _ShowOptionsState extends State<ShowOptions> {
+
+  ShippingPlugin shippingPlugin;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    shippingPlugin = new ShippingPlugin();
+
+  }
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        body: SafeArea(
+      child: ListView(
+        children: <Widget>[
+          MaterialButton(
+            color: Colors.red,
+            child: Text("Show list provider"),
+            onPressed: () {
+              Navigator.of(context).pushNamed('/screen1');
+            },
+          ),
+          MaterialButton(
+            color: Colors.blue,
+            child: Text("get supership fee"),
+            onPressed: () {
+              getSuperShipData();
+            },
+          ),
+          MaterialButton(
+            color: Colors.green,
+            child: Text("get ghn fee"),
+            onPressed: () {
+              getGHNData();
+            },
+          ),
+          MaterialButton(
+            color: Colors.green,
+            child: Text("shipping status"),
+            onPressed: () {
+              getGHNData();
+            },
+          ),
+        ],
+      ),
+    ));
+  }
+
+  getSuperShipData() async {
+    var fee = await shippingPlugin.getSuperShipEstimateFee(
+        "Hà Nội", "Ba Đình", "Hà Nội", "Hoàn Kiếm", "10", "1000000");
+    print(fee);
+  }
+
+  getGHNData() async {
+    var fee = await shippingPlugin.getGHNEstimateFee(
+        "TokenStaging", 1443, 1452, 53319, 10000, null, null, null, null);
+    print(fee.status);
+    print(fee.fee);
+  }
+}

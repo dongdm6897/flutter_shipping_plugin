@@ -86,14 +86,13 @@ class ApiProvider {
       }
       String accessToken = params != null ? params['access_token'] : '';
       params.remove('access_token');
-
       final response = await _client.post(
         url,
         body: json.encode(params),
         encoding: Encoding.getByName('utf-8'),
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': 'Bearer $accessToken'
+//          'Authorization': 'Bearer $accessToken'
         },
       );
 
@@ -109,6 +108,7 @@ class ApiProvider {
               () => rootBundle.loadString(mockupDataPath));
       return json.decode(mockData)["updated"];
     }
+    return jsonData;
   }
 
 

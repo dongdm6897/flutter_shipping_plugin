@@ -6,11 +6,10 @@ import 'api_provider.dart';
 import '../models/ship_provider.dart';
 import '../models/supership_estimate_fee.dart';
 
-class SuperShipApiProvider extends ApiProvider {
-  SuperShipApiProvider() : super() {
+class ShipApiProvider extends ApiProvider {
+  ShipApiProvider() : super() {
     mockupDataPath = 'assets/json/ship_provider.json';
-//    apiBaseUrl = 'http://139.162.25.146/api/V1/product';
-    apiBaseUrl = "https://api.mysupership.vn/v1/partner/orders/fee";
+    apiBaseUrl = "https://0b7c08dd.ngrok.io/api/V1/ship/fee-estimate";
   }
 
   Future<List<ShipProvider>> getShipProviders() async {
@@ -19,12 +18,11 @@ class SuperShipApiProvider extends ApiProvider {
     return compute(parseShipProviders, {"json": jsonData});
   }
 
-  Client _client = Client();
-
-  Future<SuperShipEstimateFee> ordersEstimateInfo(Map params) async {
+  Future<dynamic> superShipEstimateInfo(Map params) async {
     var orderJsonData = await this.getData("", params);
-    return compute(parseSuperShipEstimateFee, {"json" : orderJsonData});
+    return orderJsonData;
   }
+
 
   // Isolate implementations
   static List<ShipProvider> parseShipProviders(dynamic params) {
@@ -39,10 +37,10 @@ class SuperShipApiProvider extends ApiProvider {
     return null;
   }
 
-  static SuperShipEstimateFee parseSuperShipEstimateFee(dynamic params){
+  static SuperShipEstimateFee parseSuperShipEstimateFee(dynamic params) {
     final json = params["json"];
 
-    if(json != null){
+    if (json != null) {
       return SuperShipEstimateFee.fromJSON(json);
     }
     return null;

@@ -25,14 +25,8 @@ class SuperShipEstimateFee extends Object {
           service: feeResult[0]["service"].toString(),
           fee: feeResult[0]["fee"].toString(),
           insurance: feeResult[0]["insurance"].toString(),
-          pickup: feeResult[0]["pickup"].toString(),
-          delivery: feeResult[0]["delivery"].toString());
-
-          /*service: json["status"],
-          fee: json["status"],
-          insurance: json["status"],
-          pickup: json["status"],
-          delivery: json["status"]);*/
+          pickup: feeResult[0]["pickup"]["name"].toString(),
+          delivery: feeResult[0]["delivery"]["name"].toString());
     }
     return null;
   }
