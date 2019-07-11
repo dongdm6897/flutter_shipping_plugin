@@ -5,21 +5,16 @@ import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' show Client, Response;
 import 'package:flutter/services.dart';
 import 'package:global_configuration/global_configuration.dart';
-import 'package:http/http.dart' as http;
 
 class ApiProvider {
-  GlobalConfiguration _config = new GlobalConfiguration();
   Client _client = Client();
-
-  String apiKey = "";
   String apiBaseUrl = "";
-  String apiUploadBaseUrl = "";
-
+  String suffixUrl = "";
+  GlobalConfiguration _configuration = GlobalConfiguration();
   String mockupDataPath = "";
 
   ApiProvider() {
-    apiKey = _config.getString("api_key");
-//    apiBaseUrl = _config.getString("base_url");
+    apiBaseUrl = _configuration.getString('base_url');
   }
 
   String _makeRequest(String command, Map params) {
@@ -27,9 +22,9 @@ class ApiProvider {
     if (params != null) {
       String data = "";
       params.forEach((key, value) => data += "$key=$value&");
-      return "$apiBaseUrl/$command?$data";
+      return "$apiBaseUrl$suffixUrl/$command?$data";
     } else
-      return "$apiBaseUrl/$command";
+      return "$apiBaseUrl$suffixUrl/$command";
   }
 
   Future<dynamic> getData(String command, Map params,
@@ -39,10 +34,7 @@ class ApiProvider {
     // Get json data
     if (apiBaseUrl != "") {
       var request = _makeRequest(command, params);
-      final response = await _client.get(request, headers: {
-        'Authorization':
-        'Bearer ${params != null ? params['access_token'] : ''}'
-      });
+      final response = await _client.get(request);
 
       if (response?.statusCode == 200) {
         // If the call to the server was successful, parse the JSON
@@ -84,8 +76,7 @@ class ApiProvider {
       if (command != null && command.isNotEmpty) {
         url = "$apiBaseUrl/$command";
       }
-      String accessToken = params != null ? params['access_token'] : '';
-      params.remove('access_token');
+
       final response = await _client.post(
         url,
         body: json.encode(params),
@@ -111,35 +102,4 @@ class ApiProvider {
     return jsonData;
   }
 
-
-    Future<bool> putData(String command, Map params) async {
-      if (apiBaseUrl != "") {
-        final response = await _client.put(apiBaseUrl,
-            headers: {
-              'Content-Type': 'application/json',
-              'Authorization': apiKey
-            },
-            body: json.encode(params));
-        if (response?.statusCode == 200) {
-          return true;
-        } else {
-          return false;
-        }
-      }
-      return true;
-    }
-
-    Future<dynamic> deleteData(String command, Map params) async {
-      if (apiBaseUrl != "") {
-        var request = _makeRequest(command, params);
-        final response = await _client.delete(request);
-
-        if (response?.statusCode == 200) {
-          return 'success';
-        } else {
-          return null;
-        }
-      }
-      return 'success';
-    }
   }

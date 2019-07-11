@@ -1,24 +1,19 @@
 import 'dart:async';
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:shipping_plugin/src/blocs/supership_bloc.dart';
-import 'src/blocs/supership_bloc.dart';
-import 'src/blocs/ghn_bloc.dart';
-import 'src/ui/shipping_provider_list..dart';
-import 'src/models/supership_estimate_fee.dart';
-import 'src/models/ghn_estimate_fee.dart';
+import 'package:shipping_plugin/src/providers/ghn_api_provider.dart';
+import 'package:shipping_plugin/src/providers/supership_api_provider.dart';
+import 'package:global_configuration/global_configuration.dart';
 
+import 'config.dart';
 export 'src/ui/shipping_provider_list..dart';
 
 class ShippingPlugin {
-  SuperShipBloc superShipBloc;
-  GHNBloc ghnBloc;
-//  SuperShipEstimateFee superShipEstimateFee;
-//  GHNEstimateFee ghnEstimateFee;
+  final _configuration = GlobalConfiguration();
 
-  getShipProvider() {
-    return ShippingProviderList();
+  ShippingPlugin(apiBaseUrl) {
+    _configuration.loadFromMap(appSettings);
+    _configuration.setValue("base_url", apiBaseUrl);
   }
+
 
 // tinh cuoc phi supership
   Future<dynamic> getSuperShipEstimateFee(
@@ -28,9 +23,18 @@ class ShippingPlugin {
       String _receiverDistrict,
       String _weight,
       String _value) async {
-    superShipBloc = new SuperShipBloc();
-    var superShipEstimateFee = await superShipBloc.getEstimateInfo(_senderProvince,
-        _senderDistrict, _receiverProvince, _receiverDistrict, _weight, _value);
+    Map<String, String> params = Map<String, String>();
+
+    params['provider'] = 'supership';
+    params['sender_province'] = _senderProvince;
+    params['sender_district'] = _senderDistrict;
+    params['receiver_province'] = _receiverProvince;
+    params['receiver_district'] = _receiverDistrict;
+    params['weight'] = _weight;
+    params['value'] = _value;
+
+    var superShipEstimateFee =
+        await SuperShipApiProvider().superShipEstimateInfo(params);
     return superShipEstimateFee;
   }
 
@@ -45,19 +49,16 @@ class ShippingPlugin {
       int width,
       int insuranceFee,
       int couponCode) async {
-    ghnBloc = new GHNBloc();
-    var ghnEstimateFee = await ghnBloc.getEstimateInfo(
-        token,
-        fromDistrictID,
-        toDistrictID,
-        serviceId,
-        weight,
-        length,
-        width,
-        insuranceFee,
-        couponCode);
+    Map<String, dynamic> params = Map<String, dynamic>();
+    params['provider'] = 'ghn';
+    params['token'] = token;
+    params['FromDistrictID'] = fromDistrictID;
+    params['ToDistrictID'] = toDistrictID;
+    params['ServiceID'] = serviceId;
+    params['Weight'] = weight;
+    params['Length'] = length;
+    params['InsuranceFee'] = insuranceFee;
+    var ghnEstimateFee = await GhnApiProvider().gHNEstimateInfo(params);
     return ghnEstimateFee;
   }
-
 }
-

@@ -21,7 +21,7 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
-    shippingPlugin = new ShippingPlugin();
+    shippingPlugin = new ShippingPlugin("http://4a4da671.ngrok.io");
   }
 
   @override
@@ -30,7 +30,7 @@ class _MyAppState extends State<MyApp> {
       title: "Home page",
       home: ShowOptions(),
       routes: <String, WidgetBuilder>{
-        '/screen1': (BuildContext context) => ShippingProviderList(),
+//        '/screen1': (BuildContext context) => ShippingProviderList(),
       },
 //        home: ShippingProviderList(),
     );
@@ -43,15 +43,15 @@ class ShowOptions extends StatefulWidget {
 }
 
 class _ShowOptionsState extends State<ShowOptions> {
-
   ShippingPlugin shippingPlugin;
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    shippingPlugin = new ShippingPlugin();
-
+    shippingPlugin = new ShippingPlugin("http://4a4da671.ngrok.io");
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,7 +62,8 @@ class _ShowOptionsState extends State<ShowOptions> {
             color: Colors.red,
             child: Text("Show list provider"),
             onPressed: () {
-              Navigator.of(context).pushNamed('/screen1');
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => ShippingProviderList()));
             },
           ),
           MaterialButton(

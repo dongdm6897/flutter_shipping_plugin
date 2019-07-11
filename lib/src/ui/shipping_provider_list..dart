@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:shipping_plugin/src/blocs/supership_bloc.dart';
+import 'package:shipping_plugin/src/providers/shipping_list_api_provider.dart';
 import '../models/ship_provider.dart';
 
 import '../ui/general/shipping_list_provider.dart';
@@ -14,84 +14,93 @@ class ShippingProviderList extends StatefulWidget {
 }
 
 class _ShippingProviderListState extends State<ShippingProviderList> {
-  SuperShipBloc _superShipBloc = new SuperShipBloc();
   List<ShipProvider> shipProvider = List<ShipProvider>();
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: _shipProviderList() ,
-      routes: <String, WidgetBuilder> {
+      home: _shipProviderList(),
+      routes: <String, WidgetBuilder>{
         '/screen1': (BuildContext context) => SuperShipReferencePriceList(),
-        '/screen2' : (BuildContext context) => GhnReferencePriceList(),
+        '/screen2': (BuildContext context) => GhnReferencePriceList(),
       },
     );
   }
 
   Widget _shipProviderList() {
     return Scaffold(
-      body: FutureBuilder(
-        future: _superShipBloc.getAll(),
-        builder: (BuildContext context, AsyncSnapshot snapshot) {
-          if (snapshot.hasData) {
-            shipProvider = snapshot.data;
-            return Row(
-              children: <Widget>[
-                new Flexible(
-                    child: Column(
-                      children: <Widget>[
-                        Text(
-                          "Ship provider",
-                          style: new TextStyle(
-                              fontSize: 18.0,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black),
-                        ),
-                        Divider(),
-                        Container(
-                          padding: EdgeInsets.all(10.0),
-                          height: shipProvider.length * 60.0,
-                          child: ListView.builder(
-                              itemCount: shipProvider.length,
-                              itemBuilder: (BuildContext context, int idx) {
-                                var item = shipProvider[idx];
-                                return ListTile(
-                                  contentPadding: EdgeInsets.all(0.0),
-                                  title: Column(
-                                    children: <Widget>[
-                                      Row(children: <Widget>[
-                                        Padding(padding: EdgeInsets.all(5.0)),
-                                        Column(
-                                          crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                          children: <Widget>[
-                                            Text(item.name),
-                                          ],
-                                        )
-                                      ]),
-                                      Divider()
-                                    ],
-                                  ),
-                                  trailing: Icon(Icons.arrow_right),
-                                  onTap: () {
-                                    if(idx == 0)
-                                    Navigator.of(context).pushNamed('/screen1');
-                                    if(idx ==1)
-                                      Navigator.of(context).pushNamed('/screen2');
-                                  },
-                                );
-                              }),
-                        ),
-                      ],
-                    ))
-              ],
-            );
-          } else
-            return Text("Loading....");
-        },
+      body: SimpleDialog(
+        children: <Widget>[
+          Container(
+            width: MediaQuery.of(context).size.width * 0.9,
+            child: FutureBuilder(
+              future: ShippingListApiProvider().getListShipProvider(),
+              builder: (BuildContext context, AsyncSnapshot snapshot) {
+                if (snapshot.hasData) {
+                  shipProvider = snapshot.data;
+                  return Row(
+                    children: <Widget>[
+                      new Flexible(
+                          child: Column(
+                        children: <Widget>[
+                          Text(
+                            "Ship provider",
+                            style: new TextStyle(
+                                fontSize: 18.0,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
+                          ),
+                          Divider(),
+                          Container(
+                            padding: EdgeInsets.all(10.0),
+                            height: shipProvider.length * 60.0,
+                            child: ListView.builder(
+                                itemCount: shipProvider.length,
+                                itemBuilder: (BuildContext context, int idx) {
+                                  var item = shipProvider[idx];
+                                  return ListTile(
+                                    contentPadding: EdgeInsets.all(0.0),
+                                    title: Column(
+                                      children: <Widget>[
+                                        Row(children: <Widget>[
+                                          Padding(padding: EdgeInsets.all(5.0)),
+                                          Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: <Widget>[
+                                              Text(item.name),
+                                            ],
+                                          )
+                                        ]),
+                                        Divider()
+                                      ],
+                                    ),
+                                    trailing: Icon(Icons.arrow_right),
+                                    onTap: () {
+                                      showDialog(
+                                          context: context,
+                                          builder: (BuildContext context) {
+                                            return SimpleDialog(
+                                              children: <Widget>[
+                                                Image.network(item.imageFee)
+                                              ],
+                                            );
+                                          });
+                                    },
+                                  );
+                                }),
+                          ),
+                        ],
+                      ))
+                    ],
+                  );
+                } else
+                  return Text("Loading....");
+              },
+            ),
+          )
+        ],
       ),
     );
   }
-
-
 }

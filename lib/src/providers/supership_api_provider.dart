@@ -6,11 +6,12 @@ import 'api_provider.dart';
 import '../models/ship_provider.dart';
 import '../models/supership_estimate_fee.dart';
 
-class ShipApiProvider extends ApiProvider {
-  ShipApiProvider() : super() {
-    mockupDataPath = 'assets/json/ship_provider.json';
-    apiBaseUrl = "https://0b7c08dd.ngrok.io/api/V1/ship/fee-estimate";
+class SuperShipApiProvider extends ApiProvider {
+
+  SuperShipApiProvider() : super() {
+    suffixUrl = "/api/V1/ship";
   }
+
 
   Future<List<ShipProvider>> getShipProviders() async {
     var jsonData = await this.getData("get_all", null, root: 'all');
@@ -19,7 +20,7 @@ class ShipApiProvider extends ApiProvider {
   }
 
   Future<dynamic> superShipEstimateInfo(Map params) async {
-    var orderJsonData = await this.getData("", params);
+    var orderJsonData = await this.getData("fee-estimate", params);
     return orderJsonData;
   }
 

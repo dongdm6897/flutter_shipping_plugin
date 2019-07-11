@@ -7,7 +7,7 @@ class ShipEstimateFee extends StatefulWidget {
 }
 
 class _ShipEstimateFeeState extends State<ShipEstimateFee> {
-  ShippingPlugin shippingPlugin = new ShippingPlugin();
+  ShippingPlugin shippingPlugin = new ShippingPlugin("http://4a4da671.ngrok.io");
   String fee;
 
   @override
@@ -18,7 +18,7 @@ class _ShipEstimateFeeState extends State<ShipEstimateFee> {
 
   @override
   Widget build(BuildContext context) {
-    shippingPlugin = new ShippingPlugin();
+    shippingPlugin = new ShippingPlugin("http://4a4da671.ngrok.io");
     getData();
     return Container(
       child: Text("hello"),
