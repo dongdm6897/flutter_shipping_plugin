@@ -64,213 +64,215 @@ class _SuperShipReferencePriceListState
                 ),
                 ),
             Table(
-              border: TablBorder.all(),
+              border: TableBorder.all(),
               children:[
                 TableRow(
                   children: [
+                    Text("Người nhận"),
+                    Text("Nội tỉnh")
                   ]
                 )
               ],
             )
-            Row(
-              children: <Widget>[
-                Expanded(
-                  child: Container(color: Colors.green, child: Text("Người nhận")),
-                ),
-                Expanded(
-                  child: Container(color: Colors.red, child: Text("Nội tỉnh")),
-                ),
-                Expanded(
-                  child:
-                      Container(color: Colors.green, child: Text("Nội miền")),
-                ),
-                Expanded(
-                  child: Container(color: Colors.red, child: Text("Đặc biệt")),
-                ),
-                Expanded(
-                  child: Container(color: Colors.green, child: Text("Ngoại miền")),
-                ),
-              ],
-            ),
-            Row(
-              children: <Widget>[
-                Expanded(
-                  child: Container( child: Text("Nội thành")),
-                ),
-                Expanded(
-                  child: Container( child: Text("20.000")),
-                ),
-                Expanded(
-                  child: Container( child: Text("30.000")),
-                ),
-                Expanded(
-                  child: Container(child: Text("32.000")),
-                ),
-                Expanded(
-                  child: Container( child: Text("35.000")),
-                ),
-              ],
-            ),
-            Row(
-              children: <Widget>[
-                Expanded(
-                  child: Container( child: Text("Nội thành")),
-                ),
-                Expanded(
-                  child: Container( child: Text("20.000")),
-                ),
-                Expanded(
-                  child: Container(child: Text("30.000")),
-                ),
-                Expanded(
-                  child: Container( child: Text("32.000")),
-                ),
-                Expanded(
-                  child: Container( child: Text("35.000")),
-                ),
-              ],
-            ),
-            Row(
-              children: <Widget>[
-                Expanded(
-                  child: Container(child: Text("Nội thành")),
-                ),
-                Expanded(
-                  child: Container( child: Text("20.000")),
-                ),
-                Expanded(
-                  child: Container(child: Text("30.000")),
-                ),
-                Expanded(
-                  child: Container( child: Text("32.000")),
-                ),
-                Expanded(
-                  child: Container( child: Text("35.000")),
-                ),
-              ],
-            ),
-            Row(
-              children: <Widget>[
-                Expanded(
-                  child: Container( child: Text("Nội thành")),
-                ),
-                Expanded(
-                  child: Container(child: Text("20.000")),
-                ),
-                Expanded(
-                  child: Container(child: Text("30.000")),
-                ),
-                Expanded(
-                  child: Container(child: Text("32.000")),
-                ),
-                Expanded(
-                  child: Container( child: Text("35.000")),
-                ),
-              ],
-            ),
-
-            RichText(
-              text: TextSpan(
-                text: 'BẢNG GIÁ GIAO HÀNG CHO SHOP Ở TỈNH ',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.red),
-              ),
-            ),
-            Row(
-              children: <Widget>[
-                Expanded(
-                  child: Container(color: Colors.green, child: Text("Người nhận")),
-                ),
-                Expanded(
-                  child: Container(color: Colors.red, child: Text("Nội tỉnh")),
-                ),
-                Expanded(
-                  child:
-                  Container(color: Colors.green, child: Text("Nội miền")),
-                ),
-                Expanded(
-                  child: Container(color: Colors.red, child: Text("Đặc biệt")),
-                ),
-                Expanded(
-                  child: Container(color: Colors.green, child: Text("Ngoại miền")),
-                ),
-              ],
-            ),
-            Row(
-              children: <Widget>[
-                Expanded(
-                  child: Container( child: Text("Nội thành")),
-                ),
-                Expanded(
-                  child: Container( child: Text("20.000")),
-                ),
-                Expanded(
-                  child: Container( child: Text("30.000")),
-                ),
-                Expanded(
-                  child: Container(child: Text("32.000")),
-                ),
-                Expanded(
-                  child: Container( child: Text("35.000")),
-                ),
-              ],
-            ),
-            Row(
-              children: <Widget>[
-                Expanded(
-                  child: Container( child: Text("Nội thành")),
-                ),
-                Expanded(
-                  child: Container( child: Text("20.000")),
-                ),
-                Expanded(
-                  child: Container(child: Text("30.000")),
-                ),
-                Expanded(
-                  child: Container( child: Text("32.000")),
-                ),
-                Expanded(
-                  child: Container( child: Text("35.000")),
-                ),
-              ],
-            ),
-            Row(
-              children: <Widget>[
-                Expanded(
-                  child: Container(child: Text("Nội thành")),
-                ),
-                Expanded(
-                  child: Container( child: Text("20.000")),
-                ),
-                Expanded(
-                  child: Container(child: Text("30.000")),
-                ),
-                Expanded(
-                  child: Container( child: Text("32.000")),
-                ),
-                Expanded(
-                  child: Container( child: Text("35.000")),
-                ),
-              ],
-            ),
-            Row(
-              children: <Widget>[
-                Expanded(
-                  child: Container( child: Text("Nội thành")),
-                ),
-                Expanded(
-                  child: Container(child: Text("20.000")),
-                ),
-                Expanded(
-                  child: Container(child: Text("30.000")),
-                ),
-                Expanded(
-                  child: Container(child: Text("32.000")),
-                ),
-                Expanded(
-                  child: Container( child: Text("35.000")),
-                ),
-              ],
-            ),
+//            Row(
+//              children: <Widget>[
+//                Expanded(
+//                  child: Container(color: Colors.green, child: Text("Người nhận")),
+//                ),
+//                Expanded(
+//                  child: Container(color: Colors.red, child: Text("Nội tỉnh")),
+//                ),
+//                Expanded(
+//                  child:
+//                      Container(color: Colors.green, child: Text("Nội miền")),
+//                ),
+//                Expanded(
+//                  child: Container(color: Colors.red, child: Text("Đặc biệt")),
+//                ),
+//                Expanded(
+//                  child: Container(color: Colors.green, child: Text("Ngoại miền")),
+//                ),
+//              ],
+//            ),
+//            Row(
+//              children: <Widget>[
+//                Expanded(
+//                  child: Container( child: Text("Nội thành")),
+//                ),
+//                Expanded(
+//                  child: Container( child: Text("20.000")),
+//                ),
+//                Expanded(
+//                  child: Container( child: Text("30.000")),
+//                ),
+//                Expanded(
+//                  child: Container(child: Text("32.000")),
+//                ),
+//                Expanded(
+//                  child: Container( child: Text("35.000")),
+//                ),
+//              ],
+//            ),
+//            Row(
+//              children: <Widget>[
+//                Expanded(
+//                  child: Container( child: Text("Nội thành")),
+//                ),
+//                Expanded(
+//                  child: Container( child: Text("20.000")),
+//                ),
+//                Expanded(
+//                  child: Container(child: Text("30.000")),
+//                ),
+//                Expanded(
+//                  child: Container( child: Text("32.000")),
+//                ),
+//                Expanded(
+//                  child: Container( child: Text("35.000")),
+//                ),
+//              ],
+//            ),
+//            Row(
+//              children: <Widget>[
+//                Expanded(
+//                  child: Container(child: Text("Nội thành")),
+//                ),
+//                Expanded(
+//                  child: Container( child: Text("20.000")),
+//                ),
+//                Expanded(
+//                  child: Container(child: Text("30.000")),
+//                ),
+//                Expanded(
+//                  child: Container( child: Text("32.000")),
+//                ),
+//                Expanded(
+//                  child: Container( child: Text("35.000")),
+//                ),
+//              ],
+//            ),
+//            Row(
+//              children: <Widget>[
+//                Expanded(
+//                  child: Container( child: Text("Nội thành")),
+//                ),
+//                Expanded(
+//                  child: Container(child: Text("20.000")),
+//                ),
+//                Expanded(
+//                  child: Container(child: Text("30.000")),
+//                ),
+//                Expanded(
+//                  child: Container(child: Text("32.000")),
+//                ),
+//                Expanded(
+//                  child: Container( child: Text("35.000")),
+//                ),
+//              ],
+//            ),
+//
+//            RichText(
+//              text: TextSpan(
+//                text: 'BẢNG GIÁ GIAO HÀNG CHO SHOP Ở TỈNH ',
+//                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.red),
+//              ),
+//            ),
+//            Row(
+//              children: <Widget>[
+//                Expanded(
+//                  child: Container(color: Colors.green, child: Text("Người nhận")),
+//                ),
+//                Expanded(
+//                  child: Container(color: Colors.red, child: Text("Nội tỉnh")),
+//                ),
+//                Expanded(
+//                  child:
+//                  Container(color: Colors.green, child: Text("Nội miền")),
+//                ),
+//                Expanded(
+//                  child: Container(color: Colors.red, child: Text("Đặc biệt")),
+//                ),
+//                Expanded(
+//                  child: Container(color: Colors.green, child: Text("Ngoại miền")),
+//                ),
+//              ],
+//            ),
+//            Row(
+//              children: <Widget>[
+//                Expanded(
+//                  child: Container( child: Text("Nội thành")),
+//                ),
+//                Expanded(
+//                  child: Container( child: Text("20.000")),
+//                ),
+//                Expanded(
+//                  child: Container( child: Text("30.000")),
+//                ),
+//                Expanded(
+//                  child: Container(child: Text("32.000")),
+//                ),
+//                Expanded(
+//                  child: Container( child: Text("35.000")),
+//                ),
+//              ],
+//            ),
+//            Row(
+//              children: <Widget>[
+//                Expanded(
+//                  child: Container( child: Text("Nội thành")),
+//                ),
+//                Expanded(
+//                  child: Container( child: Text("20.000")),
+//                ),
+//                Expanded(
+//                  child: Container(child: Text("30.000")),
+//                ),
+//                Expanded(
+//                  child: Container( child: Text("32.000")),
+//                ),
+//                Expanded(
+//                  child: Container( child: Text("35.000")),
+//                ),
+//              ],
+//            ),
+//            Row(
+//              children: <Widget>[
+//                Expanded(
+//                  child: Container(child: Text("Nội thành")),
+//                ),
+//                Expanded(
+//                  child: Container( child: Text("20.000")),
+//                ),
+//                Expanded(
+//                  child: Container(child: Text("30.000")),
+//                ),
+//                Expanded(
+//                  child: Container( child: Text("32.000")),
+//                ),
+//                Expanded(
+//                  child: Container( child: Text("35.000")),
+//                ),
+//              ],
+//            ),
+//            Row(
+//              children: <Widget>[
+//                Expanded(
+//                  child: Container( child: Text("Nội thành")),
+//                ),
+//                Expanded(
+//                  child: Container(child: Text("20.000")),
+//                ),
+//                Expanded(
+//                  child: Container(child: Text("30.000")),
+//                ),
+//                Expanded(
+//                  child: Container(child: Text("32.000")),
+//                ),
+//                Expanded(
+//                  child: Container( child: Text("35.000")),
+//                ),
+//              ],
+//            ),
 
           ],
         ),
