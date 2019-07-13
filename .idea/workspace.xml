@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="712713de-3012-4bd3-8519-35251b11831b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/lib/src/ui/shipping_provider_list..dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/ui/shipping_provider_list..dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/src/ui/supership/supership_reference_price_list.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/ui/supership/supership_reference_price_list.dart" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.dart_tool/" />
@@ -27,11 +28,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/src/ui/shipping_provider_list..dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="439">
-              <caret line="91" column="57" selection-start-line="91" selection-start-column="53" selection-end-line="91" selection-end-column="57" />
-              <folding>
-                <element signature="e#0#20#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="100">
+              <caret line="5" selection-start-line="5" selection-end-line="5" />
             </state>
           </provider>
         </entry>
@@ -48,17 +46,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lib/src/ui/supership/supership_reference_price_list.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4279">
-              <caret line="274" column="16" lean-forward="true" selection-start-line="76" selection-start-column="14" selection-end-line="274" selection-end-column="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/src/models/ghn_estimate_fee.dart">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
-              <caret line="14" column="16" selection-start-line="14" selection-start-column="10" selection-end-line="14" selection-end-column="16" />
+            <state relative-caret-position="488">
+              <caret line="31" column="22" lean-forward="true" selection-start-line="31" selection-start-column="22" selection-end-line="31" selection-end-column="22" />
+              <folding>
+                <element signature="e#951#31714#0" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -162,11 +154,11 @@
       <find>post</find>
       <find>http://4a4da671.ngrok.io</find>
       <find>http://630b6623.ngrok.io</find>
-      <find>image</find>
       <find>imageFee</find>
       <find>ngrok</find>
       <find>ship_provider</find>
       <find>ngrok.io</find>
+      <find>image</find>
     </findStrings>
     <replaceStrings>
       <replace>receiverDistrict</replace>
@@ -225,17 +217,17 @@
         <option value="$PROJECT_DIR$/lib/src/models/ship_provider.dart" />
         <option value="$PROJECT_DIR$/lib/src/providers/shipping_list_api_provider.dart" />
         <option value="$PROJECT_DIR$/lib/src/models/master_data.dart" />
-        <option value="$PROJECT_DIR$/lib/src/ui/shipping_provider_list..dart" />
         <option value="$PROJECT_DIR$/example/lib/main.dart" />
         <option value="$PROJECT_DIR$/example/lib/widgets/ship_estimate_fee.dart" />
         <option value="$PROJECT_DIR$/lib/config.dart" />
+        <option value="$PROJECT_DIR$/lib/src/ui/shipping_provider_list..dart" />
         <option value="$PROJECT_DIR$/lib/src/ui/supership/supership_reference_price_list.dart" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-10" />
-    <option name="width" value="979" />
+    <option name="x" value="952" />
+    <option name="width" value="977" />
     <option name="height" value="1050" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -282,14 +274,6 @@
               <item name="lib" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="ui" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="shipping_plugin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="shipping_plugin" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="ui" type="462c0819:PsiDirectoryNode" />
-              <item name="ghn" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="shipping_plugin" type="b2602c69:ProjectViewProjectNode" />
@@ -377,7 +361,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="848" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Build Variants" order="0" sideWeight="0.50214595" side_tool="true" weight="0.3295302" />
       <window_info id="Image Layers" order="1" />
@@ -387,38 +370,8 @@
       <window_info id="Capture Tool" order="5" />
       <window_info id="Favorites" order="6" sideWeight="0.50318474" side_tool="true" weight="0.23288591" />
       <window_info id="Structure" order="7" sideWeight="0.50318474" side_tool="true" weight="0.23288591" />
-      <window_info active="true" content_ui="combo" id="Project" order="8" sideWeight="0.4968153" visible="true" weight="0.2295302" />
-      <window_info anchor="bottom" x="23" y="333" width="1490" height="168" id="Run" order="0" sideWeight="0.49530202" weight="0.31890333" />
-      <window_info anchor="bottom" id="Logcat" order="1" weight="0.52380955" />
-      <window_info anchor="bottom" id="TODO" order="2" weight="0.32611832" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49602824" weight="0.3838384" />
-      <window_info anchor="bottom" id="Version Control" order="4" weight="0.32900432" />
-      <window_info anchor="bottom" id="Terminal" order="5" visible="true" weight="0.27272728" />
-      <window_info anchor="bottom" id="Event Log" order="6" sideWeight="0.504698" side_tool="true" weight="0.27849928" />
-      <window_info anchor="bottom" id="Flutter Performance" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Android Profiler" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Messages" order="9" weight="0.37373737" />
-      <window_info anchor="bottom" id="Find" order="10" />
-      <window_info anchor="bottom" id="Dart Analysis" order="11" weight="0.24675325" />
-      <window_info anchor="right" id="Capture Analysis" order="0" />
-      <window_info anchor="right" id="Theme Preview" order="1" />
-      <window_info anchor="right" id="Flutter Inspector" order="2" weight="0.3295302" />
-      <window_info anchor="right" id="Palette&#9;" order="3" />
-      <window_info anchor="right" id="Device File Explorer" order="4" sideWeight="0.50094163" side_tool="true" weight="0.22684564" />
-      <window_info anchor="right" id="Hierarchy" order="5" weight="0.3295302" />
-      <window_info anchor="right" id="Flutter Outline" order="6" sideWeight="0.49905837" weight="0.22751679" />
-    </layout>
-    <layout-to-restore>
-      <window_info id="Build Variants" order="0" sideWeight="0.50214595" side_tool="true" weight="0.3295302" />
-      <window_info id="Image Layers" order="1" />
-      <window_info id="Designer" order="2" />
-      <window_info id="Captures" order="3" side_tool="true" weight="0.3281879" />
-      <window_info id="Resources Explorer" order="4" sideWeight="0.49785408" weight="0.3295302" />
-      <window_info id="Capture Tool" order="5" />
-      <window_info id="Favorites" order="6" sideWeight="0.50318474" side_tool="true" weight="0.23288591" />
-      <window_info id="Structure" order="7" sideWeight="0.50318474" side_tool="true" weight="0.23288591" />
-      <window_info active="true" content_ui="combo" id="Project" order="8" sideWeight="0.4968153" visible="true" weight="0.28016645" />
-      <window_info anchor="bottom" x="23" y="333" width="1490" height="168" id="Run" order="0" sideWeight="0.49530202" visible="true" weight="0.31970802" />
+      <window_info active="true" content_ui="combo" id="Project" order="8" sideWeight="0.4968153" visible="true" weight="0.2946309" />
+      <window_info anchor="bottom" x="23" y="333" width="1490" height="168" id="Run" order="0" sideWeight="0.49530202" weight="0.32262772" />
       <window_info anchor="bottom" id="Logcat" order="1" weight="0.52380955" />
       <window_info anchor="bottom" id="TODO" order="2" weight="0.32611832" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49602824" weight="0.3838384" />
@@ -433,10 +386,40 @@
       <window_info anchor="right" id="Capture Analysis" order="0" />
       <window_info anchor="right" id="Theme Preview" order="1" />
       <window_info anchor="right" id="Flutter Inspector" order="2" weight="0.3295302" />
-      <window_info anchor="right" id="Flutter Outline" order="3" sideWeight="0.49905837" weight="0.22751679" />
-      <window_info anchor="right" id="Palette&#9;" order="4" />
-      <window_info anchor="right" id="Device File Explorer" order="5" sideWeight="0.50094163" side_tool="true" weight="0.22684564" />
-      <window_info anchor="right" id="Hierarchy" order="6" weight="0.3295302" />
+      <window_info anchor="right" id="Palette&#9;" order="3" />
+      <window_info anchor="right" id="Device File Explorer" order="4" sideWeight="0.50094163" side_tool="true" weight="0.22684564" />
+      <window_info anchor="right" id="Hierarchy" order="5" weight="0.3295302" />
+      <window_info anchor="right" id="Flutter Outline" order="6" sideWeight="0.49905837" visible="true" weight="0.26308724" />
+    </layout>
+    <layout-to-restore>
+      <window_info id="Build Variants" order="0" sideWeight="0.50214595" side_tool="true" weight="0.3295302" />
+      <window_info id="Image Layers" order="1" />
+      <window_info id="Designer" order="2" />
+      <window_info id="Captures" order="3" side_tool="true" weight="0.3281879" />
+      <window_info id="Resources Explorer" order="4" sideWeight="0.49785408" weight="0.3295302" />
+      <window_info id="Capture Tool" order="5" />
+      <window_info id="Favorites" order="6" sideWeight="0.50318474" side_tool="true" weight="0.23288591" />
+      <window_info id="Structure" order="7" sideWeight="0.50318474" side_tool="true" weight="0.23288591" />
+      <window_info content_ui="combo" id="Project" order="8" sideWeight="0.4968153" weight="0.47434118" />
+      <window_info anchor="bottom" x="23" y="333" width="1490" height="168" id="Run" order="0" sideWeight="0.49530202" weight="0.32262772" />
+      <window_info anchor="bottom" id="Logcat" order="1" weight="0.52380955" />
+      <window_info anchor="bottom" id="TODO" order="2" weight="0.32611832" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49602824" weight="0.3838384" />
+      <window_info anchor="bottom" id="Version Control" order="4" weight="0.32900432" />
+      <window_info anchor="bottom" id="Terminal" order="5" weight="0.27272728" />
+      <window_info anchor="bottom" id="Event Log" order="6" sideWeight="0.504698" side_tool="true" weight="0.27849928" />
+      <window_info anchor="bottom" id="Flutter Performance" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Android Profiler" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Messages" order="9" weight="0.37373737" />
+      <window_info anchor="bottom" id="Find" order="10" />
+      <window_info anchor="bottom" id="Dart Analysis" order="11" weight="0.24675325" />
+      <window_info anchor="right" id="Capture Analysis" order="0" />
+      <window_info anchor="right" id="Theme Preview" order="1" />
+      <window_info anchor="right" id="Flutter Inspector" order="2" weight="0.3295302" />
+      <window_info anchor="right" id="Palette&#9;" order="3" />
+      <window_info anchor="right" id="Device File Explorer" order="4" sideWeight="0.50094163" side_tool="true" weight="0.22684564" />
+      <window_info anchor="right" id="Hierarchy" order="5" weight="0.3295302" />
+      <window_info active="true" anchor="right" id="Flutter Outline" order="6" sideWeight="0.49905837" visible="true" weight="0.29731545" />
     </layout-to-restore>
   </component>
   <component name="XDebuggerManager">
@@ -456,13 +439,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://C:/src/flutter/packages/flutter/lib/src/material/debug.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="123" column="6" selection-start-line="123" selection-start-column="6" selection-end-line="123" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://C:/src/flutter/bin/cache/dart-sdk/lib/async/zone.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="131">
@@ -754,18 +730,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/src/ui/shipping_provider_list..dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="439">
-          <caret line="91" column="57" selection-start-line="91" selection-start-column="53" selection-end-line="91" selection-end-column="57" />
-          <folding>
-            <element signature="e#0#20#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="100">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/src/flutter/packages/flutter/lib/src/animation/tween.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2022">
+          <caret line="213" column="49" selection-start-line="213" selection-start-column="49" selection-end-line="213" selection-end-column="49" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/src/ui/supership/supership_reference_price_list.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4279">
-          <caret line="274" column="16" lean-forward="true" selection-start-line="76" selection-start-column="14" selection-end-line="274" selection-end-column="16" />
+        <state relative-caret-position="488">
+          <caret line="31" column="22" lean-forward="true" selection-start-line="31" selection-start-column="22" selection-end-line="31" selection-end-column="22" />
+          <folding>
+            <element signature="e#951#31714#0" />
+          </folding>
         </state>
       </provider>
     </entry>

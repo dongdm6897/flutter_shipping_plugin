@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:shipping_plugin/src/providers/shipping_list_api_provider.dart';
 import '../models/ship_provider.dart';
-import 'package:flutter/src/painting/_network_image_io.dart';
 import '../ui/general/shipping_list_provider.dart';
 import '../ui/supership/supership_reference_price_list.dart';
 import '../ui/ghn/ghn_reference_price_list.dart';
