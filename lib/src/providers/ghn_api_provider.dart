@@ -4,11 +4,11 @@ import 'api_provider.dart';
 
 class GhnApiProvider extends ApiProvider {
   GhnApiProvider() : super() {
-    suffixUrl = "/api/V1/ship";
+    suffixUrl = "/ship";
   }
 
   Future<dynamic> gHNEstimateInfo(Map params) async{
-    var gHNJsonData = await this.postData("fee-estimate", params);
+    var gHNJsonData = await this.getData("fee-estimate", params);
   return gHNJsonData;
   }
 

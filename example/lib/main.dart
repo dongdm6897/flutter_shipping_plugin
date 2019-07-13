@@ -5,7 +5,6 @@ import 'package:flutter/services.dart';
 import 'package:shipping_plugin/shipping_plugin.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:rxdart/rxdart.dart';
-import 'widgets/ship_provider.dart';
 import 'widgets/ship_estimate_fee.dart';
 
 void main() => runApp(MyApp());
@@ -21,7 +20,7 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
-    shippingPlugin = new ShippingPlugin("http://4a4da671.ngrok.io");
+    shippingPlugin = new ShippingPlugin("http://df6623ee.ngrok.io/api/V1");
   }
 
   @override
@@ -49,7 +48,7 @@ class _ShowOptionsState extends State<ShowOptions> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    shippingPlugin = new ShippingPlugin("http://4a4da671.ngrok.io");
+    shippingPlugin = new ShippingPlugin("http://df6623ee.ngrok.io/api/V1");
   }
 
   @override

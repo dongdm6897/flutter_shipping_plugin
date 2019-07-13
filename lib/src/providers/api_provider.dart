@@ -20,6 +20,7 @@ class ApiProvider {
   String _makeRequest(String command, Map params) {
     //TODO: need rewrite this code
     if (params != null) {
+
       String data = "";
       params.forEach((key, value) => data += "$key=$value&");
       return "$apiBaseUrl$suffixUrl/$command?$data";
@@ -34,6 +35,7 @@ class ApiProvider {
     // Get json data
     if (apiBaseUrl != "") {
       var request = _makeRequest(command, params);
+      print(request);
       final response = await _client.get(request);
 
       if (response?.statusCode == 200) {
@@ -71,21 +73,23 @@ class ApiProvider {
     var jsonData;
 
     if (apiBaseUrl != "") {
-      String url;
-      url = "$apiBaseUrl";
-      if (command != null && command.isNotEmpty) {
-        url = "$apiBaseUrl/$command";
-      }
+        String url;
+        url = "$apiBaseUrl";
+        if (command != null && command.isNotEmpty) {
+          url = "$apiBaseUrl$suffixUrl"+ command;
+        }
 
-      final response = await _client.post(
-        url,
-        body: json.encode(params),
-        encoding: Encoding.getByName('utf-8'),
-        headers: {
-          'Content-Type': 'application/json',
+        final response = await _client.post(
+          url,
+          body: json.encode(params),
+          encoding: Encoding.getByName('utf-8'),
+          headers: {
+            'Content-Type': 'application/json',
 //          'Authorization': 'Bearer $accessToken'
-        },
-      );
+          },
+        );
+      print(url);
+      print(params);
 
       if (response?.statusCode == 200 || response?.statusCode == 201) {
         jsonData = json.decode(response.body);

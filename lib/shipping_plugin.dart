@@ -15,7 +15,7 @@ class ShippingPlugin {
   }
 
 
-// tinh cuoc phi supership
+// SuperShip
   Future<dynamic> getSuperShipEstimateFee(
       String _senderProvince,
       String _senderDistrict,
@@ -23,6 +23,7 @@ class ShippingPlugin {
       String _receiverDistrict,
       String _weight,
       String _value) async {
+
     Map<String, String> params = Map<String, String>();
 
     params['provider'] = 'supership';
@@ -38,7 +39,8 @@ class ShippingPlugin {
     return superShipEstimateFee;
   }
 
-//tinh cuoc phi Giao hang nhanh
+  //GHN
+
   Future<dynamic> getGHNEstimateFee(
       String token,
       int fromDistrictID,

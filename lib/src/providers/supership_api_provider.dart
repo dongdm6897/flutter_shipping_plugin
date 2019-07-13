@@ -9,7 +9,7 @@ import '../models/supership_estimate_fee.dart';
 class SuperShipApiProvider extends ApiProvider {
 
   SuperShipApiProvider() : super() {
-    suffixUrl = "/api/V1/ship";
+    suffixUrl = "/ship";
   }
 
 

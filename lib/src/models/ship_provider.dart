@@ -34,7 +34,7 @@ class ShipProvider extends Object {
           address: json["address"],
           email: json["email"],
           phone: json["phone"],
-          imageFee: json['imageFee']);
+          imageFee: json['reference_price_image']);
     }
     return null;
   }

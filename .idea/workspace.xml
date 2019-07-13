@@ -5,24 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="712713de-3012-4bd3-8519-35251b11831b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/lib/src/models/master_data.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/example/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/lib/main.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/example/lib/widgets/ship_estimate_fee.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/lib/widgets/ship_estimate_fee.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/lib/widgets/ship_provider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/lib/widgets/ship_provider.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/example/pubspec.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/example/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/lib/widgets/ship_provider.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/config.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/config.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/shipping_plugin.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/shipping_plugin.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/blocs/ghn_bloc.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/blocs/supership_bloc.dart" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/src/models/ship_provider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/models/ship_provider.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/src/providers/api_provider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/providers/api_provider.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/src/providers/ghn_api_provider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/providers/ghn_api_provider.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/providers/repository.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/providers/ship_api_provider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/providers/supership_api_provider.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/ui/general/shipping_list_provider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/ui/general/shipping_list_provider.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/providers/shipping_list_api_provider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/providers/shipping_list_api_provider.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/providers/supership_api_provider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/providers/supership_api_provider.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/src/ui/shipping_provider_list..dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/ui/shipping_provider_list..dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/ui/supership/supership_reference_price_list.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/ui/supership/supership_reference_price_list.dart" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.dart_tool/" />
     <ignored path="$PROJECT_DIR$/.idea/" />
@@ -42,22 +38,73 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/src/providers/supership_api_provider.dart">
+        <entry file="file://$PROJECT_DIR$/lib/src/ui/ghn/ghn_reference_price_list.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="33" column="13" selection-start-line="33" selection-start-column="13" selection-end-line="34" selection-end-column="53" />
-              <folding>
-                <element signature="e#0#20#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="280">
+              <caret line="14" column="29" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="29" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/lib/src/ui/shipping_provider_list..dart">
+        <entry file="file://$PROJECT_DIR$/lib/src/ui/supership/supership_reference_price_list.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="528">
-              <caret line="107" lean-forward="true" selection-start-line="107" selection-end-line="107" />
+            <state relative-caret-position="287">
+              <caret line="69" column="29" selection-start-line="69" selection-start-column="29" selection-end-line="69" selection-end-column="29" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="mock:///object_patch.dart">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="334">
+              <caret line="63" column="74" selection-start-line="63" selection-start-column="74" selection-end-line="63" selection-end-column="74" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/src/models/ghn_estimate_fee.dart">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="280">
+              <caret line="14" column="16" selection-start-line="14" selection-start-column="10" selection-end-line="14" selection-end-column="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/config.dart">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="20">
+              <caret line="1" column="50" selection-start-line="1" selection-start-column="47" selection-end-line="1" selection-end-column="50" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/src/models/master_data.dart">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="22" selection-start-column="6" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://C:/src/flutter/packages/flutter/lib/src/painting/_network_image_io.dart">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="200">
+              <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/src/providers/shipping_list_api_provider.dart">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="6" column="39" selection-start-line="6" selection-start-column="39" selection-end-line="6" selection-end-column="39" />
               <folding>
                 <element signature="e#0#20#0" expanded="true" />
               </folding>
@@ -66,40 +113,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://C:/src/flutter/packages/flutter/lib/src/material/page.dart">
+        <entry file="file://$PROJECT_DIR$/lib/src/providers/api_provider.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="222">
-              <caret line="42" column="2" selection-start-line="42" selection-start-column="2" selection-end-line="42" selection-end-column="2" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://C:/src/flutter/packages/flutter/lib/src/material/dialog.dart">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="222">
-              <caret line="690" column="10" selection-start-line="690" selection-start-column="10" selection-end-line="690" selection-end-column="10" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/shipping_plugin.dart">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="160">
-              <caret line="16" selection-start-line="16" selection-end-line="16" />
-              <folding>
-                <element signature="e#0#20#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/src/providers/ghn_api_provider.dart">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="17" selection-start-line="17" selection-end-line="17" />
+            <state relative-caret-position="900">
+              <caret line="45" column="7" selection-start-line="45" selection-start-column="7" selection-end-line="45" selection-end-column="7" />
               <folding>
                 <element signature="e#0#20#0" expanded="true" />
               </folding>
@@ -110,42 +127,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/example/lib/main.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="548">
-              <caret line="106" selection-start-line="106" selection-end-line="106" />
+            <state relative-caret-position="1020">
+              <caret line="51" column="3" selection-start-line="51" selection-start-column="3" selection-end-line="51" selection-end-column="3" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/example/test/widget_test.dart">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <folding>
-                <element signature="e#0#915#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/example/pubspec.yaml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="39" column="6" selection-start-line="39" selection-start-column="6" selection-end-line="39" selection-end-column="6" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/src/providers/shipping_list_api_provider.dart">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="18" selection-start-line="18" selection-end-line="18" />
-              <folding>
-                <element signature="e#0#20#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -162,8 +147,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>MethodCallHandler</find>
-      <find>getData</find>
       <find>dyna</find>
       <find>MediaQuery</find>
       <find>media</find>
@@ -185,10 +168,22 @@
       <find>127.0.0.1:8000</find>
       <find>ShippingPlugin</find>
       <find>fuck</find>
+      <find>4a4da671</find>
+      <find>post</find>
+      <find>http://4a4da671.ngrok.io</find>
+      <find>http://630b6623.ngrok.io</find>
+      <find>image</find>
+      <find>imageFee</find>
+      <find>ngrok</find>
+      <find>ship_provider</find>
+      <find>ngrok.io</find>
     </findStrings>
     <replaceStrings>
       <replace>receiverDistrict</replace>
       <replace>http://4a4da671.ngrok.io</replace>
+      <replace>http://630b6623.ngrok.io</replace>
+      <replace>http://53a067d4.ngrok.io</replace>
+      <replace>reference_price_image</replace>
     </replaceStrings>
   </component>
   <component name="FlutterView" splitter-proportion="0.52040815" />
@@ -225,31 +220,32 @@
         <option value="$PROJECT_DIR$/lib/src/ui/general/shipping.dart" />
         <option value="$PROJECT_DIR$/lib/src/ui/ghn/ghn_reference_price_list.dart" />
         <option value="$PROJECT_DIR$/example/assets/json/supership_reference.json" />
-        <option value="$PROJECT_DIR$/lib/src/ui/supership/supership_reference_price_list.dart" />
         <option value="$PROJECT_DIR$/lib/src/providers/ship_api_provider.dart" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/lib/src/blocs/ghn_bloc.dart" />
         <option value="$PROJECT_DIR$/lib/src/blocs/supership_bloc.dart" />
         <option value="$PROJECT_DIR$/lib/src/ui/general/shipping_list_provider.dart" />
-        <option value="$PROJECT_DIR$/example/lib/widgets/ship_estimate_fee.dart" />
-        <option value="$PROJECT_DIR$/lib/src/providers/api_provider.dart" />
-        <option value="$PROJECT_DIR$/lib/config.dart" />
         <option value="$PROJECT_DIR$/pubspec.yaml" />
+        <option value="$PROJECT_DIR$/example/pubspec.yaml" />
         <option value="$PROJECT_DIR$/lib/src/providers/supership_api_provider.dart" />
+        <option value="$PROJECT_DIR$/lib/shipping_plugin.dart" />
         <option value="$PROJECT_DIR$/lib/src/providers/ghn_api_provider.dart" />
+        <option value="$PROJECT_DIR$/lib/src/providers/api_provider.dart" />
         <option value="$PROJECT_DIR$/example/lib/widgets/ship_provider.dart" />
         <option value="$PROJECT_DIR$/lib/src/models/ship_provider.dart" />
         <option value="$PROJECT_DIR$/lib/src/providers/shipping_list_api_provider.dart" />
-        <option value="$PROJECT_DIR$/lib/shipping_plugin.dart" />
-        <option value="$PROJECT_DIR$/example/pubspec.yaml" />
-        <option value="$PROJECT_DIR$/example/lib/main.dart" />
+        <option value="$PROJECT_DIR$/lib/src/models/master_data.dart" />
         <option value="$PROJECT_DIR$/lib/src/ui/shipping_provider_list..dart" />
+        <option value="$PROJECT_DIR$/example/lib/main.dart" />
+        <option value="$PROJECT_DIR$/example/lib/widgets/ship_estimate_fee.dart" />
+        <option value="$PROJECT_DIR$/lib/config.dart" />
+        <option value="$PROJECT_DIR$/lib/src/ui/supership/supership_reference_price_list.dart" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
-    <option name="width" value="977" />
+    <option name="x" value="-10" />
+    <option name="width" value="979" />
     <option name="height" value="1050" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -260,6 +256,7 @@
     <panes>
       <pane id="Scope" />
       <pane id="AndroidView" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -271,25 +268,6 @@
               <item name="shipping_plugin" type="b2602c69:ProjectViewProjectNode" />
               <item name="shipping_plugin" type="462c0819:PsiDirectoryNode" />
               <item name="example" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="shipping_plugin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="shipping_plugin" type="462c0819:PsiDirectoryNode" />
-              <item name="example" type="462c0819:PsiDirectoryNode" />
-              <item name="json" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="shipping_plugin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="shipping_plugin" type="462c0819:PsiDirectoryNode" />
-              <item name="example" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="shipping_plugin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="shipping_plugin" type="462c0819:PsiDirectoryNode" />
-              <item name="example" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
-              <item name="widgets" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="shipping_plugin" type="b2602c69:ProjectViewProjectNode" />
@@ -313,14 +291,7 @@
               <item name="shipping_plugin" type="462c0819:PsiDirectoryNode" />
               <item name="lib" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="shipping_plugin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="shipping_plugin" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="providers" type="462c0819:PsiDirectoryNode" />
+              <item name="ui" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="shipping_plugin" type="b2602c69:ProjectViewProjectNode" />
@@ -328,6 +299,22 @@
               <item name="lib" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="ui" type="462c0819:PsiDirectoryNode" />
+              <item name="ghn" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="shipping_plugin" type="b2602c69:ProjectViewProjectNode" />
+              <item name="shipping_plugin" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="ui" type="462c0819:PsiDirectoryNode" />
+              <item name="supership" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="shipping_plugin" type="b2602c69:ProjectViewProjectNode" />
+              <item name="shipping_plugin" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="utils" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="shipping_plugin" type="b2602c69:ProjectViewProjectNode" />
@@ -338,13 +325,12 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="dart.analysis.tool.window.force.activate" value="false" />
     <property name="io.flutter.reload.alreadyRun" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../freemar" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../freemar" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -352,17 +338,17 @@
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Document\flutter_projects\shipping_plugin\example\assets\json" />
+      <recent name="D:\Document\flutter_projects\shipping_plugin\lib\src\utils" />
+      <recent name="D:\Document\flutter_projects\shipping_plugin\lib\src\providers" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Document\flutter_projects\shipping_plugin\lib\src\ui\supership" />
       <recent name="D:\Document\flutter_projects\shipping_plugin\example" />
       <recent name="D:\Document\flutter_projects\shipping_plugin\lib\src\blocs" />
       <recent name="D:\Document\flutter_projects\shipping_plugin\lib\src\providers" />
       <recent name="D:\Document\flutter_projects\shipping_plugin\lib\src\providers\shipping" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\Document\flutter_projects\shipping_plugin\example\assets\json" />
-      <recent name="D:\Document\flutter_projects\shipping_plugin\lib\src\utils" />
-      <recent name="D:\Document\flutter_projects\shipping_plugin\lib\src\providers" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -411,8 +397,8 @@
       <window_info id="Capture Tool" order="5" />
       <window_info id="Favorites" order="6" sideWeight="0.50318474" side_tool="true" weight="0.23288591" />
       <window_info id="Structure" order="7" sideWeight="0.50318474" side_tool="true" weight="0.23288591" />
-      <window_info content_ui="combo" id="Project" order="8" sideWeight="0.4968153" visible="true" weight="0.21946308" />
-      <window_info anchor="bottom" x="23" y="333" width="1490" height="168" id="Run" order="0" sideWeight="0.49530202" weight="0.68686867" />
+      <window_info content_ui="combo" id="Project" order="8" sideWeight="0.4968153" visible="true" weight="0.2295302" />
+      <window_info active="true" anchor="bottom" x="23" y="333" width="1490" height="168" id="Run" order="0" sideWeight="0.49530202" visible="true" weight="0.31890333" />
       <window_info anchor="bottom" id="Logcat" order="1" weight="0.52380955" />
       <window_info anchor="bottom" id="TODO" order="2" weight="0.32611832" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49602824" weight="0.3838384" />
@@ -441,73 +427,45 @@
       <window_info id="Capture Tool" order="5" />
       <window_info id="Favorites" order="6" sideWeight="0.50318474" side_tool="true" weight="0.23288591" />
       <window_info id="Structure" order="7" sideWeight="0.50318474" side_tool="true" weight="0.23288591" />
-      <window_info active="true" content_ui="combo" id="Project" order="8" sideWeight="0.4968153" visible="true" weight="0.2409396" />
-      <window_info anchor="bottom" x="23" y="333" width="1490" height="168" id="Run" order="0" sideWeight="0.49530202" visible="true" weight="0.4054834" />
+      <window_info active="true" content_ui="combo" id="Project" order="8" sideWeight="0.4968153" visible="true" weight="0.28016645" />
+      <window_info anchor="bottom" x="23" y="333" width="1490" height="168" id="Run" order="0" sideWeight="0.49530202" visible="true" weight="0.31970802" />
       <window_info anchor="bottom" id="Logcat" order="1" weight="0.52380955" />
       <window_info anchor="bottom" id="TODO" order="2" weight="0.32611832" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49602824" weight="0.3838384" />
-      <window_info anchor="bottom" id="Version Control" order="4" />
-      <window_info anchor="bottom" id="Terminal" order="5" weight="0.103896104" />
+      <window_info anchor="bottom" id="Version Control" order="4" weight="0.32900432" />
+      <window_info anchor="bottom" id="Terminal" order="5" weight="0.27272728" />
       <window_info anchor="bottom" id="Event Log" order="6" sideWeight="0.504698" side_tool="true" weight="0.27849928" />
       <window_info anchor="bottom" id="Flutter Performance" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Android Profiler" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Messages" order="9" weight="0.25108224" />
+      <window_info anchor="bottom" id="Messages" order="9" weight="0.37373737" />
       <window_info anchor="bottom" id="Find" order="10" />
       <window_info anchor="bottom" id="Dart Analysis" order="11" weight="0.24675325" />
-      <window_info anchor="right" id="Hierarchy" order="0" weight="0.3295302" />
-      <window_info anchor="right" id="Capture Analysis" order="1" />
-      <window_info anchor="right" id="Theme Preview" order="2" />
-      <window_info anchor="right" id="Flutter Inspector" order="3" weight="0.3295302" />
-      <window_info anchor="right" id="Flutter Outline" order="4" sideWeight="0.49905837" weight="0.22751679" />
-      <window_info anchor="right" id="Palette&#9;" order="5" />
-      <window_info anchor="right" id="Device File Explorer" order="6" sideWeight="0.50094163" side_tool="true" weight="0.22684564" />
+      <window_info anchor="right" id="Capture Analysis" order="0" />
+      <window_info anchor="right" id="Theme Preview" order="1" />
+      <window_info anchor="right" id="Flutter Inspector" order="2" weight="0.3295302" />
+      <window_info anchor="right" id="Flutter Outline" order="3" sideWeight="0.49905837" weight="0.22751679" />
+      <window_info anchor="right" id="Palette&#9;" order="4" />
+      <window_info anchor="right" id="Device File Explorer" order="5" sideWeight="0.50094163" side_tool="true" weight="0.22684564" />
+      <window_info anchor="right" id="Hierarchy" order="6" weight="0.3295302" />
     </layout-to-restore>
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="Dart">
-          <url>file://$PROJECT_DIR$/lib/src/models/supership_estimate_fee.dart</url>
-          <line>22</line>
-          <option name="timeStamp" value="83" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="Dart">
           <url>file://$PROJECT_DIR$/lib/src/ui/general/shipping_list_provider.dart</url>
           <line>18</line>
           <option name="timeStamp" value="98" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/src/providers/api_provider.dart</url>
+          <line>24</line>
+          <option name="timeStamp" value="99" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://C:/src/flutter/packages/flutter/lib/src/services/asset_bundle.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="220" column="6" selection-start-line="220" selection-start-column="6" selection-end-line="220" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/src/flutter/packages/flutter/lib/src/widgets/scroll_view.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="919" column="11" selection-start-line="919" selection-start-column="11" selection-end-line="919" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/src/flutter/packages/flutter/lib/src/widgets/media_query.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="73">
-          <caret line="527" column="4" selection-start-line="527" selection-start-column="4" selection-end-line="527" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/src/flutter/packages/flutter/lib/src/material/material.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-209">
-          <caret line="166" column="8" selection-start-line="166" selection-start-column="8" selection-end-line="166" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://C:/src/flutter/packages/flutter/lib/src/material/debug.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="190">
@@ -544,13 +502,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/src/utils/custom_style.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://C:/src/flutter/packages/flutter/lib/src/material/scaffold.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="194">
@@ -568,20 +519,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/src/ui/shipping_provider_list.dart" />
     <entry file="file://$PROJECT_DIR$/lib/src/ui/supership/supership_fee_estimate.dart" />
-    <entry file="file://$PROJECT_DIR$/lib/src/models/object.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="23" selection-start-column="23" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/src/models/order.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="24" column="22" selection-start-line="24" selection-start-column="20" selection-end-line="24" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://C:/src/flutter/bin/cache/pkg/sky_engine/lib/convert/encoding.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1460">
@@ -599,13 +536,6 @@
     <entry file="file://$PROJECT_DIR$/example/pubspec.lock">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/src/ui/ghn/ghn_reference_price_list.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="14" column="29" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/example/assets/json/supership_reference.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="40">
@@ -620,13 +550,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/src/ui/supership/supership_reference_price_list.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1991">
-          <caret line="152" column="18" selection-start-line="152" selection-start-column="18" selection-end-line="152" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="100">
@@ -634,25 +557,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/src/models/ghn_estimate_fee.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="14" column="16" selection-start-line="14" selection-start-column="10" selection-end-line="14" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/src/blocs/supership_bloc.dart" />
     <entry file="file://$PROJECT_DIR$/lib/src/blocs/ghn_bloc.dart" />
-    <entry file="file://$PROJECT_DIR$/example/lib/widgets/ship_estimate_fee.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="23" column="27" selection-start-line="23" selection-start-column="27" selection-end-line="23" selection-end-column="27" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/src/ui/general/shipping_list_provider.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
@@ -674,87 +580,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/config.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="24" selection-start-column="18" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/src/providers/repository.dart">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/src/providers/api_provider.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="12" column="36" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="36" />
-          <folding>
-            <element signature="e#0#20#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/example/lib/widgets/ship_provider.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="24" selection-end-line="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/src/models/ship_provider.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="23" column="22" selection-start-line="23" selection-start-column="10" selection-end-line="23" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/src/models/supership_estimate_fee.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-140">
-          <caret line="3" column="15" selection-start-line="3" selection-start-column="9" selection-end-line="3" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/src/providers/ghn_api_provider.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="17" selection-start-line="17" selection-end-line="17" />
-          <folding>
-            <element signature="e#0#20#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/src/providers/supership_api_provider.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="33" column="13" selection-start-line="33" selection-start-column="13" selection-end-line="34" selection-end-column="53" />
-          <folding>
-            <element signature="e#0#20#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/src/providers/shipping_list_api_provider.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="18" selection-start-line="18" selection-end-line="18" />
-          <folding>
-            <element signature="e#0#20#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/shipping_plugin.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="16" selection-start-line="16" selection-end-line="16" />
-          <folding>
-            <element signature="e#0#20#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/src/providers/repository.dart" />
     <entry file="file://$PROJECT_DIR$/example/pubspec.yaml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
@@ -767,16 +593,6 @@
         <state>
           <folding>
             <element signature="e#0#915#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/example/lib/main.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="548">
-          <caret line="106" selection-start-line="106" selection-end-line="106" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -795,13 +611,171 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/src/ui/shipping_provider_list..dart">
+    <entry file="file://$PROJECT_DIR$/lib/src/models/order.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="528">
-          <caret line="107" lean-forward="true" selection-start-line="107" selection-end-line="107" />
+        <state relative-caret-position="328">
+          <caret line="24" column="22" selection-start-line="24" selection-start-column="20" selection-end-line="24" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/src/models/supership_estimate_fee.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="20">
+          <caret line="3" column="15" selection-start-line="3" selection-start-column="15" selection-end-line="3" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/src/models/object.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="23" selection-start-column="23" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/src/utils/custom_style.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/example/assets/json/supership.PNG">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Roaming/Pub/Cache/hosted/pub.dartlang.org/http-0.12.0+2/lib/src/client.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="149">
+          <caret line="46" column="56" selection-start-line="46" selection-start-column="49" selection-end-line="46" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/src/providers/supership_api_provider.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="21" column="39" selection-start-line="21" selection-start-column="18" selection-end-line="21" selection-end-column="39" />
           <folding>
             <element signature="e#0#20#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/src/providers/ghn_api_provider.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="10" column="37" selection-start-line="10" selection-start-column="37" selection-end-line="10" selection-end-column="37" />
+          <folding>
+            <element signature="e#0#20#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/example/lib/widgets/ship_provider.dart" />
+    <entry file="file://$PROJECT_DIR$/example/lib/widgets/ship_estimate_fee.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="20" column="14" lean-forward="true" selection-start-line="20" selection-start-column="14" selection-end-line="20" selection-end-column="14" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/shipping_plugin.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="43" column="35" selection-start-line="43" selection-start-column="18" selection-end-line="43" selection-end-column="35" />
+          <folding>
+            <element signature="e#0#20#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/src/models/ship_provider.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="36" column="18" selection-start-line="36" selection-start-column="10" selection-end-line="36" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/src/ui/shipping_provider_list..dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1820">
+          <caret line="91" column="57" selection-start-line="91" selection-start-column="53" selection-end-line="91" selection-end-column="57" />
+          <folding>
+            <element signature="e#0#20#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/src/models/ghn_estimate_fee.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="14" column="16" selection-start-line="14" selection-start-column="10" selection-end-line="14" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/config.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="20">
+          <caret line="1" column="50" selection-start-line="1" selection-start-column="47" selection-end-line="1" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/src/models/master_data.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="22" selection-start-column="6" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/src/flutter/packages/flutter/lib/src/painting/_network_image_io.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/src/providers/shipping_list_api_provider.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="6" column="39" selection-start-line="6" selection-start-column="39" selection-end-line="6" selection-end-column="39" />
+          <folding>
+            <element signature="e#0#20#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/src/providers/api_provider.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="900">
+          <caret line="45" column="7" selection-start-line="45" selection-start-column="7" selection-end-line="45" selection-end-column="7" />
+          <folding>
+            <element signature="e#0#20#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/example/lib/main.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1020">
+          <caret line="51" column="3" selection-start-line="51" selection-start-column="3" selection-end-line="51" selection-end-column="3" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/src/ui/ghn/ghn_reference_price_list.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="14" column="29" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/src/ui/supership/supership_reference_price_list.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="287">
+          <caret line="69" column="29" selection-start-line="69" selection-start-column="29" selection-end-line="69" selection-end-column="29" />
         </state>
       </provider>
     </entry>

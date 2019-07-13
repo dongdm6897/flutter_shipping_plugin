@@ -5,7 +5,7 @@ import 'api_provider.dart';
 
 class ShippingListApiProvider extends ApiProvider {
   ShippingListApiProvider() : super() {
-    suffixUrl = "/api/V1/ship";
+    suffixUrl = "/ship";
   }
 
   Future<List<dynamic>> getListShipProvider() async {
