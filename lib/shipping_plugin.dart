@@ -5,6 +5,8 @@ import 'package:global_configuration/global_configuration.dart';
 
 import 'config.dart';
 export 'src/ui/shipping_provider_list..dart';
+export 'src/ui/supership/supership_reference_price_list.dart';
+export 'src/ui/ghn/ghn_reference_price_list.dart';
 
 class ShippingPlugin {
   final _configuration = GlobalConfiguration();
@@ -63,4 +65,6 @@ class ShippingPlugin {
     var ghnEstimateFee = await GhnApiProvider().gHNEstimateInfo(params);
     return ghnEstimateFee;
   }
+
+
 }
