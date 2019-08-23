@@ -1,6 +1,6 @@
-import '../models/root_object.dart';
+import 'object.dart';
 
-class ShipProvider extends RootObject {
+class ShipProvider extends Object {
   int id;
   String name;
   String logo;
@@ -9,41 +9,33 @@ class ShipProvider extends RootObject {
   String address;
   String email;
   String phone;
-  List<ShipProviderService> shipProviderService;
+  String imageFee;
 
   ShipProvider(
       {this.id,
-        this.name,
-        this.logo,
-        this.company,
-        this.email,
-        this.address,
-        this.phone,
-        this.description,
-        this.shipProviderService});
+      this.name,
+      this.logo,
+      this.description,
+      this.company,
+      this.address,
+      this.email,
+      this.phone,
+      this.imageFee});
 
   @override
   factory ShipProvider.fromJSON(Map<String, dynamic> json) {
     if (json != null) {
-      var data = json["ship_provider_service"]
-          ?.map((e) => ShipProviderService.fromJSON(e));
       return new ShipProvider(
           id: json["id"],
           name: json["name"],
           logo: json["logo"],
+          description: json['description'],
           company: json["company"],
           address: json["address"],
           email: json["email"],
           phone: json["phone"],
-          description: json["description"],
-          shipProviderService:
-          (data != null) ? List<ShipProviderService>.from(data) : null);
+          imageFee: json['reference_price_image']);
     }
     return null;
-  }
-
-  @override
-  String toString() {
-    return "$name";
   }
 }
