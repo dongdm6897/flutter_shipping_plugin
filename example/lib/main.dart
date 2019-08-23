@@ -6,6 +6,9 @@ import 'package:shipping_plugin/shipping_plugin.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:rxdart/rxdart.dart';
 import 'widgets/ship_estimate_fee.dart';
+import 'package:global_configuration/global_configuration.dart';
+import 'package:shipping_plugin_example/widgets/SuperShip/create_order.dart';
+import 'package:shipping_plugin_example/widgets/SuperShip/check_order_status.dart';
 
 void main() => runApp(MyApp());
 
@@ -16,11 +19,12 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   ShippingPlugin shippingPlugin;
-
+  GlobalConfiguration _config;
   @override
   void initState() {
     super.initState();
-    shippingPlugin = new ShippingPlugin("http://df6623ee.ngrok.io/api/V1");
+    _config = new GlobalConfiguration();
+    shippingPlugin = new ShippingPlugin("http://4f7a99e2.ngrok.io/api/V1");
   }
 
   @override
@@ -43,12 +47,14 @@ class ShowOptions extends StatefulWidget {
 
 class _ShowOptionsState extends State<ShowOptions> {
   ShippingPlugin shippingPlugin;
+  GlobalConfiguration _config;
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    shippingPlugin = new ShippingPlugin("http://df6623ee.ngrok.io/api/V1");
+    _config = new GlobalConfiguration();
+    shippingPlugin = new ShippingPlugin("http://4f7a99e2.ngrok.io/api/V1");
   }
 
   @override
@@ -86,6 +92,13 @@ class _ShowOptionsState extends State<ShowOptions> {
               getGHNData();
             },
           ),
+          MaterialButton(
+            color: Colors.greenAccent,
+            child: Text("create order"),
+            onPressed: (){
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) => CreateOrder() ));
+            },
+          )
         ],
       ),
     ));

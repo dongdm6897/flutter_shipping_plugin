@@ -19,7 +19,7 @@ class _SuperShipReferencePriceListState
         duration: const Duration(seconds: 2), vsync: this);
     _animation = Tween(
           begin: 0.0,
-          end: 1.0,
+          end: 100.0,
     ).animate(_controller);
   }
 
@@ -619,6 +619,13 @@ class _SuperShipReferencePriceListState
                                     ),
                                   ]),
                             ]),
+
+                            MaterialButton(
+                              child: Text("Quay lại lựa chọn"),
+                              onPressed: (){
+                                Navigator.of(context).pop();
+                              },
+                            )
                           ],
                         )),
                   ],

@@ -38,6 +38,7 @@ flutter:
 #   - images/a_dot_ham.jpeg
     - assets/json/ship_provider.json
     - assets/json/supership.PNG
+    - assets/config.json
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 
