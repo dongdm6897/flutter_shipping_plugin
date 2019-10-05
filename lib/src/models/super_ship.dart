@@ -10,7 +10,7 @@ class SuperShip {
   String senderDistrict;
   String receiverProvince;
   String receiverDistrict;
-  int weight;
+  String weight;
   int value;
 
 

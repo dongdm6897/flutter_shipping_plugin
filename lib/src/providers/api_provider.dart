@@ -82,7 +82,6 @@ class ApiProvider {
       );
     }
     print(url);
-    var fuck = json.encode(params);
 
 
 
