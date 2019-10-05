@@ -11,7 +11,7 @@ class SuperShip {
   String receiverProvince;
   String receiverDistrict;
   String weight;
-  int value;
+  String value;
 
 
   SuperShip({ this.senderProvince, this.senderDistrict,
