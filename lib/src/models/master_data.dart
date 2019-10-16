@@ -5,7 +5,8 @@
 
 class ServerUrlEnum {
   static const String SUPER_SHIP = "https://api.mysupership.vn/v1/partner";
-  static const String GHN = "https://dev-online-gateway.ghn.vn/apiv3-api/api/v1/apiv3";
+//  static const String GHN = "https://dev-online-gateway.ghn.vn/apiv3-api/api/v1/apiv3";
+  static const String GHN = "https://console.ghn.vn/api/v1/apiv3";
 }
 
 class SuffixEstimateFee{

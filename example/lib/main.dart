@@ -120,7 +120,7 @@ class _ShowOptionsState extends State<ShowOptions> {
         province: "Hồ Chí Minh",
         district: "Quận 3",
         commune: "Phường 6",
-        amount: "220000",
+        amount: 220000,
         value: null,
         weight: "200",
         service: "1",
@@ -130,7 +130,7 @@ class _ShowOptionsState extends State<ShowOptions> {
         product: "quan ao");
 
     GHNOrder ghnOrder = new GHNOrder(
-        token: "TokenStaging",
+        token: "5da6c7fdc14ebd74c3684082",
         fromDistrictID: 1455,
         fromWardCode: "21402",
         toDistrictID: 1462,
@@ -168,8 +168,8 @@ class _ShowOptionsState extends State<ShowOptions> {
 //        isCreditCreate: true,
         affiliateID: 252905);
 
-    var res = await shippingPlugin.createOrder(superShipOrder);
-//    var res = await shippingPlugin.createOrder(ghnOrder);
+//    var res = await shippingPlugin.createOrder(superShipOrder);
+    var res = await shippingPlugin.createOrder(ghnOrder);
     print(res);
   }
 }

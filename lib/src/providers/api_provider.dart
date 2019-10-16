@@ -58,9 +58,9 @@ class ApiProvider {
     params.remove('id');
 
     String url = "$baseUrl/$suffix";
-    var response ;
-    if(token == null){
-       response = await _client.post(
+    var response;
+    if (token == null) {
+      response = await _client.post(
         url,
         body: json.encode(params),
         encoding: Encoding.getByName('utf-8'),
@@ -68,23 +68,19 @@ class ApiProvider {
           'Content-Type': 'application/json',
         },
       );
-    }
-    else{
-       response = await _client.post(
+    } else {
+      response = await _client.post(
         url,
         body: json.encode(params),
         encoding: Encoding.getByName('utf-8'),
         headers: {
-          'Acept' : 'application/json',
+          'Acept': 'application/json',
           'Content-Type': 'application/json',
           'Authorization': 'Bearer $token'
         },
       );
     }
     print(url);
-
-
-
 
     if (response?.statusCode == 200 || response?.statusCode == 201) {
       jsonData = json.decode(response.body);
