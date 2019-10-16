@@ -88,8 +88,9 @@ class _ShowOptionsState extends State<ShowOptions> {
         receiverProvince: "Ha Noi",
         senderDistrict: "Hoan Kiem",
         senderProvince: "Ha Noi",
-        value: 1000,
-        weight: 1);
+        value: "1000",
+        weight: "1");
+
     GHN ghn = new GHN(
         token: "TokenStaging",
         fromDistrictID: 1443,
@@ -97,9 +98,10 @@ class _ShowOptionsState extends State<ShowOptions> {
         serviceID: 53319,
         weight: 10000);
 
-    var fee = await shippingPlugin.calculateFee(superShip);
+//    var fee = await shippingPlugin.calculateFee(superShip);
+    var fee = await shippingPlugin.calculateFee(ghn);
     print(fee);
-//    var fee = await shippingPlugin.calculateFee(ghn);
+
   }
 
   createOrder() async {

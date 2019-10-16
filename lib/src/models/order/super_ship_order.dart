@@ -18,8 +18,8 @@ class SuperShipOrder {
   String province;
   String district;
   String commune;
-  String amount;
-  String value;
+  int amount;
+  int value;
   String weight;
   String payer;
   String service;
