@@ -76,6 +76,13 @@ class _ShowOptionsState extends State<ShowOptions> {
             onPressed: () {
               createOrder();
             },
+          ),
+          MaterialButton(
+            color: Colors.greenAccent,
+            child: Text("get address"),
+            onPressed: () {
+              getAddress();
+            },
           )
         ],
       ),
@@ -171,5 +178,8 @@ class _ShowOptionsState extends State<ShowOptions> {
 //    var res = await shippingPlugin.createOrder(superShipOrder);
     var res = await shippingPlugin.createOrder(ghnOrder);
     print(res);
+  }
+  getAddress() async {
+    return await shippingPlugin.checkSupportedAddress("Hà Nội", "Ba Đình", "Cống Vị");
   }
 }

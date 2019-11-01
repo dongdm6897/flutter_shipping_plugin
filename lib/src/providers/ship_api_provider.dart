@@ -29,6 +29,29 @@ class ShipApiProvider extends ApiProvider {
     return await this.postData(params,token);
   }
 
+  Future<dynamic> getProvinces() async{
+    Map params = new Map();
+    params['serverUrl'] = ServerUrlEnum.SUPER_SHIP;
+    params['suffix'] = "areas/province";
+    return await this.getData(params);
+  }
+
+  Future<dynamic> getDistricts(String provinceCode) async{
+    Map params = new Map();
+    params['serverUrl'] = ServerUrlEnum.SUPER_SHIP;
+    params['suffix'] = "areas/district";
+    params['province'] = provinceCode;
+    return await this.getData(params);
+  }
+
+  Future<dynamic> getCommunes(String districtCode) async{
+    Map params = new Map();
+    params['serverUrl'] = ServerUrlEnum.SUPER_SHIP;
+    params['suffix'] = "areas/commune";
+    params['district'] = districtCode;
+    return await this.getData(params);
+  }
+
 
   // Isolate implementations
 

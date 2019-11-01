@@ -30,5 +30,14 @@ class ShippingPlugin {
     return null;
   }
 
+  Future<dynamic> checkSupportedAddress(String province, String district, String ward) async{
+    Map address = new Map();
+    address['province'] = province;
+    address['district'] = district;
+    address['ward'] = ward;
+    var res = await shippingBloc.checkSupportedAddress(address);
+    return res;
+  }
+
 
 }
