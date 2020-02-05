@@ -1,3 +1,3 @@
 final Map<String, String> appSettings = {
-  "base_url": "http://0e90b798.ngrok.io/api/V1/api/V1",
+  "base_url": "http://139.162.25.146/api/V1",
 };

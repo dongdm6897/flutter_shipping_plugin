@@ -1,39 +1,49 @@
 import 'dart:async';
 import 'dart:convert';
 import 'package:flutter/foundation.dart';
-import 'package:http/http.dart' show Client, Response;
-import 'package:flutter/services.dart';
+import 'package:global_configuration/global_configuration.dart';
+import 'package:http/http.dart' show Client;
+
 
 class ApiProvider {
-  Client _client = Client();
 
-  String _makeRequest(String url, String suffix, Map params) {
+  Client _client = Client();
+  String apiBaseUrl = "";
+  String apiUrlSuffix = "";
+
+  ApiProvider(){
+    apiBaseUrl = GlobalConfiguration().getString("base_url");
+  }
+
+
+
+  String _makeRequest(String command, Map params) {
     if (params != null) {
       String data = "";
       params.forEach((key, value) => data += "$key=$value&");
-      return "$url/$suffix?$data";
+      return "$apiBaseUrl$apiUrlSuffix/$command?$data";
     } else
-      return "$url/$suffix";
+      return "$apiBaseUrl$apiUrlSuffix/$command";
   }
 
-  Future<dynamic> getData(Map params) async {
+  Future<dynamic> getData(String command, Map params,
+      {String root = ''}) async {
     var jsonData;
-    String suffix = params['suffix'];
-    String url = params['serverUrl'];
-    params.remove('serverUrl');
-    params.remove('suffix');
-
-    params.remove('id');
 
     // Get json data
-    if (url != "") {
-      var request = _makeRequest(url, suffix, params);
-      final response = await _client.get(request);
+    if (apiBaseUrl != "") {
+      var request = _makeRequest(command, params);
+      final response = await _client.get(request, headers: {
+        'Authorization':
+        'Bearer ${params != null ? params['access_token'] : ''}'
+      });
 
       if (response?.statusCode == 200) {
-        jsonData = compute(jsonDecode, response.body);
+        if (response.headers['content-type'].contains('json'))
+          jsonData = compute(jsonDecode, response.body);
       }
     }
+
 
     return jsonData;
   }
@@ -48,6 +58,48 @@ class ApiProvider {
     }
     return jsonData;
   }
+
+//  String _makeRequest(String url, String suffix, Map params) {
+//    if (params != null) {
+//      String data = "";
+//      params.forEach((key, value) => data += "$key=$value&");
+//      return "$url/$suffix?$data";
+//    } else
+//      return "$url/$suffix";
+//  }
+//
+//  Future<dynamic> getData(Map params) async {
+//    var jsonData;
+//    String suffix = params['suffix'];
+//    String url = params['serverUrl'];
+//    params.remove('serverUrl');
+//    params.remove('suffix');
+//
+//    params.remove('id');
+//
+//    // Get json data
+//    if (url != "") {
+//      var request = _makeRequest(url, suffix, params);
+//      final response = await _client.get(request);
+//
+//      if (response?.statusCode == 200) {
+//        jsonData = compute(jsonDecode, response.body);
+//      }
+//    }
+//
+//    return jsonData;
+//  }
+//
+//  // Try to use isolate to decode mockup data
+//  static dynamic decodeMockupData(dynamic params) {
+//    final mockData = params["data"];
+//    final root = params["root"];
+//    var jsonData = jsonDecode(mockData);
+//    if (root != '') {
+//      jsonData = jsonData[root];
+//    }
+//    return jsonData;
+//  }
 
   Future<dynamic> postData(Map params, String token) async {
     var jsonData;

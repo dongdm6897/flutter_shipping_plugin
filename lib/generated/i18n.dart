@@ -21,6 +21,23 @@ class S implements WidgetsLocalizations {
   @override
   TextDirection get textDirection => TextDirection.ltr;
 
+  String get save => "Save";
+  String get shipping_address => "Shipping address";
+  String get shipping_address_add => "Add new shipping address";
+}
+
+class $vi extends S {
+  const $vi();
+
+  @override
+  TextDirection get textDirection => TextDirection.ltr;
+
+  @override
+  String get save => "Lưu";
+  @override
+  String get shipping_address_add => "Thêm mới địa chỉ";
+  @override
+  String get shipping_address => "Địa chỉ giao hàng";
 }
 
 class $en extends S {
@@ -32,6 +49,7 @@ class GeneratedLocalizationsDelegate extends LocalizationsDelegate<S> {
 
   List<Locale> get supportedLocales {
     return const <Locale>[
+      Locale("vi", ""),
       Locale("en", ""),
     ];
   }
@@ -57,6 +75,9 @@ class GeneratedLocalizationsDelegate extends LocalizationsDelegate<S> {
     final String lang = getLang(locale);
     if (lang != null) {
       switch (lang) {
+        case "vi":
+          S.current = const $vi();
+          return SynchronousFuture<S>(S.current);
         case "en":
           S.current = const $en();
           return SynchronousFuture<S>(S.current);
