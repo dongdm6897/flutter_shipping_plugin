@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shipping_plugin/generated/i18n.dart';
+import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:shipping_plugin/src/models/address/district.dart';
 import 'package:shipping_plugin/src/models/address/province.dart';
 import 'package:shipping_plugin/src/models/address/street.dart';
@@ -10,23 +10,26 @@ import 'package:shipping_plugin/src/ui/widgets/address.dart';
 class ShippingAddressList extends StatefulWidget {
   final List<ShippingAddress> shippingAddress;
   final ShippingAddress currentShippingAddress;
+  final Function callBack;
+  final Key shippingAddressListKey;
 
   const ShippingAddressList(
-      {Key key, this.shippingAddress, this.currentShippingAddress})
+      {Key key, this.shippingAddress, this.currentShippingAddress, this.callBack, this.shippingAddressListKey})
       : super(key: key);
 
   @override
-  _ShippingAddressList createState() => _ShippingAddressList();
+  ShippingAddressListState createState() => ShippingAddressListState();
 }
 
-class _ShippingAddressList extends State<ShippingAddressList> {
+class ShippingAddressListState extends State<ShippingAddressList> {
   List<ShippingAddress> _shippingAddress;
   ShippingAddress _currentShippingAddress;
-
+  final GlobalKey<AddShippingFieldsState> addShippingFieldState = GlobalKey<AddShippingFieldsState>();
   @override
   void initState() {
     _shippingAddress = widget.shippingAddress ?? [];
     _currentShippingAddress = widget.currentShippingAddress;
+
     super.initState();
   }
 
@@ -35,18 +38,21 @@ class _ShippingAddressList extends State<ShippingAddressList> {
     super.dispose();
   }
 
+  void resultUpdate(bool res){
+    addShippingFieldState.currentState.result(res);
+  }
+
   @override
   Widget build(BuildContext context) {
-    var lang = S.of(context);
-    return SimpleDialog(contentPadding: EdgeInsets.all(10.0), children: <
-        Widget>[
+    return SimpleDialog(contentPadding: EdgeInsets.all(10.0), children: <Widget>
+    [
       new Row(
         children: <Widget>[
           new Flexible(
               child: Column(
             children: <Widget>[
               Text(
-                lang.shipping_address,
+                "Shipping address",
                 style: new TextStyle(
                     fontSize: 18.0,
                     fontWeight: FontWeight.bold,
@@ -80,24 +86,22 @@ class _ShippingAddressList extends State<ShippingAddressList> {
                                       GestureDetector(
                                         child: Icon(Icons.edit, size: 14.0),
                                         onTap: () async {
-                                          var shippingAddress =
-                                              await Navigator.push(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                      builder: (BuildContext
-                                                              context) =>
-                                                          Scaffold(
-                                                              appBar: AppBar(
-                                                                  title: Text(
-                                                                      'Add new address')),
-                                                              body:
-                                                                  AddShippingFields(
-                                                                shippingAddress:
-                                                                    item,
-                                                              ))));
-                                          if (shippingAddress != null)
-                                            Navigator.pop(
-                                                context, shippingAddress);
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (BuildContext
+                                                  context) =>
+                                                      Scaffold(
+                                                          appBar: AppBar(
+                                                              title: Text('Update address')),
+                                                          body: AddShippingFields(
+                                                            shippingAddress: item,
+                                                            callBack: (ShippingAddress shippingAddress){
+                                                              widget.callBack(shippingAddress);
+
+                                                            },
+                                                            key: addShippingFieldState,
+                                                          ))));
                                         },
                                       ),
                                       SizedBox(
@@ -147,22 +151,27 @@ class _ShippingAddressList extends State<ShippingAddressList> {
                   child: RaisedButton.icon(
                       color: Colors.white,
                       onPressed: () async {
-                        var shippingAddress = await Navigator.push(
+                        Navigator.push(
                             context,
                             MaterialPageRoute(
                                 builder: (BuildContext context) => Scaffold(
                                     appBar:
-                                        AppBar(title: Text('Add new address')),
-                                    body: AddShippingFields())));
-                        if (shippingAddress != null)
-                          Navigator.pop(context, shippingAddress);
+                                    AppBar(title: Text('Add new address')),
+                                    body: AddShippingFields(
+                                      shippingAddress: null,
+                                      callBack: (ShippingAddress shippingAddress){
+                                        widget.callBack(shippingAddress);
+                                      },
+                                      key: addShippingFieldState,
+                                    )
+                                )));
                       },
                       icon: Icon(Icons.add),
                       shape: new RoundedRectangleBorder(
                           borderRadius: new BorderRadius.circular(5.0)),
                       label: Flexible(
                           child: Text(
-                        lang.shipping_address_add,
+                        "Add new shipping",
                         overflow: TextOverflow.ellipsis,
                       ))))
             ],
@@ -175,19 +184,22 @@ class _ShippingAddressList extends State<ShippingAddressList> {
 
 class AddShippingFields extends StatefulWidget {
   final ShippingAddress shippingAddress;
+  final Function callBack;
+  final Key addShippingFieldState;
 
-  const AddShippingFields({Key key, this.shippingAddress}) : super(key: key);
+  const AddShippingFields({Key key, this.shippingAddress,this.callBack,this.addShippingFieldState}) : super(key: key);
 
   @override
-  _AddShippingFieldsState createState() => _AddShippingFieldsState();
+  AddShippingFieldsState createState() => AddShippingFieldsState();
 }
 
-class _AddShippingFieldsState extends State<AddShippingFields> {
+class AddShippingFieldsState extends State<AddShippingFields> {
   final _formKey = GlobalKey<FormState>();
   String _fullName, _phoneNumber, _address;
   Province _province;
   District _district;
   Ward _ward;
+  bool _saving = false;
 
   @override
   void initState() {
@@ -207,122 +219,131 @@ class _AddShippingFieldsState extends State<AddShippingFields> {
     super.dispose();
   }
 
-  @override
-  Widget build(BuildContext context) {
-    _submit() async {
-      final form = _formKey.currentState;
-      if (form.validate()) {
-        form.save();
-        String fullName = _fullName.trim();
-        String phoneNumber = _phoneNumber.trim();
-        String address = _address.trim();
+  void result(bool res){
+    Navigator.of(context).pop();
+  }
 
-        if (this._province != null &&
-            this._district != null &&
-            this._ward != null) {
-          // Create new shipping address
-          var addr = ShippingAddress(
-            id: widget.shippingAddress?.id ?? null,
-            name: fullName,
-            phoneNumber: phoneNumber,
-            address: address,
-            province: this._province,
-            district: this._district,
-            ward: this._ward,
-          );
+  _submit() async {
+    final form = _formKey.currentState;
+    if (form.validate()) {
+      form.save();
+      String fullName = _fullName.trim();
+      String phoneNumber = _phoneNumber.trim();
+      String address = _address.trim();
+
+      if (this._province != null &&
+          this._district != null &&
+          this._ward != null) {
+        // Create new shipping address
+        var addr = ShippingAddress(
+          id: widget.shippingAddress?.id ?? null,
+          name: fullName,
+          phoneNumber: phoneNumber,
+          address: address,
+          province: this._province,
+          district: this._district,
+          ward: this._ward,
+        );
+        if(addr != null){
+          setState(() {
+            _saving = true;
+          });
+          widget.callBack(addr);
         }
       }
     }
+  }
 
-    Widget addShippingFields(context) {
-      var lang = S.of(context);
-      return Material(
-        child: Scaffold(
-          body: Form(
-            key: _formKey,
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: ListView(
-                children: <Widget>[
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: TextFormField(
-                          decoration: InputDecoration(labelText: "Full Name"),
-                          initialValue: _fullName,
-                          validator: (value) {
-                            if (value.isEmpty)
-                              return "You can't leave this empty";
-                            else if (value.length < 2)
-                              return "The name length should be 2 - 50 characters";
-                            else
-                              _fullName = value;
-                            return null;
-                          },
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: TextFormField(
-                          decoration:
-                              InputDecoration(labelText: "Phone Number"),
-                          initialValue: _phoneNumber,
-                          validator: (value) {
-                            if (value.isEmpty)
-                              return "You can't leave this empty";
-                            else if (value.length > 11 || value.length < 10)
-                              return "Please enter a valid phone number";
-                            else
-                              _phoneNumber = value;
-                            return null;
-                          },
-                        ),
-                      ),
-                      Address(
-                        callBack: (String address, Province province,
-                            District district, Ward ward, Street street) {
-                          this._address = address;
-                          this._province = province;
-                          this._district = district;
-                          this._ward = ward;
-//                          this._street = street;
+  Widget addShippingFields(context) {
+    return Material(
+      child: Scaffold(
+        body: Form(
+          key: _formKey,
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ListView(
+              children: <Widget>[
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: TextFormField(
+                        decoration: InputDecoration(labelText: "Full Name"),
+                        initialValue: _fullName,
+                        validator: (value) {
+                          if (value.isEmpty)
+                            return "You can't leave this empty";
+                          else if (value.length < 2)
+                            return "The name length should be 2 - 50 characters";
+                          else
+                            _fullName = value;
+                          return null;
                         },
-                        province: this._province,
-                        district: this._district,
-                        ward: this._ward,
-                        address: this._address,
                       ),
-                      Container(
-                        padding: EdgeInsets.symmetric(
-                            horizontal: 30.0, vertical: 30.0),
-                        width: double.infinity,
-                        child: RaisedButton(
-                          padding: EdgeInsets.all(10.0),
-//                          shape: StadiumBorder(),
-                          child: Text(
-                            lang.save,
-                            style: TextStyle(color: Colors.white),
-                          ),
-                          color: Colors.red,
-                          onPressed: () {
-                            _submit();
-                          },
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: TextFormField(
+                        decoration:
+                        InputDecoration(labelText: "Phone Number"),
+                        initialValue: _phoneNumber,
+                        validator: (value) {
+                          if (value.isEmpty)
+                            return "You can't leave this empty";
+                          else if (value.length > 11 || value.length < 10)
+                            return "Please enter a valid phone number";
+                          else
+                            _phoneNumber = value;
+                          return null;
+                        },
+                      ),
+                    ),
+                    Address(
+                      callBack: (String address, Province province,
+                          District district, Ward ward, Street street) {
+                        this._address = address;
+                        this._province = province;
+                        this._district = district;
+                        this._ward = ward;
+//                          this._street = street;
+                      },
+                      province: this._province,
+                      district: this._district,
+                      ward: this._ward,
+                      address: this._address,
+                    ),
+                    Container(
+                      padding: EdgeInsets.symmetric(
+                          horizontal: 30.0, vertical: 30.0),
+                      width: double.infinity,
+                      child: RaisedButton(
+                        padding: EdgeInsets.all(10.0),
+                        child: Text(
+                          "Save",
+                          style: TextStyle(color: Colors.white),
                         ),
+                        color: Colors.red,
+                        onPressed: () {
+                          _submit();
+                        },
                       ),
-                    ],
-                  )
-                ],
-              ),
+                    ),
+                  ],
+                )
+              ],
             ),
           ),
         ),
-      );
-    }
+      ),
+    );
+  }
 
-    return Scaffold(
-      body: addShippingFields(context),
+  @override
+  Widget build(BuildContext context) {
+    return ModalProgressHUD(
+        inAsyncCall: _saving,
+        child: addShippingFields(context)
     );
   }
 }
