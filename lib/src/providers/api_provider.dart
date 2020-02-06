@@ -59,6 +59,37 @@ class ApiProvider {
     return jsonData;
   }
 
+
+  Future<dynamic> postData(String command, Map params) async {
+    var jsonData;
+
+    if (apiBaseUrl != "") {
+      String url;
+      url = "$apiBaseUrl";
+      if (command != null && command.isNotEmpty) {
+        url = "$apiBaseUrl$apiUrlSuffix/$command";
+      }
+      String accessToken = params != null ? params['access_token'] : '';
+      params.remove('access_token');
+      final response = await _client.post(
+        url,
+        body: json.encode(params),
+        encoding: Encoding.getByName('utf-8'),
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer $accessToken'
+        },
+      );
+
+      if (response?.statusCode == 200 || response?.statusCode == 201) {
+        jsonData = json.decode(response.body);
+      }
+    }
+
+
+    return jsonData;
+  }
+
 //  String _makeRequest(String url, String suffix, Map params) {
 //    if (params != null) {
 //      String data = "";
@@ -101,43 +132,43 @@ class ApiProvider {
 //    return jsonData;
 //  }
 
-  Future<dynamic> postData(Map params, String token) async {
-    var jsonData;
-    String suffix = params['suffix'];
-    String baseUrl = params['serverUrl'];
-    params.remove('serverUrl');
-    params.remove('suffix');
-    params.remove('id');
-
-    String url = "$baseUrl/$suffix";
-    var response;
-    if (token == null) {
-      response = await _client.post(
-        url,
-        body: json.encode(params),
-        encoding: Encoding.getByName('utf-8'),
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      );
-    } else {
-      response = await _client.post(
-        url,
-        body: json.encode(params),
-        encoding: Encoding.getByName('utf-8'),
-        headers: {
-          'Acept': 'application/json',
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer $token'
-        },
-      );
-    }
-    print(url);
-
-    if (response?.statusCode == 200 || response?.statusCode == 201) {
-      jsonData = json.decode(response.body);
-    }
-
-    return jsonData;
-  }
+//  Future<dynamic> postData(Map params, String token) async {
+//    var jsonData;
+//    String suffix = params['suffix'];
+//    String baseUrl = params['serverUrl'];
+//    params.remove('serverUrl');
+//    params.remove('suffix');
+//    params.remove('id');
+//
+//    String url = "$baseUrl/$suffix";
+//    var response;
+//    if (token == null) {
+//      response = await _client.post(
+//        url,
+//        body: json.encode(params),
+//        encoding: Encoding.getByName('utf-8'),
+//        headers: {
+//          'Content-Type': 'application/json',
+//        },
+//      );
+//    } else {
+//      response = await _client.post(
+//        url,
+//        body: json.encode(params),
+//        encoding: Encoding.getByName('utf-8'),
+//        headers: {
+//          'Acept': 'application/json',
+//          'Content-Type': 'application/json',
+//          'Authorization': 'Bearer $token'
+//        },
+//      );
+//    }
+//    print(url);
+//
+//    if (response?.statusCode == 200 || response?.statusCode == 201) {
+//      jsonData = json.decode(response.body);
+//    }
+//
+//    return jsonData;
+//  }
 }

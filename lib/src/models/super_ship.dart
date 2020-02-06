@@ -1,11 +1,4 @@
-import 'package:shipping_plugin/src/models/master_data.dart';
-
 class SuperShip {
-  static int id = ShipProviderEnum.SUPER_SHIP;
-  static String serverUrl = ServerUrlEnum.SUPER_SHIP;
-  static String suffixCalculateFee = SuffixEstimateFee.SUPER_SHIP;
-  static String suffixCreateOrder = SuffixOrderCreate.SUPER_SHIP;
-
   String senderProvince;
   String senderDistrict;
   String receiverProvince;
@@ -35,10 +28,6 @@ class SuperShip {
 
   Map<String, dynamic> toJson() =>
       {
-        'id' : id,
-        'serverUrl': serverUrl,
-        'suffixCalculateFee': suffixCalculateFee,
-        'suffixCreateOrder': suffixCreateOrder,
         'sender_province': senderProvince,
         'sender_district': senderDistrict,
         'receiver_province': receiverProvince,

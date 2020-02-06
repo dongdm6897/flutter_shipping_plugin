@@ -1,11 +1,4 @@
-import 'package:shipping_plugin/src/models/master_data.dart';
-
 class GHN {
-  static String serverUrl = ServerUrlEnum.GHN;
-  static String suffixCalculateFee = SuffixEstimateFee.GHN;
-  static String suffixCreateOrder = SuffixOrderCreate.GHN;
-  static int id = ShipProviderEnum.GHN ;
-
   String token;
   int fromDistrictID;
   int toDistrictID;
@@ -32,10 +25,6 @@ class GHN {
   }
 
   Map<String, dynamic> toJson() => {
-        'id' : id,
-        'serverUrl': serverUrl,
-        'suffixCalculateFee': suffixCalculateFee,
-        'suffixCreateOrder': suffixCreateOrder,
         'token': token,
         'FromDistrictID': fromDistrictID,
         'ToDistrictID': toDistrictID,

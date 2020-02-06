@@ -71,21 +71,4 @@ class GHNOrder {
       this.returnContactPhone, this.returnAddress, this.returnDistrictID,
       this.externalReturnCode, this.affiliateID});
 
-
-//  @override
-//  factory SuperShipOrder.fromJSON(Map<String, dynamic> json) {
-//    if (json != null) {
-//      return new SuperShipOrder(
-//        senderProvince: json["senderProvince"],
-//        senderDistrict: json["senderDistrict"],
-//        receiverProvince: json["receiverProvince"],
-//        weight: json["weight"],
-//        value: json["value"],
-//
-//      );
-//    }
-//    return null;
-//  }
-
-
 }

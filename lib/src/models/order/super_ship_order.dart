@@ -66,21 +66,4 @@ class SuperShipOrder {
       this.amount, this.value, this.weight, this.payer, this.service,
       this.config, this.soc, this.note, this.productType, this.product});
 
-//  @override
-//  factory SuperShipOrder.fromJSON(Map<String, dynamic> json) {
-//    if (json != null) {
-//      return new SuperShipOrder(
-//        senderProvince: json["senderProvince"],
-//        senderDistrict: json["senderDistrict"],
-//        receiverProvince: json["receiverProvince"],
-//        weight: json["weight"],
-//        value: json["value"],
-//
-//      );
-//    }
-//    return null;
-//  }
-
-
-
 }
