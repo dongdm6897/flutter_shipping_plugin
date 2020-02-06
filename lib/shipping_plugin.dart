@@ -7,7 +7,14 @@ export 'src/ui/supership/supership_reference_price_list.dart';
 export 'src/ui/ghn/ghn_reference_price_list.dart';
 export 'src/ui/widgets/address.dart';
 export 'src/ui/widgets/shipping_address.dart';
+export 'src/ui/widgets/shipping_provide_list.dart';
 export 'src/models/shipping_address.dart';
+export 'src/models/ship_provider.dart';
+export 'src/models/ship_provider_service.dart';
+export 'src/models/super_ship.dart';
+export 'src/models/ghn.dart';
+export 'src/models/order/ghn_order.dart';
+export 'src/models/order/super_ship_order.dart';
 
 class ShippingPlugin {
 
