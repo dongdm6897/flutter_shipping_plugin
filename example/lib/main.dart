@@ -21,12 +21,12 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      localizationsDelegates: [
-        S.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate
-      ],
-      supportedLocales: S.delegate.supportedLocales,
+//      localizationsDelegates: [
+//        S.delegate,
+//        GlobalMaterialLocalizations.delegate,
+//        GlobalWidgetsLocalizations.delegate
+//      ],
+//      supportedLocales: S.delegate.supportedLocales,
       title: "Home page",
       home: Scaffold(
         body: ShippingAddressList(),
