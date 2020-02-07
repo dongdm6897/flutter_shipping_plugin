@@ -1,6 +1,6 @@
 {
   "api_key": "",
-  "base_url": "http://192.168.184.2/api/V1",
+  "base_url": "http://981d1f5c.ngrok.io/api/V1",
   "url_suffix": "/",
   "product_comment_page_size": 5
 }

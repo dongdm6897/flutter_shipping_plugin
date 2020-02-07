@@ -5,12 +5,12 @@ import 'api_provider.dart';
 
 class SuperShipApiProvider extends ApiProvider {
   SuperShipApiProvider() : super() {
-    apiBaseUrl = "https://api.mysupership.vn/v1/partner/order/";
+    apiBaseUrl = "https://api.mysupership.vn/v1/partner";
 
   }
 
   Future<dynamic> calculateFee(Map params){
-    return this.postData(ApiList.API_SUPERSHIP_CALCULATE_FEE, params);
+    return this.getData(ApiList.API_SUPERSHIP_CALCULATE_FEE, params);
   }
 
   Future<dynamic> createOrder(Map params){

@@ -10,18 +10,11 @@ export 'src/ui/widgets/shipping_provide_list.dart';
 export 'src/models/shipping_address.dart';
 export 'src/models/ship_provider.dart';
 export 'src/models/ship_provider_service.dart';
-export 'src/models/super_ship.dart';
-export 'src/models/ghn.dart';
-export 'src/models/order/ghn_order.dart';
-export 'src/models/order/super_ship_order.dart';
+export 'src/bloc/shipping_bloc.dart';
 
 class ShippingPlugin {
 
 
-  ShippingPlugin(){
-
-    GlobalConfiguration().loadFromMap(appSettings);
-  }
 
   //Calculate shipping fee
 //  Future<dynamic> calculateFee(model) {

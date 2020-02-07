@@ -6,7 +6,6 @@ import 'api_provider.dart';
 class GHNApiProvider extends ApiProvider {
   GHNApiProvider() : super() {
     apiBaseUrl = "https://console.ghn.vn/api/v1/apiv3";
-
   }
 
   Future<dynamic> calculateFee(Map params){
