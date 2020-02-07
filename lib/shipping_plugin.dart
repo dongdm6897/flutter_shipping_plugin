@@ -14,6 +14,7 @@ export 'src/models/super_ship.dart';
 export 'src/models/ghn.dart';
 export 'src/models/order/ghn_order.dart';
 export 'src/models/order/super_ship_order.dart';
+export 'src/ui/widgets/weight_list.dart';
 
 class ShippingPlugin {
 

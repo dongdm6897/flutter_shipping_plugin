@@ -5,16 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="712713de-3012-4bd3-8519-35251b11831b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/lib/src/ui/widgets/weight_list.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/Flutter/flutter_export_environment.sh" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/Flutter/flutter_export_environment.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/example/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/example/pubspec.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/example/pubspec.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/shipping_plugin.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/shipping_plugin.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/bloc/ShippingBloc.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/bloc/ShippingBloc.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/providers/ship_api_provider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/providers/ship_api_provider.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/ui/widgets/shipping_address.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/ui/widgets/shipping_address.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.dart_tool/" />
     <ignored path="$PROJECT_DIR$/.idea/" />
@@ -31,17 +26,16 @@
   <component name="DefaultGradleProjectSettings">
     <option name="isMigrated" value="true" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="Nexus_5_API_26" />
   <component name="FavoritesManager">
     <favorites_list name="shipping_plugin" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/example/lib/main.dart">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/lib/src/ui/widgets/shipping_provide_list.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+            <state relative-caret-position="-360">
+              <caret line="12" column="38" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="38" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -50,43 +44,22 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/src/bloc/ShippingBloc.dart">
+        <entry file="file://$PROJECT_DIR$/lib/src/ui/widgets/weight_list.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="21" column="46" selection-start-line="21" selection-start-column="46" selection-end-line="21" selection-end-column="46" />
+            <state relative-caret-position="90">
+              <caret line="21" column="39" selection-start-line="21" selection-start-column="39" selection-end-line="21" selection-end-column="39" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/src/ui/widgets/shipping_address.dart">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="5634">
+              <caret line="313" column="26" selection-start-line="313" selection-start-column="22" selection-end-line="313" selection-end-column="26" />
               <folding>
-                <element signature="e#0#70#0" expanded="true" />
+                <element signature="e#0#39#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/src/providers/ship_api_provider.dart">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="590">
-              <caret line="68" selection-start-line="68" selection-end-line="68" />
-              <folding>
-                <element signature="e#0#20#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/src/models/master_data.dart">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="12" column="24" selection-start-line="12" selection-start-column="24" selection-end-line="12" selection-end-column="24" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pubspec.yaml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="17" column="2" selection-start-line="17" selection-start-column="2" selection-end-line="17" selection-end-column="2" />
             </state>
           </provider>
         </entry>
@@ -94,58 +67,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/shipping_plugin.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="256">
-              <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
-              <folding>
-                <element signature="e#0#20#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/lib/src/ui/widgets/shipping_address.dart">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-299">
-              <caret line="219" column="3" lean-forward="true" selection-start-line="219" selection-start-column="3" selection-end-line="219" selection-end-column="3" />
-              <folding>
-                <element signature="e#0#39#0" expanded="true" />
-                <element signature="e#1490#1708#0" />
-                <element signature="e#10251#13534#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/generated/i18n.dart">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="232">
-              <caret line="24" column="34" lean-forward="true" selection-start-line="24" selection-start-column="34" selection-end-line="24" selection-end-column="50" />
-              <folding>
-                <element signature="e#0#20#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/src/providers/address_api_provider.dart">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="13" column="30" selection-start-line="13" selection-start-column="30" selection-end-line="13" selection-end-column="30" />
-              <folding>
-                <element signature="e#0#66#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/src/providers/api_list.dart">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="6" selection-start-column="6" selection-end-column="6" />
+            <state relative-caret-position="216">
+              <caret line="12" column="29" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="29" />
             </state>
           </provider>
         </entry>
@@ -161,9 +84,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>id</find>
-      <find>fuck</find>
-      <find>;</find>
       <find>ser</find>
       <find>shippingAddress</find>
       <find>&quot;</find>
@@ -191,6 +111,9 @@
       <find>AddShippingFieldsState</find>
       <find>addShippingFieldState</find>
       <find>AddShippingFields</find>
+      <find>callBac</find>
+      <find>callBack</find>
+      <find>addr</find>
     </findStrings>
     <replaceStrings>
       <replace>receiverDistrict</replace>
@@ -211,7 +134,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/lib/src/ui/ghn/ghn_reference_price_list.dart" />
         <option value="$PROJECT_DIR$/lib/src/ui/supership/supership_reference_price_list.dart" />
         <option value="$PROJECT_DIR$/assets/config.json" />
         <option value="$PROJECT_DIR$/example/lib/widgets/check_order_status.dart" />
@@ -258,17 +180,18 @@
         <option value="$PROJECT_DIR$/example/pubspec.yaml" />
         <option value="$PROJECT_DIR$/lib/src/bloc/ShippingBloc.dart" />
         <option value="$PROJECT_DIR$/lib/src/providers/ship_api_provider.dart" />
-        <option value="$PROJECT_DIR$/lib/shipping_plugin.dart" />
         <option value="$PROJECT_DIR$/example/lib/main.dart" />
         <option value="$PROJECT_DIR$/pubspec.yaml" />
         <option value="$PROJECT_DIR$/lib/src/ui/widgets/shipping_address.dart" />
+        <option value="$PROJECT_DIR$/lib/shipping_plugin.dart" />
+        <option value="$PROJECT_DIR$/lib/src/ui/widgets/weight_list.dart" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
-    <option name="width" value="977" />
-    <option name="height" value="1088" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="-9" />
+    <option name="width" value="978" />
+    <option name="height" value="1089" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -276,98 +199,53 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="flutter_shipping_plugin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="flutter_shipping_plugin" type="462c0819:PsiDirectoryNode" />
+              <item name="shipping_plugin" type="b2602c69:ProjectViewProjectNode" />
+              <item name="shipping_plugin" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="flutter_shipping_plugin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="flutter_shipping_plugin" type="462c0819:PsiDirectoryNode" />
+              <item name="shipping_plugin" type="b2602c69:ProjectViewProjectNode" />
+              <item name="shipping_plugin" type="462c0819:PsiDirectoryNode" />
               <item name="lib" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="flutter_shipping_plugin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="flutter_shipping_plugin" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
-              <item name="generated" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="flutter_shipping_plugin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="flutter_shipping_plugin" type="462c0819:PsiDirectoryNode" />
+              <item name="shipping_plugin" type="b2602c69:ProjectViewProjectNode" />
+              <item name="shipping_plugin" type="462c0819:PsiDirectoryNode" />
               <item name="lib" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="flutter_shipping_plugin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="flutter_shipping_plugin" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="bloc" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="flutter_shipping_plugin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="flutter_shipping_plugin" type="462c0819:PsiDirectoryNode" />
+              <item name="shipping_plugin" type="b2602c69:ProjectViewProjectNode" />
+              <item name="shipping_plugin" type="462c0819:PsiDirectoryNode" />
               <item name="lib" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="models" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="flutter_shipping_plugin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="flutter_shipping_plugin" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="providers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="flutter_shipping_plugin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="flutter_shipping_plugin" type="462c0819:PsiDirectoryNode" />
+              <item name="shipping_plugin" type="b2602c69:ProjectViewProjectNode" />
+              <item name="shipping_plugin" type="462c0819:PsiDirectoryNode" />
               <item name="lib" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="ui" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="flutter_shipping_plugin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="flutter_shipping_plugin" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="ui" type="462c0819:PsiDirectoryNode" />
-              <item name="ghn" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="flutter_shipping_plugin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="flutter_shipping_plugin" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="ui" type="462c0819:PsiDirectoryNode" />
-              <item name="supership" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="flutter_shipping_plugin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="flutter_shipping_plugin" type="462c0819:PsiDirectoryNode" />
+              <item name="shipping_plugin" type="b2602c69:ProjectViewProjectNode" />
+              <item name="shipping_plugin" type="462c0819:PsiDirectoryNode" />
               <item name="lib" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="ui" type="462c0819:PsiDirectoryNode" />
               <item name="widgets" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="flutter_shipping_plugin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="flutter_shipping_plugin" type="462c0819:PsiDirectoryNode" />
-              <item name="values" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="flutter_shipping_plugin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="flutter_shipping_plugin" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -382,19 +260,19 @@
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\nguyendat\AndroidStudioProjects\flutter_shipping_plugin\cfg" />
-      <recent name="C:\Users\nguyendat\AndroidStudioProjects\flutter_shipping_plugin\assets\cfg" />
-      <recent name="C:\Users\nguyendat\AndroidStudioProjects\flutter_shipping_plugin\lib\src\models\address" />
-      <recent name="D:\Document\flutter_projects\shipping_plugin\lib\src\models" />
-      <recent name="D:\Document\flutter_projects\shipping_plugin\example\assets\json" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\nguyendat\AndroidStudioProjects\flutter_shipping_plugin\assets" />
       <recent name="D:\Document\flutter_projects\shipping_plugin\example\lib\widgets\SuperShip" />
       <recent name="D:\Document\flutter_projects\shipping_plugin\example\lib\widgets" />
       <recent name="D:\Document\flutter_projects\shipping_plugin\lib\src\ui\supership" />
       <recent name="D:\Document\flutter_projects\shipping_plugin\example" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\nguyendat\AndroidStudioProjects\flutter_shipping_plugin\cfg" />
+      <recent name="C:\Users\nguyendat\AndroidStudioProjects\flutter_shipping_plugin\assets\cfg" />
+      <recent name="C:\Users\nguyendat\AndroidStudioProjects\flutter_shipping_plugin\lib\src\models\address" />
+      <recent name="D:\Document\flutter_projects\shipping_plugin\lib\src\models" />
+      <recent name="D:\Document\flutter_projects\shipping_plugin\example\assets\json" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -432,7 +310,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="878" extended-state="6" />
+    <frame x="-7" y="-7" width="1550" height="848" extended-state="7" />
     <layout>
       <window_info id="Build Variants" order="0" sideWeight="0.50214595" side_tool="true" weight="0.3295302" />
       <window_info id="Image Layers" order="1" />
@@ -442,8 +320,8 @@
       <window_info id="Capture Tool" order="5" />
       <window_info id="Favorites" order="6" sideWeight="0.50318474" side_tool="true" weight="0.23288591" />
       <window_info id="Structure" order="7" sideWeight="0.50318474" side_tool="true" weight="0.23288591" />
-      <window_info active="true" content_ui="combo" id="Project" order="8" sideWeight="0.4968153" visible="true" weight="0.595302" />
-      <window_info anchor="bottom" x="23" y="333" width="1490" height="168" id="Run" order="0" sideWeight="0.49530202" weight="0.46304044" />
+      <window_info content_ui="combo" id="Project" order="8" sideWeight="0.4968153" visible="true" weight="0.23691276" />
+      <window_info active="true" anchor="bottom" x="23" y="333" width="1490" height="168" id="Run" order="0" sideWeight="0.49530202" visible="true" weight="0.46176046" />
       <window_info anchor="bottom" id="Logcat" order="1" weight="0.52380955" />
       <window_info anchor="bottom" id="TODO" order="2" weight="0.32561505" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49602824" weight="0.3838384" />
@@ -464,6 +342,37 @@
       <window_info anchor="right" id="Flutter Outline" order="6" sideWeight="0.49905837" weight="0.53867406" />
       <window_info anchor="right" id="PlantUML" order="7" />
     </layout>
+    <layout-to-restore>
+      <window_info id="Build Variants" order="0" sideWeight="0.50214595" side_tool="true" weight="0.3295302" />
+      <window_info id="Image Layers" order="1" />
+      <window_info id="Designer" order="2" />
+      <window_info id="Captures" order="3" side_tool="true" weight="0.3281879" />
+      <window_info id="Resources Explorer" order="4" sideWeight="0.49785408" weight="0.32734805" />
+      <window_info id="Capture Tool" order="5" />
+      <window_info id="Favorites" order="6" sideWeight="0.50318474" side_tool="true" weight="0.23288591" />
+      <window_info id="Structure" order="7" sideWeight="0.50318474" side_tool="true" weight="0.23288591" />
+      <window_info active="true" content_ui="combo" id="Project" order="8" sideWeight="0.4968153" visible="true" weight="0.48891968" />
+      <window_info anchor="bottom" x="23" y="333" width="1490" height="168" id="Run" order="0" sideWeight="0.49530202" weight="0.46304044" />
+      <window_info anchor="bottom" id="Logcat" order="1" weight="0.52380955" />
+      <window_info anchor="bottom" id="TODO" order="2" weight="0.32561505" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49602824" weight="0.3838384" />
+      <window_info anchor="bottom" id="Version Control" order="4" weight="0.32857144" />
+      <window_info anchor="bottom" id="Terminal" order="5" weight="0.27561328" />
+      <window_info anchor="bottom" id="Event Log" order="6" sideWeight="0.504698" side_tool="true" weight="0.27849928" />
+      <window_info anchor="bottom" id="Flutter Performance" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Android Profiler" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Messages" order="9" weight="0.37229437" />
+      <window_info anchor="bottom" id="Find" order="10" />
+      <window_info anchor="bottom" id="Dart Analysis" order="11" weight="0.43578643" />
+      <window_info anchor="right" id="Capture Analysis" order="0" />
+      <window_info anchor="right" id="Theme Preview" order="1" />
+      <window_info anchor="right" id="Flutter Inspector" order="2" weight="0.32871014" />
+      <window_info anchor="right" id="Palette&#9;" order="3" />
+      <window_info anchor="right" id="Device File Explorer" order="4" sideWeight="0.50094163" side_tool="true" weight="0.22684564" />
+      <window_info anchor="right" id="Hierarchy" order="5" weight="0.3295302" />
+      <window_info anchor="right" id="Flutter Outline" order="6" sideWeight="0.49905837" weight="0.53867406" />
+      <window_info anchor="right" id="PlantUML" order="7" />
+    </layout-to-restore>
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -477,8 +386,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/lib/src/utils/custom_style.dart" />
-    <entry file="file://$PROJECT_DIR$/lib/src/providers/convert_data/calculate_fee_data.dart" />
     <entry file="file://$PROJECT_DIR$/lib/src/providers/convert_data/order_data.dart" />
     <entry file="file://$PROJECT_DIR$/lib/src/models/order.dart" />
     <entry file="file://$PROJECT_DIR$/lib/src/providers/supership_api_provider.dart" />
@@ -732,26 +639,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/src/providers/ship_api_provider.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="590">
-          <caret line="68" selection-start-line="68" selection-end-line="68" />
-          <folding>
-            <element signature="e#0#20#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/src/bloc/ShippingBloc.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="21" column="46" selection-start-line="21" selection-start-column="46" selection-end-line="21" selection-end-column="46" />
-          <folding>
-            <element signature="e#0#70#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/src/providers/ship_api_provider.dart" />
+    <entry file="file://$PROJECT_DIR$/lib/src/bloc/ShippingBloc.dart" />
     <entry file="file://$PROJECT_DIR$/pubspec.yaml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
@@ -761,22 +650,34 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/shipping_plugin.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
-          <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
-          <folding>
-            <element signature="e#0#20#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="216">
+          <caret line="12" column="29" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="29" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/src/ui/widgets/shipping_address.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-299">
-          <caret line="219" column="3" lean-forward="true" selection-start-line="219" selection-start-column="3" selection-end-line="219" selection-end-column="3" />
+        <state relative-caret-position="5634">
+          <caret line="313" column="26" selection-start-line="313" selection-start-column="22" selection-end-line="313" selection-end-column="26" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
-            <element signature="e#1490#1708#0" />
-            <element signature="e#10251#13534#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/src/ui/widgets/weight_list.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="21" column="39" selection-start-line="21" selection-start-column="39" selection-end-line="21" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/src/ui/widgets/shipping_provide_list.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-360">
+          <caret line="12" column="38" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="38" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
           </folding>
         </state>
       </provider>
