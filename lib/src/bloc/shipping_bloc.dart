@@ -1,6 +1,7 @@
 import 'package:global_configuration/global_configuration.dart';
 import 'package:shipping_plugin/shipping_plugin.dart';
 import 'package:shipping_plugin/src/models/master_data.dart';
+import 'package:shipping_plugin/src/models/shipping_status.dart';
 import 'package:shipping_plugin/src/providers/ghn_api_provider.dart';
 
 
@@ -135,7 +136,7 @@ class ShippingBloc {
         break;
       case ShipProviderEnum.SUPERSHIP:
         Map requestParameters = {
-          'token' : _superShipToken,
+          'access_token' : _superShipToken,
           'pickup_phone': params['seller']['number_phone'],
           'pickup_address': shippingFrom.address,
           'pickup_commune': shippingFrom.ward.name,
@@ -158,7 +159,10 @@ class ShippingBloc {
           'product_type': 1,
           'product': params['category'],
         };
+
+        print("fuck params $requestParameters");
         var res = await _superShipApiProvider.createOrder(requestParameters);
+        print("fuck you res $res");
         if(res != null && res['status'] == 'Success'){
           return res['results']['code'];
         }
@@ -168,7 +172,6 @@ class ShippingBloc {
     }
     return "";
   }
-
 
   Future<dynamic> checkSupportedAddress(ShipProvider shipProvider,
       Map params) async {
