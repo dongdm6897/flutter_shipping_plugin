@@ -30,16 +30,16 @@ class AddressApiProvider extends ApiProvider {
     return null;
   }
 
-  Future<List<Street>> getStreet(Map params) async {
-    var jsonData = await this.getData(ApiList.API_GET_STREET, params);
-
-    if (jsonData != null) {
-      return new List<Street>.from(
-          jsonData['data'].map((e) => Street.fromJSON(e)));
-    }
-
-    return null;
-  }
+//  Future<List<Street>> getStreet(Map params) async {
+//    var jsonData = await this.getData(ApiList.API_GET_STREET, params);
+//
+//    if (jsonData != null) {
+//      return new List<Street>.from(
+//          jsonData['data'].map((e) => Street.fromJSON(e)));
+//    }
+//
+//    return null;
+//  }
 
   Future<List<Ward>> getWard(Map params) async {
     var jsonData = await this.getData(ApiList.API_GET_WARD, params);

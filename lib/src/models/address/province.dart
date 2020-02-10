@@ -1,14 +1,14 @@
 class Province {
-  int id;
+  String id;
   String name;
-  String code;
+  String type;
 
-  Province({this.id, this.name, this.code});
+  Province({this.id, this.name, this.type});
 
   @override
   factory Province.fromJSON(Map<String, dynamic> json) {
     if (json != null) {
-      return Province(id: json["id"], name: json["_name"], code: json["_code"]);
+      return Province(id: json["id"], name: json["name"], type: json["type"]);
     }
     return null;
   }

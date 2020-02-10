@@ -75,8 +75,8 @@ class ShippingAddressListState extends State<ShippingAddressList> {
                                   Text(item.name),
                                   Text(
                                     "${item.address} "
-                                    "${item.ward != null ? (" - " + item.ward.prefix + " " + item.ward.name) : ""}"
-                                    "${item.district != null ? (" - " + item.district.prefix + " " + item.district.name) : ""} - "
+                                    "${item.ward != null ? (" - " + item.ward.name) : ""}"
+                                    "${item.district != null ? (" - "  + item.district.name) : ""} - "
                                     "${item.province != null ? (item.province.name) : ""}",
                                     style:
                                         TextStyle(fontStyle: FontStyle.italic),

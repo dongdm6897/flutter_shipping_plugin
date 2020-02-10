@@ -1,23 +1,21 @@
 class Ward  {
-  int id;
+  String id;
   String name;
-  String prefix;
-  int provinceId;
-  int districtId;
+  String type;
+  String districtId;
   String ghnCode;
 
-  Ward({this.id, this.name, this.prefix, this.provinceId, this.districtId, this.ghnCode});
+  Ward({this.id, this.name, this.type,  this.districtId, this.ghnCode});
 
   @override
   factory Ward.fromJSON(Map<String, dynamic> json) {
     if (json != null) {
       return Ward(
           id: json["id"],
-          name: json["_name"],
-          prefix: json["_prefix"],
-          provinceId: json['_province_id'],
-          districtId: json['_district_id'],
-          ghnCode: json['_ghn_code']);
+          name: json["name"],
+          type: json["type"],
+          districtId: json['district_id'],
+          ghnCode: json['ghn_code']);
     }
     return null;
   }

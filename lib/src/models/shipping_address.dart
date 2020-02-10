@@ -11,7 +11,7 @@ class ShippingAddress {
   Province province;
   District district;
   Ward ward;
-  Street street;
+
 
   ShippingAddress(
       {this.id,
@@ -20,7 +20,6 @@ class ShippingAddress {
         this.phoneNumber,
         this.province,
         this.district,
-        this.street,
         this.ward});
 
   @override
@@ -34,7 +33,7 @@ class ShippingAddress {
           province: Province.fromJSON(json["province"]),
           district: District.fromJSON(json["district"]),
           ward: Ward.fromJSON(json["ward"]),
-          street: Street.fromJSON(json["street"]));
+        );
     }
     return null;
   }
@@ -47,7 +46,6 @@ class ShippingAddress {
     'province_id': province.id,
     'district_id': district.id,
     'ward_id': ward.id,
-    'street_id': street?.id,
   };
 
   @override

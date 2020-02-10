@@ -46,7 +46,7 @@ class AddressState extends State<Address> {
       _loadedProvice = true;
       _addressBloc.loadDistrict(_province.id).then((value) {
         if (value) {
-          _addressBloc.loadWard(_district.id, _province.id);
+          _addressBloc.loadWard(_district.id);
           _loadedDistrict = true;
         }
       });
@@ -145,7 +145,7 @@ class AddressState extends State<Address> {
                                     .map((val) => DropdownMenuItem<District>(
                                   value: val,
                                   child:
-                                  Text(val.prefix + " " + val.name),
+                                  Text(val.name),
                                 ))
                                     .toList(),
                                 onChanged: (value) async {
@@ -157,8 +157,7 @@ class AddressState extends State<Address> {
 //                                    _addressBloc.loadStreet(
 //                                        _district.id, _district.provinceId);
                                   });
-                                  bool res = await _addressBloc.loadWard(
-                                      _district.id, _district.provinceId);
+                                  bool res = await _addressBloc.loadWard(_district.id);
                                   setState(() {
                                     _loadedDistrict = res;
                                   });
@@ -201,7 +200,7 @@ class AddressState extends State<Address> {
                                     .map((val) => DropdownMenuItem<Ward>(
                                       value: val,
                                       child:
-                                      Text(val.prefix + " " + val.name),
+                                      Text(val.name),
                                     ))
                                     .toList(),
                                 onChanged: (value) {

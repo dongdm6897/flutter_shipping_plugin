@@ -1,21 +1,21 @@
 class District  {
-  int id;
+  String id;
   String name;
-  String prefix;
-  int provinceId;
-  int ghnCode;
+  String type;
+  String provinceId;
+  String ghnCode;
 
-  District({this.id, this.name, this.prefix, this.provinceId, this.ghnCode});
+  District({this.id, this.name, this.type, this.provinceId, this.ghnCode});
 
   @override
   factory District.fromJSON(Map<String, dynamic> json) {
     if (json != null) {
       return District(
           id: json["id"],
-          name: json["_name"],
-          prefix: json["_prefix"],
-          provinceId: json["_province_id"],
-          ghnCode: json["_ghn_code"]
+          name: json["name"],
+          type: json["type"],
+          provinceId: json["province_id"],
+          ghnCode: json["ghn_code"]
       );
 
     }

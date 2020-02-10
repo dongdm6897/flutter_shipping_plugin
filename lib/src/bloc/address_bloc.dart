@@ -59,7 +59,7 @@ class AddressBloc {
     });
   }
 
-  Future<bool> loadDistrict(int provinceId) async {
+  Future<bool> loadDistrict(String provinceId) async {
     Map params = Map();
     params['province_id'] = provinceId;
     loadSink.add(true);
@@ -73,9 +73,8 @@ class AddressBloc {
     });
   }
 
-  Future<bool> loadWard(int districtId, int provinceId) async {
+  Future<bool> loadWard(String districtId) async {
     Map params = Map();
-    params['province_id'] = provinceId;
     params['district_id'] = districtId;
     loadSink.add(true);
     return await _addressApiProvider.getWard(params).then((values) {
@@ -88,18 +87,7 @@ class AddressBloc {
     });
   }
 
-  loadStreet(int districtId, int provinceId) {
-    Map params = Map();
-    params['province_id'] = provinceId;
-    params['district_id'] = districtId;
-    loadSink.add(true);
-    _addressApiProvider.getStreet(params).then((values) {
-      if (!_streetController.isClosed) {
-        streetSink.add(values);
-        loadSink.add(false);
-      }
-    });
-  }
+
 
 
   void dispose() {
