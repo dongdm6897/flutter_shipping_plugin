@@ -160,9 +160,7 @@ class ShippingBloc {
           'product': params['category'],
         };
 
-        print("fuck params $requestParameters");
         var res = await _superShipApiProvider.createOrder(requestParameters);
-        print("fuck you res $res");
         if(res != null && res['status'] == 'Success'){
           return res['results']['code'];
         }
@@ -173,8 +171,7 @@ class ShippingBloc {
     return "";
   }
 
-  Future<dynamic> checkSupportedAddress(ShipProvider shipProvider,
-      Map params) async {
+  Future<dynamic> checkSupportedAddress(ShipProvider shipProvider, Map params) async {
     ///TODO
     switch (shipProvider.id) {
       case 0:

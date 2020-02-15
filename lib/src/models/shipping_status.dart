@@ -1,3 +1,4 @@
+///Master data shipping status
 class ShippingStatus {
   int id;
   String name;
@@ -9,7 +10,7 @@ class ShippingStatus {
   factory ShippingStatus.fromJSON(Map<String, dynamic> json) {
     if (json != null) {
       return new ShippingStatus(
-          id: json["id"], name: json["status"], comment: json["comment"]);
+          id: json["id"], name: json["name"], comment: json["comment"]);
     }
     return null;
   }

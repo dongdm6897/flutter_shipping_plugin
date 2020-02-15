@@ -10,12 +10,12 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  ShippingPlugin shippingPlugin;
+
 
   @override
   void initState() {
     super.initState();
-    shippingPlugin = new ShippingPlugin();
+
   }
 
   @override

@@ -1,13 +1,13 @@
 import 'package:shipping_plugin/shipping_plugin.dart';
 import 'package:shipping_plugin/src/models/shipping_address.dart';
 import 'package:shipping_plugin/src/models/shipping_information_return.dart';
-import 'package:shipping_plugin/src/models/shipping_status.dart';
+import 'package:shipping_plugin/src/models/shipping_information_status.dart';
 
 class ShippingInformation {
   int id;
   int shippingFee;
   ShippingAddress shippingAddress;
-  ShippingStatus shippingStatus;
+  List<ShippingInformationStatus> listStatus;
   String providerOrderCode;
   ShipProviderService shipProviderService;
   ShippingInformationReturn shippingInformationReturn;
@@ -18,7 +18,7 @@ class ShippingInformation {
       {this.id,
       this.shippingFee,
       this.shippingAddress,
-      this.shippingStatus,
+      this.listStatus,
       this.providerOrderCode,
       this.shipProviderService,
       this.shippingInformationReturn,
@@ -30,9 +30,9 @@ class ShippingInformation {
     if (json != null) {
       return new ShippingInformation(
         id: json["id"],
-        shippingFee: json["name"],
+        shippingFee: json["shipping_fee"],
         shippingAddress: ShippingAddress.fromJSON(json["shipping_address"]),
-        shippingStatus: ShippingStatus.fromJSON(json["shipping_status"]),
+        listStatus: List<ShippingInformationStatus>.from(json["status"]?.map((e) => ShippingInformationStatus.fromJSON(e))),
         providerOrderCode: json["provider_order_code"],
         shipProviderService:
             ShipProviderService.fromJSON(json["ship_provider_service"]),
@@ -48,9 +48,8 @@ class ShippingInformation {
     'id': id,
     'shipping_fee': shippingFee,
     'shipping_address_id': shippingAddress.id,
-    'shipping_status_id': shippingStatus.id,
+    'shipping_status': listStatus?.map((s) => s.toJson())?.toList(),
     'ship_provider_service_id': shipProviderService.id,
     'provider_order_code': providerOrderCode,
-
   };
 }
