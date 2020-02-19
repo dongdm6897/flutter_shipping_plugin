@@ -17,8 +17,9 @@ class ShippingInformationStatus {
   @override
   factory ShippingInformationStatus.fromJSON(Map<String, dynamic> json) {
     if (json != null) {
+
       return new ShippingInformationStatus(
-        id: json["id"],
+        id: json["id"].runtimeType == 'String' ? int.tryParse(json['id']) : json['id'],
         shippingStatus: ShippingStatus.fromJSON(json['status']),
         createdAt: DateTime.parse(json["created_at"]??DateTime.now()),
         updatedAt: DateTime.parse(json["updated_at"]??DateTime.now()),

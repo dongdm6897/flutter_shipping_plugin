@@ -10,7 +10,7 @@ class ShippingStatus {
   factory ShippingStatus.fromJSON(Map<String, dynamic> json) {
     if (json != null) {
       return new ShippingStatus(
-          id: json["id"], name: json["name"], comment: json["comment"]);
+          id: json["id"].runtimeType == 'String' ? int.tryParse(json['id']) : json['id'] , name: json["name"], comment: json["comment"]);
     }
     return null;
   }

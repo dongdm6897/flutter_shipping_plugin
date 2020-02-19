@@ -3,16 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:shipping_plugin/shipping_plugin.dart';
 import 'package:shipping_plugin/src/models/ship_pay_method.dart';
 import 'package:shipping_plugin/src/models/ship_provider.dart';
+import 'package:intl/intl.dart';
 
 class ShippingStatusRealtime extends StatefulWidget{
-  final int shippingStatus;
   final ShippingInformation shippingInformation;
   final ShipProvider shipProvider;
   final ShipPayMethod shipPayMethod;
 
   const ShippingStatusRealtime({
         Key key,
-        this.shippingStatus,
         this.shippingInformation,
         this.shipProvider,
         this.shipPayMethod}) : super(key: key);
@@ -44,6 +43,10 @@ class _ShippingStatusRealtimeState extends State<ShippingStatusRealtime> with Ti
 
   @override
   Widget build(BuildContext context) {
+    bool inProgress = false;
+    if((widget.shippingInformation?.listStatus != null && widget.shippingInformation.listStatus.length > 0)){
+      inProgress = true;
+    }
     return Container(
         decoration: BoxDecoration(
             color: Colors.white,
@@ -54,45 +57,19 @@ class _ShippingStatusRealtimeState extends State<ShippingStatusRealtime> with Ti
               ),
             ],
             border: Border.all(
-              color: Colors.red,
+              color: inProgress ? Colors.green : Colors.red,
               width: 2.0,
             )),
         padding: EdgeInsets.all(8.0),
-        margin: EdgeInsets.only(left: 8.0, right: 8.0, top: 8.0),
+        margin: EdgeInsets.all(8.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
-            Row(
-              children: <Widget>[
-                Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Icon(
-                    Icons.local_shipping,
-                    size: 32.0,
-                  ),
-                ),
-                Container(
-                    width: 1.0,
-                    height: 50.0,
-                    color: Colors.grey.shade100,
-                    margin: EdgeInsets.symmetric(horizontal: 8.0)),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Text(
-                      "Giao hàng",
-                      style: Theme.of(context).textTheme.title,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-//                    Text(
-//                      subtitle ?? "",
-//                      style: CustomTextStyle.subLabelInformation(context),
-//                    )
-                  ],
-                ),
-                  ///TODO image logistic
-              ],
+            Text(
+              "Giao hàng",
+              style: TextStyle(fontWeight: FontWeight.bold),
+              overflow: TextOverflow.ellipsis,
             ),
             Divider(),
             _createInfoLine(
@@ -113,12 +90,17 @@ class _ShippingStatusRealtimeState extends State<ShippingStatusRealtime> with Ti
                 message: widget.shippingInformation.shippingFee.toString() ?? "",
                 icon: Icon(Icons.rss_feed),
                 isHorizonal: true),
-            _createInfoLine(
-                context: context,
-                label: "Phí giao hàng",
-                message: widget.shipPayMethod.description,
-                icon: Icon(Icons.people),
-                isHorizonal: false),
+//            _createInfoLine(
+//                context: context,
+//                label: "Phí giao hàng",
+//                message: widget.shipPayMethod.description,
+//                icon: Icon(Icons.people),
+//                isHorizonal: false),
+            Container(height: 10.0),
+            Text(
+              "* ${widget.shipPayMethod.description}",
+              style: TextStyle(fontWeight: FontWeight.bold,fontStyle: FontStyle.italic),
+            ),
             Container(height: 10.0),
             Row(
               mainAxisSize: MainAxisSize.max,
@@ -279,7 +261,7 @@ class _ShippingStatusRealtimeState extends State<ShippingStatusRealtime> with Ti
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Text(status.shippingStatus?.comment??""),
-                    Text(status.updatedAt.toString())
+                    Text(DateFormat("yyyy-MM-dd hh:mm:ss").format(status.updatedAt))
                   ],
                 ),
               )

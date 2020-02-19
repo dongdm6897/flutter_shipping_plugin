@@ -3,6 +3,7 @@ import 'package:shipping_plugin/shipping_plugin.dart';
 import 'package:shipping_plugin/src/models/master_data.dart';
 import 'package:shipping_plugin/src/models/shipping_status.dart';
 import 'package:shipping_plugin/src/providers/ghn_api_provider.dart';
+import 'package:shipping_plugin/src/providers/ship_api_provider.dart';
 
 
 import 'package:shipping_plugin/src/providers/supership_api_provider.dart';
@@ -12,6 +13,7 @@ class ShippingBloc {
 
   GHNApiProvider _ghnApiProvider = GHNApiProvider();
   SuperShipApiProvider _superShipApiProvider = SuperShipApiProvider();
+  ShipApiProvider _shipApiProvider = ShipApiProvider();
   String _ghnToken;
   String _superShipToken;
 
@@ -56,7 +58,6 @@ class ShippingBloc {
       default:
         break;
     }
-
     return -1;
   }
 
@@ -184,4 +185,11 @@ class ShippingBloc {
         break;
     }
   }
+
+  Future<ShippingInformation> getShippingInformation(int orderId){
+   return _shipApiProvider.getShippingInformation({
+     'order_id':orderId,
+   });
+  }
+
 }
