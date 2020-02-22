@@ -212,7 +212,7 @@ class _ShippingStatusRealtimeReturn extends State<ShippingStatusRealtimeReturn> 
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Text(status.shippingStatus?.comment??""),
-                    Text(DateFormat("yyyy-MM-dd hh:mm:ss").format(status.updatedAt))
+                    Text(DateFormat("yyyy-MM-dd hh:mm:ss").format(status?.updatedAt??DateTime.now()))
                   ],
                 ),
               )
@@ -222,10 +222,4 @@ class _ShippingStatusRealtimeReturn extends State<ShippingStatusRealtimeReturn> 
       }).toList(),
     );
   }
-
-  _handleRejectReturn(BuildContext context) {}
-
-  _handleApproveReturn(BuildContext context) {}
-
-
 }
