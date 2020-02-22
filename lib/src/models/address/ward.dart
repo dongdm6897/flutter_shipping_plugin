@@ -1,5 +1,5 @@
 class Ward  {
-  String id;
+  int id;
   String name;
   String type;
   String districtId;

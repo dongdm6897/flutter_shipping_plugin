@@ -36,7 +36,7 @@ class ShippingInformation {
         providerOrderCode: json["provider_order_code"],
         shipProviderService:
             ShipProviderService.fromJSON(json["ship_provider_service"]),
-        shippingInformationReturn: ShippingInformationReturn.fromJSON(json["shipping_information_return"]),
+        shippingInformationReturn: json["shipping_information_return"] != null ? ShippingInformationReturn.fromJSON(json["shipping_information_return"]) : null,
         createdAt: DateTime.parse(json['created_at']),
         updatedAt: DateTime.parse(json['updated_at']),
       );
@@ -51,5 +51,6 @@ class ShippingInformation {
     'shipping_status': listStatus?.map((s) => s.toJson())?.toList(),
     'ship_provider_service_id': shipProviderService.id,
     'provider_order_code': providerOrderCode,
+    'shipping_information_return':shippingInformationReturn?.toJson()??null
   };
 }

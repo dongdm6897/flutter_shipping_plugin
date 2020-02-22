@@ -59,7 +59,7 @@ class AddressBloc {
     });
   }
 
-  Future<bool> loadDistrict(String provinceId) async {
+  Future<bool> loadDistrict(int provinceId) async {
     Map params = Map();
     params['province_id'] = provinceId;
     loadSink.add(true);
@@ -73,7 +73,7 @@ class AddressBloc {
     });
   }
 
-  Future<bool> loadWard(String districtId) async {
+  Future<bool> loadWard(int districtId) async {
     Map params = Map();
     params['district_id'] = districtId;
     loadSink.add(true);

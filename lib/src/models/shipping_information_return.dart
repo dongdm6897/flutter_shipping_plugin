@@ -5,7 +5,8 @@ import 'package:shipping_plugin/src/models/shipping_status.dart';
 class ShippingInformationReturn {
   int id;
   int shippingFee;
-  ShippingStatus shippingStatus;
+  ShippingAddress shippingAddress;
+  List<ShippingInformationStatus> listStatus;
   String providerOrderCode;
   DateTime createdAt;
   DateTime updatedAt;
@@ -13,8 +14,9 @@ class ShippingInformationReturn {
   ShippingInformationReturn(
       {this.id,
       this.shippingFee,
+      this.shippingAddress,
       this.providerOrderCode,
-      this.shippingStatus,
+      this.listStatus,
       this.createdAt,
       this.updatedAt});
 
@@ -24,7 +26,8 @@ class ShippingInformationReturn {
       return new ShippingInformationReturn(
         id: json["id"],
         shippingFee: json["name"],
-        shippingStatus: ShippingStatus.fromJSON(json["shipping_status"]),
+        shippingAddress: ShippingAddress.fromJSON(json["shipping_address"]),
+        listStatus: List<ShippingInformationStatus>.from(json["status"]?.map((e) => ShippingInformationStatus.fromJSON(e))),
         providerOrderCode: json["provider_order_code"],
         createdAt: DateTime.parse(json['created_at']),
         updatedAt: DateTime.parse(json['updated_at']),
@@ -32,4 +35,13 @@ class ShippingInformationReturn {
     }
     return null;
   }
+
+  Map<String, dynamic> toJson() => {
+    'id': id,
+    'shipping_fee': shippingFee,
+    'shipping_address_id': shippingAddress.id,
+    'shipping_status': listStatus?.map((s) => s.toJson())?.toList(),
+//    'ship_provider_service_id': shipProviderService.id,
+    'provider_order_code': providerOrderCode,
+  };
 }

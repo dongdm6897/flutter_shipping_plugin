@@ -6,29 +6,32 @@ import 'package:shipping_plugin/src/models/ship_provider.dart';
 import 'package:intl/intl.dart';
 import 'package:shipping_plugin/src/models/shipping_information_return.dart';
 
-class ShippingStatusRealtime extends StatefulWidget{
-  final ShippingInformation shippingInformation;
+class ShippingStatusRealtimeReturn extends StatefulWidget{
+  final ShippingInformationReturn shippingInformationReturn;
   final ShipProvider shipProvider;
   final ShipPayMethod shipPayMethod;
 
-  const ShippingStatusRealtime({
-        Key key,
-        this.shippingInformation,
-        this.shipProvider,
-        this.shipPayMethod}) : super(key: key);
+  const ShippingStatusRealtimeReturn({
+    Key key,
+    this.shippingInformationReturn,
+    this.shipProvider,
+    this.shipPayMethod}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
-    return new _ShippingStatusRealtimeState();
+    return new _ShippingStatusRealtimeReturn();
   }
 
 }
 
-class _ShippingStatusRealtimeState extends State<ShippingStatusRealtime> with TickerProviderStateMixin{
+class _ShippingStatusRealtimeReturn extends State<ShippingStatusRealtimeReturn> with TickerProviderStateMixin{
   bool isCompleted;
 
   Animation<double> animation;
   AnimationController _controller;
+  ShippingInformationReturn _shippingInformationReturn;
+
+  ShippingAddress shippingFrom, shippingTo;
 
   @override
   void initState() {
@@ -39,13 +42,14 @@ class _ShippingStatusRealtimeState extends State<ShippingStatusRealtime> with Ti
       ..repeat();
     animation =
     new CurvedAnimation(parent: _controller, curve: Curves.fastOutSlowIn);
+
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     bool inProgress = false;
-    if((widget.shippingInformation?.listStatus != null && widget.shippingInformation.listStatus.length > 0)){
+    if((widget.shippingInformationReturn?.listStatus != null && widget.shippingInformationReturn.listStatus.length > 0)){
       inProgress = true;
     }
     return Container(
@@ -68,15 +72,15 @@ class _ShippingStatusRealtimeState extends State<ShippingStatusRealtime> with Ti
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
             Text(
-              "Giao hàng",
+              "Trả hàng",
               style: TextStyle(fontWeight: FontWeight.bold),
               overflow: TextOverflow.ellipsis,
             ),
             Divider(),
             _createInfoLine(
                 context: context,
-                label: "Địa chỉ giao hàng",
-                message: widget.shippingInformation?.shippingAddress.toString() ?? "",
+                label: "Địa chỉ trả hàng",
+                message: widget.shippingInformationReturn.shippingAddress.toString() ?? "",
                 icon: Icon(Icons.home),
                 isHorizonal: false),
             _createInfoLine(
@@ -87,22 +91,17 @@ class _ShippingStatusRealtimeState extends State<ShippingStatusRealtime> with Ti
                 isHorizonal: true),
             _createInfoLine(
                 context: context,
-                label: "Phí giao hàng",
-                message: widget.shippingInformation.shippingFee.toString() ?? "",
+                label: "Phí trả hàng",
+                message: widget.shippingInformationReturn.shippingFee.toString() ?? "",
                 icon: Icon(Icons.rss_feed),
                 isHorizonal: true),
-//            _createInfoLine(
-//                context: context,
-//                label: "Phí giao hàng",
-//                message: widget.shipPayMethod.description,
-//                icon: Icon(Icons.people),
-//                isHorizonal: false),
             Container(height: 10.0),
             Text(
-              "* ${widget.shipPayMethod.description}",
+              "* Người mua thanh toán phí giao hàng",
               style: TextStyle(fontWeight: FontWeight.bold,fontStyle: FontStyle.italic),
             ),
             Container(height: 10.0),
+
             Row(
               mainAxisSize: MainAxisSize.max,
               children: <Widget>[
@@ -196,7 +195,7 @@ class _ShippingStatusRealtimeState extends State<ShippingStatusRealtime> with Ti
 
   Widget shippingStatus(){
     return Column(
-      children: widget.shippingInformation.listStatus.map((status){
+      children: widget.shippingInformationReturn.listStatus.map((status){
         return Padding(
           padding: const EdgeInsets.all(8.0),
           child: Row(
@@ -223,6 +222,10 @@ class _ShippingStatusRealtimeState extends State<ShippingStatusRealtime> with Ti
       }).toList(),
     );
   }
+
+  _handleRejectReturn(BuildContext context) {}
+
+  _handleApproveReturn(BuildContext context) {}
 
 
 }
