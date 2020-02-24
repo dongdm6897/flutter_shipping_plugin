@@ -76,7 +76,7 @@ class _ShippingStatusRealtimeState extends State<ShippingStatusRealtime> with Ti
             _createInfoLine(
                 context: context,
                 label: "Địa chỉ giao hàng",
-                message: widget.shippingInformation?.shippingAddress.toString() ?? "",
+                message: widget.shippingInformation?.shippingAddress?.toString() ?? "",
                 icon: Icon(Icons.home),
                 isHorizonal: false),
             _createInfoLine(
@@ -88,7 +88,7 @@ class _ShippingStatusRealtimeState extends State<ShippingStatusRealtime> with Ti
             _createInfoLine(
                 context: context,
                 label: "Phí giao hàng",
-                message: widget.shippingInformation.shippingFee.toString() ?? "",
+                message: widget.shippingInformation?.shippingFee?.toString() ?? "",
                 icon: Icon(Icons.rss_feed),
                 isHorizonal: true),
 //            _createInfoLine(
@@ -196,7 +196,7 @@ class _ShippingStatusRealtimeState extends State<ShippingStatusRealtime> with Ti
 
   Widget shippingStatus(){
     return Column(
-      children: widget.shippingInformation.listStatus.map((status){
+      children: widget.shippingInformation?.listStatus?.map((status){
         return Padding(
           padding: const EdgeInsets.all(8.0),
           child: Row(
@@ -220,7 +220,7 @@ class _ShippingStatusRealtimeState extends State<ShippingStatusRealtime> with Ti
             ],
           ),
         );
-      }).toList(),
+      })?.toList()??[],
     );
   }
 

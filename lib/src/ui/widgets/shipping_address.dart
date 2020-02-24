@@ -52,7 +52,7 @@ class ShippingAddressListState extends State<ShippingAddressList> {
               child: Column(
             children: <Widget>[
               Text(
-                "Shipping address",
+                "Địa chỉ giao hàng",
                 style: new TextStyle(
                     fontSize: 18.0,
                     fontWeight: FontWeight.bold,
@@ -156,7 +156,7 @@ class ShippingAddressListState extends State<ShippingAddressList> {
                             MaterialPageRoute(
                                 builder: (BuildContext context) => Scaffold(
                                     appBar:
-                                    AppBar(title: Text('Add new address')),
+                                    AppBar(title: Text('Thêm địa chỉ mới')),
                                     body: AddShippingFields(
                                       shippingAddress: null,
                                       callBack: (ShippingAddress shippingAddress){
@@ -171,7 +171,7 @@ class ShippingAddressListState extends State<ShippingAddressList> {
                           borderRadius: new BorderRadius.circular(5.0)),
                       label: Flexible(
                           child: Text(
-                        "Add new shipping",
+                        "Thêm địa chỉ mới",
                         overflow: TextOverflow.ellipsis,
                       ))))
             ],
@@ -269,7 +269,7 @@ class AddShippingFieldsState extends State<AddShippingFields> {
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: TextFormField(
-                        decoration: InputDecoration(labelText: "Full Name"),
+                        decoration: InputDecoration(labelText: "Họ và tên"),
                         initialValue: _fullName,
                         validator: (value) {
                           if (value.isEmpty)
@@ -286,7 +286,7 @@ class AddShippingFieldsState extends State<AddShippingFields> {
                       padding: const EdgeInsets.all(8.0),
                       child: TextFormField(
                         decoration:
-                        InputDecoration(labelText: "Phone Number"),
+                        InputDecoration(labelText: "Số điện thoại"),
                         initialValue: _phoneNumber,
                         validator: (value) {
                           if (value.isEmpty)
@@ -320,7 +320,7 @@ class AddShippingFieldsState extends State<AddShippingFields> {
                       child: RaisedButton(
                         padding: EdgeInsets.all(10.0),
                         child: Text(
-                          "Save",
+                          "Lưu",
                           style: TextStyle(color: Colors.white),
                         ),
                         color: Colors.red,

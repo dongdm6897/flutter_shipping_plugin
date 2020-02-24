@@ -79,7 +79,7 @@ class AddressState extends State<Address> {
                             padding: const EdgeInsets.all(8.0),
                             child: DropdownButtonHideUnderline(
                               child: DropdownButtonFormField<Province>(
-                                decoration: InputDecoration(labelText: "Province"),
+                                decoration: InputDecoration(labelText: "Tỉnh/Thành Phố"),
                                 value: _province,
                                 validator: (value) {
                                   if (value == null)
@@ -134,7 +134,7 @@ class AddressState extends State<Address> {
                               child: DropdownButtonFormField<
                                   District>(
                                 decoration:
-                                InputDecoration(labelText: "District"),
+                                InputDecoration(labelText: "Quận/Huyện"),
                                 validator: (value) {
                                   if (value == null)
                                     return "You can't leave this empty";
@@ -189,7 +189,7 @@ class AddressState extends State<Address> {
                             padding: const EdgeInsets.all(8.0),
                             child: DropdownButtonHideUnderline(
                               child: DropdownButtonFormField<Ward>(
-                                decoration: InputDecoration(labelText: "Ward"),
+                                decoration: InputDecoration(labelText: "Phường/Xã"),
                                 value: _ward,
                                 validator: (value) {
                                   if (value == null)
@@ -222,7 +222,7 @@ class AddressState extends State<Address> {
                     padding: const EdgeInsets.all(8.0),
                     child: TextFormField(
                       decoration: InputDecoration(
-                          labelText: "Address Details",
+                          labelText: "Địa chỉ chi tiết",
                           helperText:
                           "Eg. Sảnh T1-Khu đô thị TimeCity - Minh Khai"),
                       initialValue: widget.address,
