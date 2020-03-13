@@ -95,11 +95,11 @@ class _ShippingStatusRealtimeReturn extends State<ShippingStatusRealtimeReturn> 
                 message: widget.shippingInformationReturn.shippingFee.toString() ?? "",
                 icon: Icon(Icons.rss_feed),
                 isHorizonal: true),
-            Container(height: 10.0),
-            Text(
-              "* Người mua thanh toán phí giao hàng",
-              style: TextStyle(fontWeight: FontWeight.bold,fontStyle: FontStyle.italic),
-            ),
+//            Container(height: 10.0),
+//            Text(
+//              "* Người mua thanh toán phí giao hàng",
+//              style: TextStyle(fontWeight: FontWeight.bold,fontStyle: FontStyle.italic),
+//            ),
             Container(height: 10.0),
 
             Row(

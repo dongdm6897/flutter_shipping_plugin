@@ -55,6 +55,12 @@ class ShippingBloc {
         }
         return -1;
         break;
+      case ShipProviderEnum.GIAO_TAN_NOI:
+        return 0;
+        break;
+      case ShipProviderEnum.TU_DEN_LAY:
+        return 0;
+        break;
       default:
         break;
     }
@@ -190,6 +196,13 @@ class ShippingBloc {
    return _shipApiProvider.getShippingInformation({
      'order_id':orderId,
    });
+  }
+
+  Future<bool> setShippingStatus(int orderId, ShippingInformation shippingInformation){
+    return _shipApiProvider.setShippingStatus({
+      'order_id':orderId,
+      'shipping_information':shippingInformation.toJson()
+    });
   }
 
 }

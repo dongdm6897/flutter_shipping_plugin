@@ -16,7 +16,7 @@ class ShippingInformation {
 
   ShippingInformation(
       {this.id,
-      this.shippingFee,
+      this.shippingFee = 0,
       this.shippingAddress,
       this.listStatus,
       this.providerOrderCode,
@@ -49,7 +49,7 @@ class ShippingInformation {
     'shipping_fee': shippingFee,
     'shipping_address_id': shippingAddress.id,
     'shipping_status': listStatus?.map((s) => s.toJson())?.toList(),
-    'ship_provider_service_id': shipProviderService.id,
+    'ship_provider_service_id': shipProviderService?.id??null,
     'provider_order_code': providerOrderCode,
     'shipping_information_return':shippingInformationReturn?.toJson()??null
   };

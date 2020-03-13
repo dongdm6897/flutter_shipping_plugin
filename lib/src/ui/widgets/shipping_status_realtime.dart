@@ -4,27 +4,28 @@ import 'package:shipping_plugin/shipping_plugin.dart';
 import 'package:shipping_plugin/src/models/ship_pay_method.dart';
 import 'package:shipping_plugin/src/models/ship_provider.dart';
 import 'package:intl/intl.dart';
-import 'package:shipping_plugin/src/models/shipping_information_return.dart';
 
-class ShippingStatusRealtime extends StatefulWidget{
+class ShippingStatusRealtime extends StatefulWidget {
   final ShippingInformation shippingInformation;
   final ShipProvider shipProvider;
   final ShipPayMethod shipPayMethod;
 
-  const ShippingStatusRealtime({
-        Key key,
-        this.shippingInformation,
-        this.shipProvider,
-        this.shipPayMethod}) : super(key: key);
+
+  const ShippingStatusRealtime(
+      {Key key,
+      this.shippingInformation,
+      this.shipProvider,
+      this.shipPayMethod})
+      : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
     return new _ShippingStatusRealtimeState();
   }
-
 }
 
-class _ShippingStatusRealtimeState extends State<ShippingStatusRealtime> with TickerProviderStateMixin{
+class _ShippingStatusRealtimeState extends State<ShippingStatusRealtime>
+    with TickerProviderStateMixin {
   bool isCompleted;
 
   Animation<double> animation;
@@ -32,20 +33,27 @@ class _ShippingStatusRealtimeState extends State<ShippingStatusRealtime> with Ti
 
   @override
   void initState() {
-    isCompleted  = false;
+    isCompleted = false;
     //Animation
     _controller =
-    new AnimationController(vsync: this, duration: Duration(seconds: 2))
-      ..repeat();
+        new AnimationController(vsync: this, duration: Duration(seconds: 2))
+          ..repeat();
     animation =
-    new CurvedAnimation(parent: _controller, curve: Curves.fastOutSlowIn);
+        new CurvedAnimation(parent: _controller, curve: Curves.fastOutSlowIn);
     super.initState();
+  }
+
+  @override
+  void dispose(){
+    _controller.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     bool inProgress = false;
-    if((widget.shippingInformation?.listStatus != null && widget.shippingInformation.listStatus.length > 0)){
+    if ((widget.shippingInformation?.listStatus != null &&
+        widget.shippingInformation.listStatus.length > 0)) {
       inProgress = true;
     }
     return Container(
@@ -76,7 +84,9 @@ class _ShippingStatusRealtimeState extends State<ShippingStatusRealtime> with Ti
             _createInfoLine(
                 context: context,
                 label: "Địa chỉ giao hàng",
-                message: widget.shippingInformation?.shippingAddress?.toString() ?? "",
+                message:
+                    widget.shippingInformation?.shippingAddress?.toString() ??
+                        "",
                 icon: Icon(Icons.home),
                 isHorizonal: false),
             _createInfoLine(
@@ -88,141 +98,141 @@ class _ShippingStatusRealtimeState extends State<ShippingStatusRealtime> with Ti
             _createInfoLine(
                 context: context,
                 label: "Phí giao hàng",
-                message: widget.shippingInformation?.shippingFee?.toString() ?? "",
+                message:
+                    widget.shippingInformation?.shippingFee?.toString() ?? "",
                 icon: Icon(Icons.rss_feed),
                 isHorizonal: true),
-//            _createInfoLine(
-//                context: context,
-//                label: "Phí giao hàng",
-//                message: widget.shipPayMethod.description,
-//                icon: Icon(Icons.people),
-//                isHorizonal: false),
             Container(height: 10.0),
+            widget.shippingInformation.shippingFee > 0 ?
             Text(
               "* ${widget.shipPayMethod.description}",
-              style: TextStyle(fontWeight: FontWeight.bold,fontStyle: FontStyle.italic),
-            ),
+              style: TextStyle(
+                  fontWeight: FontWeight.bold, fontStyle: FontStyle.italic),
+            ) : SizedBox(),
             Container(height: 10.0),
-            Row(
-              mainAxisSize: MainAxisSize.max,
-              children: <Widget>[
-                Expanded(
-                    child: Container(
-                      child: Text(
-                        'Trạng thái giao hàng',
-                        style: TextStyle(color: Colors.grey.shade700),
-                      ),
-                      padding: EdgeInsets.all(20.0),
-                      decoration: BoxDecoration(
-                          color: Colors.grey.shade200,
-                          borderRadius: BorderRadius.circular(8.0)),
-                      margin: EdgeInsets.all(10.0),
-                    )),
-              ],
+            Container(
+              padding: EdgeInsets.all(20.0),
+              decoration: BoxDecoration(
+                  color: Colors.grey.shade200,
+                  borderRadius: BorderRadius.circular(8.0)),
+              margin: EdgeInsets.all(10.0),
+              child: Row(
+                mainAxisSize: MainAxisSize.max,
+                children: <Widget>[
+                  Expanded(
+                      child: Container(
+                    child: Text(
+                      'Trạng thái giao hàng',
+                      style: TextStyle(color: Colors.grey.shade700),
+                    ),
+                  )),
+                ],
+              ),
             ),
-            shippingStatus()
+            shippingStatus(),
           ],
-        )
-    );
+        ));
   }
 
   Widget _createInfoLine(
       {BuildContext context,
-        String label,
-        TextStyle labelStyle,
-        String message,
-        TextStyle messageStyle,
-        bool isHorizonal = true,
-        Icon icon,
-        double padding = 10.0}) {
+      String label,
+      TextStyle labelStyle,
+      String message,
+      TextStyle messageStyle,
+      bool isHorizonal = true,
+      Icon icon,
+      double padding = 10.0}) {
     return isHorizonal
         ? Padding(
-        padding: EdgeInsets.all(padding),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            icon != null
-                ? _createIconText(icon, label)
-                : Text(label,
-                style: labelStyle ??
-                    Theme.of(context)
-                        .textTheme
-                        .subtitle
-                        .copyWith(color: Colors.grey.shade600)),
-            Expanded(
-                child: Align(
-                    alignment: Alignment.centerRight,
-                    child: Text(message,
-                        style: messageStyle ??
-                            Theme.of(context).textTheme.title)))
-          ],
-        ))
+            padding: EdgeInsets.all(padding),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                icon != null
+                    ? _createIconText(icon, label)
+                    : Text(label,
+                        style: labelStyle ??
+                            Theme.of(context)
+                                .textTheme
+                                .subtitle
+                                .copyWith(color: Colors.grey.shade600)),
+                Expanded(
+                    child: Align(
+                        alignment: Alignment.centerRight,
+                        child: Text(message,
+                            style: messageStyle ??
+                                Theme.of(context).textTheme.title)))
+              ],
+            ))
         : Padding(
-        padding: EdgeInsets.all(padding),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: <Widget>[
-            icon != null
-                ? _createIconText(icon, label)
-                : Text(label,
-                style: labelStyle ??
-                    Theme.of(context)
-                        .textTheme
-                        .subtitle
-                        .copyWith(color: Colors.grey.shade600)),
-            Padding(
-                padding:
-                EdgeInsets.only(left: 10.0, top: 10.0, bottom: 10.0),
-                child: Align(
-                    alignment: Alignment.centerRight,
-                    child: Text(message,
-                        style: messageStyle ??
-                            Theme.of(context).textTheme.title)))
-          ],
-        ));
+            padding: EdgeInsets.all(padding),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: <Widget>[
+                icon != null
+                    ? _createIconText(icon, label)
+                    : Text(label,
+                        style: labelStyle ??
+                            Theme.of(context)
+                                .textTheme
+                                .subtitle
+                                .copyWith(color: Colors.grey.shade600)),
+                Padding(
+                    padding:
+                        EdgeInsets.only(left: 10.0, top: 10.0, bottom: 10.0),
+                    child: Align(
+                        alignment: Alignment.centerRight,
+                        child: Text(message,
+                            style: messageStyle ??
+                                Theme.of(context).textTheme.title)))
+              ],
+            ));
   }
 
   Widget _createIconText(Icon icon, String text, {TextStyle labelStyle}) {
     return Row(children: <Widget>[
       icon,
       Padding(padding: EdgeInsets.all(5.0)),
-      Text(text, style: labelStyle ?? Theme.of(context)
-          .textTheme
-          .subtitle
-          .copyWith(color: Colors.grey.shade600))
+      Text(text,
+          style: labelStyle ??
+              Theme.of(context)
+                  .textTheme
+                  .subtitle
+                  .copyWith(color: Colors.grey.shade600))
     ]);
   }
 
-  Widget shippingStatus(){
+  Widget shippingStatus() {
     return Column(
-      children: widget.shippingInformation?.listStatus?.map((status){
-        return Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Row(
-            children: <Widget>[
-              Container(
-                decoration: BoxDecoration(
-                    color: Colors.green, shape: BoxShape.circle),
-                height: 20.0,
-                width: 20.0,
+      children: widget.shippingInformation?.listStatus?.map((status) {
+            return Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                children: <Widget>[
+                  Container(
+                    decoration: BoxDecoration(
+                        color: Colors.green, shape: BoxShape.circle),
+                    height: 20.0,
+                    width: 20.0,
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(left: 10.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Text(status.shippingStatus?.comment ?? ""),
+                        Text(DateFormat("yyyy-MM-dd hh:mm:ss")
+                            .format(status?.updatedAt??DateTime.now()))
+                      ],
+                    ),
+                  )
+                ],
               ),
-              Container(
-                margin: EdgeInsets.only(left: 10.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Text(status.shippingStatus?.comment??""),
-                    Text(DateFormat("yyyy-MM-dd hh:mm:ss").format(status.updatedAt))
-                  ],
-                ),
-              )
-            ],
-          ),
-        );
-      })?.toList()??[],
+            );
+          })?.toList() ??
+          [],
     );
   }
-
-
 }

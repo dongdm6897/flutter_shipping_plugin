@@ -5,7 +5,9 @@ import 'api_provider.dart';
 
 class SuperShipApiProvider extends ApiProvider {
   SuperShipApiProvider() : super() {
-    apiBaseUrl = "https://api.mysupership.vn/v1/partner";
+    apiBaseUrl = "https://api.mysupership.vn";
+    apiVersion = "v1/partner";
+
 
   }
 
@@ -28,6 +30,5 @@ class SuperShipApiProvider extends ApiProvider {
   Future<dynamic> getCommune(Map params) async{
     return this.getData(ApiList.API_SUPERSHIP_GET_COMMUNE, params);
   }
-
 
 }

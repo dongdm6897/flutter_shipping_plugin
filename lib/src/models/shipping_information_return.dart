@@ -25,7 +25,7 @@ class ShippingInformationReturn {
     if (json != null) {
       return new ShippingInformationReturn(
         id: json["id"],
-        shippingFee: json["name"],
+        shippingFee: json["shipping_fee"],
         shippingAddress: ShippingAddress.fromJSON(json["shipping_address"]),
         listStatus: List<ShippingInformationStatus>.from(json["status"]?.map((e) => ShippingInformationStatus.fromJSON(e))),
         providerOrderCode: json["provider_order_code"],

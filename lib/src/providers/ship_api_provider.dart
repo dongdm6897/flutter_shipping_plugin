@@ -15,4 +15,9 @@ class ShipApiProvider extends ApiProvider {
     return null;
   }
 
+  Future<bool> setShippingStatus(Map params) async{
+    var jsonData = await this.postData(ApiList.API_SET_SHIPPING_STATUS, params);
+    return jsonData;
+  }
+
 }
