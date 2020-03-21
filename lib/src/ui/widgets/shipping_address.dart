@@ -66,6 +66,7 @@ class ShippingAddressListState extends State<ShippingAddressList> {
               ),
               Divider(),
               Container(
+                  width: 450,
                   height: _shippingAddress.length * 120.0,
                   constraints: BoxConstraints(minHeight: 100, maxHeight: 500),
                   child: _shippingAddress.length > 0
