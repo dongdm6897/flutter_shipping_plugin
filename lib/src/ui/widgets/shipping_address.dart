@@ -14,7 +14,11 @@ class ShippingAddressList extends StatefulWidget {
   final Key shippingAddressListKey;
 
   const ShippingAddressList(
-      {Key key, this.shippingAddress, this.currentShippingAddress, this.callBack, this.shippingAddressListKey})
+      {Key key,
+      this.shippingAddress,
+      this.currentShippingAddress,
+      this.callBack,
+      this.shippingAddressListKey})
       : super(key: key);
 
   @override
@@ -24,7 +28,9 @@ class ShippingAddressList extends StatefulWidget {
 class ShippingAddressListState extends State<ShippingAddressList> {
   List<ShippingAddress> _shippingAddress;
   ShippingAddress _currentShippingAddress;
-  final GlobalKey<AddShippingFieldsState> addShippingFieldState = GlobalKey<AddShippingFieldsState>();
+  final GlobalKey<AddShippingFieldsState> addShippingFieldState =
+      GlobalKey<AddShippingFieldsState>();
+
   @override
   void initState() {
     _shippingAddress = widget.shippingAddress ?? [];
@@ -38,14 +44,14 @@ class ShippingAddressListState extends State<ShippingAddressList> {
     super.dispose();
   }
 
-  void resultUpdate(bool res){
+  void resultUpdate(bool res) {
     addShippingFieldState.currentState.result(res);
   }
 
   @override
   Widget build(BuildContext context) {
-    return SimpleDialog(contentPadding: EdgeInsets.all(10.0), children: <Widget>
-    [
+    return SimpleDialog(contentPadding: EdgeInsets.all(10.0), children: <
+        Widget>[
       new Row(
         children: <Widget>[
           new Flexible(
@@ -60,8 +66,7 @@ class ShippingAddressListState extends State<ShippingAddressList> {
               ),
               Divider(),
               Container(
-                  width: 450,
-                  height: _shippingAddress.length * 80.0,
+                  height: _shippingAddress.length * 120.0,
                   constraints: BoxConstraints(minHeight: 100, maxHeight: 500),
                   child: _shippingAddress.length > 0
                       ? ListView.builder(
@@ -76,7 +81,7 @@ class ShippingAddressListState extends State<ShippingAddressList> {
                                   Text(
                                     "${item.address} "
                                     "${item.ward != null ? (" - " + item.ward.name) : ""}"
-                                    "${item.district != null ? (" - "  + item.district.name) : ""} - "
+                                    "${item.district != null ? (" - " + item.district.name) : ""} - "
                                     "${item.province != null ? (item.province.name) : ""}",
                                     style:
                                         TextStyle(fontStyle: FontStyle.italic),
@@ -84,53 +89,59 @@ class ShippingAddressListState extends State<ShippingAddressList> {
                                   Row(
                                     children: <Widget>[
                                       GestureDetector(
-                                        child: Icon(Icons.edit, size: 14.0),
+                                        child: Icon(Icons.edit, size: 22.0),
                                         onTap: () async {
                                           Navigator.push(
                                               context,
                                               MaterialPageRoute(
                                                   builder: (BuildContext
-                                                  context) =>
+                                                          context) =>
                                                       Scaffold(
                                                           appBar: AppBar(
-                                                              title: Text('Update address')),
-                                                          body: AddShippingFields(
-                                                            shippingAddress: item,
-                                                            callBack: (ShippingAddress shippingAddress){
-                                                              widget.callBack(shippingAddress);
-
+                                                              title: Text(
+                                                                  'Cập nhật địa chỉ')),
+                                                          body:
+                                                              AddShippingFields(
+                                                            shippingAddress:
+                                                                item,
+                                                            callBack:
+                                                                (ShippingAddress
+                                                                    shippingAddress) {
+                                                              widget.callBack(
+                                                                  shippingAddress);
                                                             },
-                                                            key: addShippingFieldState,
+                                                            key:
+                                                                addShippingFieldState,
                                                           ))));
                                         },
                                       ),
-                                      SizedBox(
-                                        width: 5.0,
-                                      ),
-                                      GestureDetector(
-                                        child: Icon(Icons.delete, size: 14.0),
-                                        onTap: () {
-                                          showDialog(
-                                              context: context,
-                                              builder: (BuildContext context) {
-                                                return AlertDialog(
-                                                  title: Text("Are you sure?"),
-                                                  actions: <Widget>[
-                                                    FlatButton(
-                                                      onPressed: () =>
-                                                          Navigator.of(context)
-                                                              .pop(false),
-                                                      child: new Text('No'),
-                                                    ),
-                                                    FlatButton(
-                                                      onPressed: () {},
-                                                      child: new Text('Yes'),
-                                                    ),
-                                                  ],
-                                                );
-                                              });
-                                        },
-                                      ),
+//                                      SizedBox(
+//                                        width: 5.0,
+//                                      ),
+//                                      GestureDetector(
+//                                        child: Icon(Icons.delete, size: 22.0),
+//                                        onTap: () {
+//                                          showDialog(
+//                                              context: context,
+//                                              builder: (BuildContext context) {
+//                                                return AlertDialog(
+//                                                  title: Text("Are you sure?"),
+//                                                  actions: <Widget>[
+//                                                    FlatButton(
+//                                                      onPressed: () =>
+//                                                          Navigator.of(context)
+//                                                              .pop(false),
+//                                                      child: new Text('No'),
+//                                                    ),
+//                                                    FlatButton(
+//                                                      onPressed: () {},
+//                                                      child: new Text('Yes'),
+//                                                    ),
+//                                                  ],
+//                                                );
+//                                              });
+//                                        },
+//                                      ),
                                     ],
                                   ),
                                   Divider()
@@ -156,15 +167,15 @@ class ShippingAddressListState extends State<ShippingAddressList> {
                             MaterialPageRoute(
                                 builder: (BuildContext context) => Scaffold(
                                     appBar:
-                                    AppBar(title: Text('Thêm địa chỉ mới')),
+                                        AppBar(title: Text('Thêm địa chỉ mới')),
                                     body: AddShippingFields(
                                       shippingAddress: null,
-                                      callBack: (ShippingAddress shippingAddress){
+                                      callBack:
+                                          (ShippingAddress shippingAddress) {
                                         widget.callBack(shippingAddress);
                                       },
                                       key: addShippingFieldState,
-                                    )
-                                )));
+                                    ))));
                       },
                       icon: Icon(Icons.add),
                       shape: new RoundedRectangleBorder(
@@ -187,7 +198,12 @@ class AddShippingFields extends StatefulWidget {
   final Function callBack;
   final Key addShippingFieldState;
 
-  const AddShippingFields({Key key, this.shippingAddress,this.callBack,this.addShippingFieldState}) : super(key: key);
+  const AddShippingFields(
+      {Key key,
+      this.shippingAddress,
+      this.callBack,
+      this.addShippingFieldState})
+      : super(key: key);
 
   @override
   AddShippingFieldsState createState() => AddShippingFieldsState();
@@ -219,7 +235,7 @@ class AddShippingFieldsState extends State<AddShippingFields> {
     super.dispose();
   }
 
-  void result(bool res){
+  void result(bool res) {
     Navigator.of(context).pop();
   }
 
@@ -244,7 +260,7 @@ class AddShippingFieldsState extends State<AddShippingFields> {
           district: this._district,
           ward: this._ward,
         );
-        if(addr != null){
+        if (addr != null) {
           setState(() {
             _saving = true;
           });
@@ -285,8 +301,7 @@ class AddShippingFieldsState extends State<AddShippingFields> {
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: TextFormField(
-                        decoration:
-                        InputDecoration(labelText: "Số điện thoại"),
+                        decoration: InputDecoration(labelText: "Số điện thoại"),
                         initialValue: _phoneNumber,
                         validator: (value) {
                           if (value.isEmpty)
@@ -342,8 +357,6 @@ class AddShippingFieldsState extends State<AddShippingFields> {
   @override
   Widget build(BuildContext context) {
     return ModalProgressHUD(
-        inAsyncCall: _saving,
-        child: addShippingFields(context)
-    );
+        inAsyncCall: _saving, child: addShippingFields(context));
   }
 }
