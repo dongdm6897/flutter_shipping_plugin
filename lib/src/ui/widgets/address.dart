@@ -246,17 +246,4 @@ class AddressState extends State<Address> {
       ),
     );
   }
-
-  Widget _buildDefault(BuildContext context, String text) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: TextFormField(
-        decoration: InputDecoration(labelText: text),
-        validator: (value) {
-          if (value.isEmpty) return "You can't leave this empty";
-          return null;
-        },
-      ),
-    );
-  }
 }

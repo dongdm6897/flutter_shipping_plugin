@@ -48,20 +48,35 @@ class _ShippingStatusRealtimeReturn extends State<ShippingStatusRealtimeReturn>
     animation =
         new CurvedAnimation(parent: _controller, curve: Curves.fastOutSlowIn);
     shipProvider = widget.shipProvider;
+
+    if (shipProvider.id == ShipProviderEnum.GIAO_TAN_NOI)
+    {
+      shipProvider = widget.shipProviderList.firstWhere(
+              (s) => s.id == ShipProviderEnum.TU_DEN_LAY,
+          orElse: () => null);
+      shipProvider.name = 'NGƯỜI BÁN TỰ ĐẾN LẤY';
+    }
+    if (shipProvider.id == ShipProviderEnum.TU_DEN_LAY)
+    {
+      shipProvider = widget.shipProviderList.firstWhere(
+              (s) => s.id == ShipProviderEnum.GIAO_TAN_NOI,
+          orElse: () => null);
+      shipProvider.name = 'NGƯỜI MUA GIAO TẬN NƠI';
+    }
+
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     bool inProgress = false;
-    if (widget.shipProvider.id == ShipProviderEnum.GIAO_TAN_NOI)
-      shipProvider = widget.shipProviderList.firstWhere(
-          (s) => s.id == ShipProviderEnum.TU_DEN_LAY,
-          orElse: () => null);
-    if (widget.shipProvider.id == ShipProviderEnum.TU_DEN_LAY)
-      shipProvider = widget.shipProviderList.firstWhere(
-              (s) => s.id == ShipProviderEnum.GIAO_TAN_NOI,
-          orElse: () => null);
+
     if ((widget.shippingInformationReturn?.listStatus != null &&
         widget.shippingInformationReturn.listStatus.length > 0)) {
       inProgress = true;
@@ -165,6 +180,7 @@ class _ShippingStatusRealtimeReturn extends State<ShippingStatusRealtimeReturn>
                                 .textTheme
                                 .subtitle
                                 .copyWith(color: Colors.grey.shade600)),
+                SizedBox(width: 10.0),
                 Expanded(
                     child: Align(
                         alignment: Alignment.centerRight,

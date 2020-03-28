@@ -29,8 +29,8 @@ class ShippingBloc {
       case ShipProviderEnum.GHN:
         Map requestParameters = {
           'Token': _ghnToken,
-          'FromDistrictID':shippingFrom.district.ghnCode,
-          'ToDistrictID':shippingTo.district.ghnCode,
+          'FromDistrictID':shippingFrom.district.id,
+          'ToDistrictID':shippingTo.district.id,
           'ServiceID':shipProviderService.serviceCode,
           'Weight': (params['weight'] * 1000).round()
         };
@@ -73,8 +73,8 @@ class ShippingBloc {
       case ShipProviderEnum.GHN:
         Map requestParameters = {
           'Token': _ghnToken,
-          'FromDistrictID':shippingFrom.district.ghnCode,
-          'ToDistrictID':shippingTo.district.ghnCode,
+          'FromDistrictID':shippingFrom.district.id,
+          'ToDistrictID':shippingTo.district.id,
           'ServiceID':shipProviderService.serviceCode,
           'Weight':params['weight']
         };
@@ -112,9 +112,9 @@ class ShippingBloc {
       case ShipProviderEnum.GHN:
         Map requestParameters =  {
           'token': _ghnToken,
-          'FromDistrictID': shippingFrom.district.ghnCode,
+          'FromDistrictID': shippingFrom.district.id,
           'FromWardCode': shippingFrom.ward.ghnCode,
-          'ToDistrictID': shippingTo.district.ghnCode,
+          'ToDistrictID': shippingTo.district.id,
           'ToWardCode': shippingTo.ward.ghnCode,
           'coDAmount': 0,
           'ClientContactName': params['seller']['name'],
@@ -132,7 +132,7 @@ class ShippingBloc {
           'ReturnContactName': params['seller']['name'],
           'ReturnContactPhone': params['seller']['number_phone'],
           'ReturnAddress': shippingFrom.address,
-          'ReturnDistrictId': shippingFrom.district.ghnCode,
+          'ReturnDistrictId': shippingFrom.district.id,
           'ExternalReturnCode': uuid.v4(),
           'AffiliateID': ghnAffiliateId,
         };
@@ -178,19 +178,19 @@ class ShippingBloc {
     return "";
   }
 
-  Future<dynamic> checkSupportedAddress(ShipProvider shipProvider, Map params) async {
-    ///TODO
-    switch (shipProvider.id) {
-      case 0:
-        var res = await _ghnApiProvider.createOrder(params);
-        break;
-      case 1:
-        var res = await _superShipApiProvider.createOrder(params);
-        break;
-      default:
-        break;
-    }
-  }
+//  Future<dynamic> checkSupportedAddress(ShipProvider shipProvider, Map params) async {
+//    ///TODO
+//    switch (shipProvider.id) {
+//      case 0:
+//        var res = await _ghnApiProvider.createOrder(params);
+//        break;
+//      case 1:
+//        var res = await _superShipApiProvider.createOrder(params);
+//        break;
+//      default:
+//        break;
+//    }
+//  }
 
   Future<ShippingInformation> getShippingInformation(int orderId){
    return _shipApiProvider.getShippingInformation({

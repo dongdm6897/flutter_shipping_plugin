@@ -31,6 +31,8 @@ class _ShippingStatusRealtimeState extends State<ShippingStatusRealtime>
   Animation<double> animation;
   AnimationController _controller;
 
+  String shipServiceName = '';
+
   @override
   void initState() {
     isCompleted = false;
@@ -40,6 +42,12 @@ class _ShippingStatusRealtimeState extends State<ShippingStatusRealtime>
           ..repeat();
     animation =
         new CurvedAnimation(parent: _controller, curve: Curves.fastOutSlowIn);
+    shipServiceName = widget.shipProvider.name;
+    if(widget.shipProvider.id == ShipProviderEnum.TU_DEN_LAY){
+      shipServiceName = "NGƯỜI MUA "+(widget.shipProvider.name).toUpperCase();
+    }else if(widget.shipProvider.id == ShipProviderEnum.GIAO_TAN_NOI){
+      shipServiceName = "NGƯỜI BÁN "+(widget.shipProvider.name).toUpperCase();
+    }
     super.initState();
   }
 
@@ -92,7 +100,7 @@ class _ShippingStatusRealtimeState extends State<ShippingStatusRealtime>
             _createInfoLine(
                 context: context,
                 label: "Dịch vụ giao hàng",
-                message: widget.shipProvider.name,
+                message: shipServiceName,
                 icon: Icon(Icons.person_pin),
                 isHorizonal: true),
             _createInfoLine(
@@ -157,6 +165,7 @@ class _ShippingStatusRealtimeState extends State<ShippingStatusRealtime>
                                 .textTheme
                                 .subtitle
                                 .copyWith(color: Colors.grey.shade600)),
+                SizedBox(width: 15.0),
                 Expanded(
                     child: Align(
                         alignment: Alignment.centerRight,
