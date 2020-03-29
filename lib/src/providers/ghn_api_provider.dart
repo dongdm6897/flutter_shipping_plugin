@@ -25,4 +25,8 @@ class GHNApiProvider extends ApiProvider {
     return this.getData(ApiList.API_GHN_GET_COMMUNE, params);
   }
 
+  Future<dynamic> findAvailableServices(Map params){
+    return this.postData(ApiList.API_GHN_FIND_AVAILABLE_SERVICES, params);
+  }
+
 }

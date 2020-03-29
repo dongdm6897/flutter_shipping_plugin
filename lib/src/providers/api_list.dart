@@ -12,6 +12,7 @@ class ApiList{
 //  static const String API_GHN_GET_PROVINCE= "/areas/province";
   static const String API_GHN_GET_DISTRICT = "GetDistricts";
   static const String API_GHN_GET_COMMUNE = "GetWards";
+  static const String API_GHN_FIND_AVAILABLE_SERVICES = 'FindAvailableServices';
 
   ///SUPER SHIP
   static const String API_SUPERSHIP_CALCULATE_FEE = "orders/fee";
