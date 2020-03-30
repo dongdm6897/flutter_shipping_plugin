@@ -87,64 +87,64 @@ class ShippingAddressListState extends State<ShippingAddressList> {
                                     style:
                                         TextStyle(fontStyle: FontStyle.italic),
                                   ),
-                                  Row(
-                                    children: <Widget>[
-                                      GestureDetector(
-                                        child: Icon(Icons.edit, size: 22.0),
-                                        onTap: () async {
-                                          Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                  builder: (BuildContext
-                                                          context) =>
-                                                      Scaffold(
-                                                          appBar: AppBar(
-                                                              title: Text(
-                                                                  'Cập nhật địa chỉ')),
-                                                          body:
-                                                              AddShippingFields(
-                                                            shippingAddress:
-                                                                item,
-                                                            callBack:
-                                                                (ShippingAddress
-                                                                    shippingAddress) {
-                                                              widget.callBack(
-                                                                  shippingAddress);
-                                                            },
-                                                            key:
-                                                                addShippingFieldState,
-                                                          ))));
-                                        },
-                                      ),
-//                                      SizedBox(
-//                                        width: 5.0,
-//                                      ),
-//                                      GestureDetector(
-//                                        child: Icon(Icons.delete, size: 22.0),
-//                                        onTap: () {
-//                                          showDialog(
-//                                              context: context,
-//                                              builder: (BuildContext context) {
-//                                                return AlertDialog(
-//                                                  title: Text("Are you sure?"),
-//                                                  actions: <Widget>[
-//                                                    FlatButton(
-//                                                      onPressed: () =>
-//                                                          Navigator.of(context)
-//                                                              .pop(false),
-//                                                      child: new Text('No'),
-//                                                    ),
-//                                                    FlatButton(
-//                                                      onPressed: () {},
-//                                                      child: new Text('Yes'),
-//                                                    ),
-//                                                  ],
-//                                                );
-//                                              });
-//                                        },
-//                                      ),
-                                    ],
-                                  ),
+//                                  Row(
+//                                    children: <Widget>[
+////                                      GestureDetector(
+////                                        child: Icon(Icons.edit, size: 22.0),
+////                                        onTap: () async {
+////                                          Navigator.push(
+////                                              context,
+////                                              MaterialPageRoute(
+////                                                  builder: (BuildContext
+////                                                          context) =>
+////                                                      Scaffold(
+////                                                          appBar: AppBar(
+////                                                              title: Text(
+////                                                                  'Cập nhật địa chỉ')),
+////                                                          body:
+////                                                              AddShippingFields(
+////                                                            shippingAddress:
+////                                                                item,
+////                                                            callBack:
+////                                                                (ShippingAddress
+////                                                                    shippingAddress) {
+////                                                              widget.callBack(
+////                                                                  shippingAddress);
+////                                                            },
+////                                                            key:
+////                                                                addShippingFieldState,
+////                                                          ))));
+////                                        },
+////                                      ),
+////                                      SizedBox(
+////                                        width: 5.0,
+////                                      ),
+////                                      GestureDetector(
+////                                        child: Icon(Icons.delete, size: 22.0),
+////                                        onTap: () {
+////                                          showDialog(
+////                                              context: context,
+////                                              builder: (BuildContext context) {
+////                                                return AlertDialog(
+////                                                  title: Text("Are you sure?"),
+////                                                  actions: <Widget>[
+////                                                    FlatButton(
+////                                                      onPressed: () =>
+////                                                          Navigator.of(context)
+////                                                              .pop(false),
+////                                                      child: new Text('No'),
+////                                                    ),
+////                                                    FlatButton(
+////                                                      onPressed: () {},
+////                                                      child: new Text('Yes'),
+////                                                    ),
+////                                                  ],
+////                                                );
+////                                              });
+////                                        },
+////                                      ),
+//                                    ],
+//                                  ),
                                   Divider()
                                 ],
                               ),
