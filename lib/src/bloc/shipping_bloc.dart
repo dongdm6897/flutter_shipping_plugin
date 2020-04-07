@@ -45,10 +45,10 @@ class ShippingBloc {
         break;
       case ShipProviderEnum.SUPERSHIP:
         Map requestParameters = {
-          'receiver_province': shippingFrom.province.name,
-          'receiver_district': shippingFrom.district.name,
-          'sender_province': shippingTo.province.name,
-          'sender_district': shippingTo.district.name,
+          'receiver_province': shippingTo.province.name,
+          'receiver_district': shippingTo.district.name,
+          'sender_province': shippingFrom.province.name,
+          'sender_district': shippingFrom.district.name,
           'weight': (params['weight'] * 1000).round(),
           'price': params['price']
         };
@@ -207,9 +207,10 @@ class ShippingBloc {
 //    }
 //  }
 
-  Future<ShippingInformation> getShippingInformation(int orderId) {
+  Future<ShippingInformation> getShippingInformation(int orderId, String accessToken) {
     return _shipApiProvider.getShippingInformation({
       'order_id': orderId,
+      'access_token':accessToken
     });
   }
 

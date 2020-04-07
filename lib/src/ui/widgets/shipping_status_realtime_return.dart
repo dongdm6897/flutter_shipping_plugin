@@ -32,10 +32,7 @@ class _ShippingStatusRealtimeReturn extends State<ShippingStatusRealtimeReturn>
 
   Animation<double> animation;
   AnimationController _controller;
-  ShippingInformationReturn _shippingInformationReturn;
-
   ShippingAddress shippingFrom, shippingTo;
-
   ShipProvider shipProvider;
 
   @override
@@ -49,18 +46,12 @@ class _ShippingStatusRealtimeReturn extends State<ShippingStatusRealtimeReturn>
         new CurvedAnimation(parent: _controller, curve: Curves.fastOutSlowIn);
     shipProvider = widget.shipProvider;
 
-    if (shipProvider.id == ShipProviderEnum.GIAO_TAN_NOI)
-    {
-      shipProvider = widget.shipProviderList.firstWhere(
-              (s) => s.id == ShipProviderEnum.TU_DEN_LAY,
-          orElse: () => null);
-      shipProvider.name = 'NGƯỜI BÁN TỰ ĐẾN LẤY';
-    }
-    if (shipProvider.id == ShipProviderEnum.TU_DEN_LAY)
-    {
+
+    if(shipProvider.id == ShipProviderEnum.GIAO_TAN_NOI || shipProvider.id == ShipProviderEnum.TU_DEN_LAY){
       shipProvider = widget.shipProviderList.firstWhere(
               (s) => s.id == ShipProviderEnum.GIAO_TAN_NOI,
           orElse: () => null);
+
       shipProvider.name = 'NGƯỜI MUA GIAO TẬN NƠI';
     }
 

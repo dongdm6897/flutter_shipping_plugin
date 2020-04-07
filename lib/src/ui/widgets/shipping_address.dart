@@ -68,7 +68,7 @@ class ShippingAddressListState extends State<ShippingAddressList> {
               Container(
                   width: 450,
                   height: _shippingAddress.length * 120.0,
-                  constraints: BoxConstraints(minHeight: 100, maxHeight: 500),
+                  constraints: BoxConstraints(minHeight: 100, maxHeight: 475),
                   child: _shippingAddress.length > 0
                       ? ListView.builder(
                           itemCount: _shippingAddress.length,
