@@ -193,25 +193,29 @@ class ShippingBloc {
     return "";
   }
 
-//  Future<dynamic> checkSupportedAddress(ShipProvider shipProvider, Map params) async {
-//    ///TODO
-//    switch (shipProvider.id) {
-//      case 0:
-//        var res = await _ghnApiProvider.createOrder(params);
-//        break;
-//      case 1:
-//        var res = await _superShipApiProvider.createOrder(params);
-//        break;
-//      default:
-//        break;
-//    }
-//  }
+  Future<bool> checkSupportedAddress(String senderProvince,
+      String senderDistrict, double weight, double price) async {
+    String receiverProvince = "Thành phố Hà Nội";
+    String receiverDistrict = "Quận Hai Bà Trưng";
+    Map requestParameters = {
+      'receiver_province': receiverProvince,
+      'receiver_district': receiverDistrict,
+      'sender_province': senderProvince,
+      'sender_district': senderDistrict,
+      'weight': (weight * 1000).round(),
+      'price': price
+    };
+    var res = await _superShipApiProvider.calculateFee(requestParameters);
+    if (res != null && res['status'] == 'Success') {
+      return true;
+    }
+    return false;
+  }
 
-  Future<ShippingInformation> getShippingInformation(int orderId, String accessToken) {
-    return _shipApiProvider.getShippingInformation({
-      'order_id': orderId,
-      'access_token':accessToken
-    });
+  Future<ShippingInformation> getShippingInformation(
+      int orderId, String accessToken) {
+    return _shipApiProvider.getShippingInformation(
+        {'order_id': orderId, 'access_token': accessToken});
   }
 
   Future<bool> setShippingStatus(
@@ -222,18 +226,19 @@ class ShippingBloc {
     });
   }
 
-  Future<List> ghnFindAvailableServices(
-      ShippingAddress shippingFrom, ShippingAddress shippingTo, double weight) async {
+  Future<List> ghnFindAvailableServices(ShippingAddress shippingFrom,
+      ShippingAddress shippingTo, double weight) async {
     Map requestParameters = {
       'Token': _ghnToken,
       'FromDistrictID': shippingFrom.district.id,
       'ToDistrictID': shippingTo.district.id,
       'Weight': (weight * 1000).round()
     };
-    var response = await _ghnApiProvider.findAvailableServices(requestParameters);
-    if(response != null && response["code"] == 1){
+    var response =
+        await _ghnApiProvider.findAvailableServices(requestParameters);
+    if (response != null && response["code"] == 1) {
       List<int> servicesCode = [];
-      (response['data'] as List).forEach((service){
+      (response['data'] as List).forEach((service) {
         servicesCode.add(service['ServiceID']);
       });
       return servicesCode;
