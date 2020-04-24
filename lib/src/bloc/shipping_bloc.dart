@@ -117,7 +117,6 @@ class ShippingBloc {
       ShipProvider shipProvider,
       ShipProviderService shipProviderService,
       Map params) async {
-    String ghnAffiliateId = GlobalConfiguration().getString('ghn_affiliate_id');
     var uuid = new Uuid();
     switch (shipProvider.id) {
       case ShipProviderEnum.GHN:
@@ -146,7 +145,7 @@ class ShippingBloc {
           'ReturnAddress': shippingFrom.address,
           'ReturnDistrictId': shippingFrom.district.id,
           'ExternalReturnCode': uuid.v4(),
-          'AffiliateID': ghnAffiliateId,
+          'AffiliateID': 1097676,
         };
         var res = await _ghnApiProvider.createOrder(requestParameters);
         if (res != null && res['code'] == 1) {
@@ -171,12 +170,10 @@ class ShippingBloc {
           'amount': 0,
           'value': params['sell_price'],
           'weight': (params['weight'] * 1000).round(),
-
           //TODO
-          'payer': params['payment_method_id'],
+          'payer': 1,
           'service': shipProviderService.serviceCode,
           'config': 1,
-//          'note': params['note'],
           'product_type': 1,
           'product': params['category'],
         };

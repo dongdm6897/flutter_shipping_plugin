@@ -7,8 +7,6 @@ class SuperShipApiProvider extends ApiProvider {
   SuperShipApiProvider() : super() {
     apiBaseUrl = "https://api.mysupership.vn";
     apiVersion = "v1/partner";
-
-
   }
 
   Future<dynamic> calculateFee(Map params){

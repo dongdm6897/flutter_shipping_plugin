@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shipping_plugin/shipping_plugin.dart';
+import 'package:shipping_plugin/src/helpers.dart';
 import 'package:shipping_plugin/src/models/ship_pay_method.dart';
 import 'package:shipping_plugin/src/models/ship_provider.dart';
 import 'package:intl/intl.dart';
@@ -117,8 +118,7 @@ class _ShippingStatusRealtimeReturn extends State<ShippingStatusRealtimeReturn>
                 context: context,
                 label: "Phí trả hàng",
                 message:
-                    widget.shippingInformationReturn.shippingFee.toString() ??
-                        "",
+                formatCurrency(widget.shippingInformationReturn.shippingFee.toString() ?? 0) ,
                 icon: Icon(Icons.rss_feed),
                 isHorizonal: true),
 //            Container(height: 10.0),

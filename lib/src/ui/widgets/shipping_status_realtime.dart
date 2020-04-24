@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shipping_plugin/shipping_plugin.dart';
+import 'package:shipping_plugin/src/helpers.dart';
 import 'package:shipping_plugin/src/models/ship_pay_method.dart';
 import 'package:shipping_plugin/src/models/ship_provider.dart';
 import 'package:intl/intl.dart';
@@ -9,7 +10,6 @@ class ShippingStatusRealtime extends StatefulWidget {
   final ShippingInformation shippingInformation;
   final ShipProvider shipProvider;
   final ShipPayMethod shipPayMethod;
-
 
   const ShippingStatusRealtime(
       {Key key,
@@ -43,16 +43,16 @@ class _ShippingStatusRealtimeState extends State<ShippingStatusRealtime>
     animation =
         new CurvedAnimation(parent: _controller, curve: Curves.fastOutSlowIn);
     shipServiceName = widget.shipProvider.name;
-    if(widget.shipProvider.id == ShipProviderEnum.TU_DEN_LAY){
-      shipServiceName = "NGƯỜI MUA "+(widget.shipProvider.name).toUpperCase();
-    }else if(widget.shipProvider.id == ShipProviderEnum.GIAO_TAN_NOI){
-      shipServiceName = "NGƯỜI BÁN "+(widget.shipProvider.name).toUpperCase();
+    if (widget.shipProvider.id == ShipProviderEnum.TU_DEN_LAY) {
+      shipServiceName = "NGƯỜI MUA " + (widget.shipProvider.name).toUpperCase();
+    } else if (widget.shipProvider.id == ShipProviderEnum.GIAO_TAN_NOI) {
+      shipServiceName = "NGƯỜI BÁN " + (widget.shipProvider.name).toUpperCase();
     }
     super.initState();
   }
 
   @override
-  void dispose(){
+  void dispose() {
     _controller.dispose();
     super.dispose();
   }
@@ -106,17 +106,19 @@ class _ShippingStatusRealtimeState extends State<ShippingStatusRealtime>
             _createInfoLine(
                 context: context,
                 label: "Phí giao hàng",
-                message:
-                    widget.shippingInformation?.shippingFee?.toString() ?? "",
+                message: formatCurrency(
+                    widget.shippingInformation?.shippingFee ?? 0),
                 icon: Icon(Icons.rss_feed),
                 isHorizonal: true),
             Container(height: 10.0),
-            widget.shippingInformation.shippingFee > 0 ?
-            Text(
-              "* ${widget.shipPayMethod.description}",
-              style: TextStyle(
-                  fontWeight: FontWeight.bold, fontStyle: FontStyle.italic),
-            ) : SizedBox(),
+            widget.shippingInformation.shippingFee > 0
+                ? Text(
+                    "* ${widget.shipPayMethod.description}",
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontStyle: FontStyle.italic),
+                  )
+                : SizedBox(),
             Container(height: 10.0),
             Container(
               padding: EdgeInsets.all(20.0),
@@ -233,7 +235,7 @@ class _ShippingStatusRealtimeState extends State<ShippingStatusRealtime>
                       children: <Widget>[
                         Text(status.shippingStatus?.comment ?? ""),
                         Text(DateFormat("yyyy-MM-dd hh:mm:ss")
-                            .format(status?.updatedAt??DateTime.now()))
+                            .format(status?.updatedAt ?? DateTime.now()))
                       ],
                     ),
                   )
