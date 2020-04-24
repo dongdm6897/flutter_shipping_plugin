@@ -82,7 +82,7 @@ class ApiProvider {
           'Authorization': 'Bearer $accessToken'
         },
       );
-
+      print("fuck you xxx ${json.decode(response.body)}");
       if (response?.statusCode == 200 || response?.statusCode == 201) {
         jsonData = json.decode(response.body);
       }

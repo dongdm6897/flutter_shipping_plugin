@@ -35,6 +35,8 @@ class _ShippingStatusRealtimeReturn extends State<ShippingStatusRealtimeReturn>
   ShippingAddress shippingFrom, shippingTo;
   ShipProvider shipProvider;
 
+  String shipProviderName;
+
   @override
   void initState() {
     isCompleted = false;
@@ -45,14 +47,14 @@ class _ShippingStatusRealtimeReturn extends State<ShippingStatusRealtimeReturn>
     animation =
         new CurvedAnimation(parent: _controller, curve: Curves.fastOutSlowIn);
     shipProvider = widget.shipProvider;
-
+    shipProviderName = shipProvider.name;
 
     if(shipProvider.id == ShipProviderEnum.GIAO_TAN_NOI || shipProvider.id == ShipProviderEnum.TU_DEN_LAY){
       shipProvider = widget.shipProviderList.firstWhere(
               (s) => s.id == ShipProviderEnum.GIAO_TAN_NOI,
           orElse: () => null);
 
-      shipProvider.name = 'NGƯỜI MUA GIAO TẬN NƠI';
+      shipProviderName = 'NGƯỜI MUA GIAO TẬN NƠI';
     }
 
     super.initState();
@@ -108,7 +110,7 @@ class _ShippingStatusRealtimeReturn extends State<ShippingStatusRealtimeReturn>
             _createInfoLine(
                 context: context,
                 label: "Dịch vụ giao hàng",
-                message: shipProvider.name,
+                message: shipProviderName,
                 icon: Icon(Icons.person_pin),
                 isHorizonal: true),
             _createInfoLine(

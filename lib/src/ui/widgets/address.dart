@@ -34,7 +34,7 @@ class AddressState extends State<Address> {
   District _district;
   Street _street;
   Ward _ward;
-  bool _loadedProvice = false, _loadedDistrict = false;
+  bool _loadedProvince = false, _loadedDistrict = false;
 
   @override
   void initState() {
@@ -43,7 +43,7 @@ class AddressState extends State<Address> {
     _district = widget.district;
     _ward = widget.ward;
     if (_province != null) {
-      _loadedProvice = true;
+      _loadedProvince = true;
       _addressBloc.loadDistrict(_province.id).then((value) {
         if (value) {
           _addressBloc.loadWard(_district.id);
@@ -98,12 +98,12 @@ class AddressState extends State<Address> {
                                     _district = null;
                                     _ward = null;
                                     _street = null;
-                                    _loadedProvice = false;
+                                    _loadedProvince = false;
                                   });
                                   bool res =
                                   await _addressBloc.loadDistrict(value.id);
                                   setState(() {
-                                    _loadedProvice = res;
+                                    _loadedProvince = res;
                                   });
                                 },
                               ),
@@ -122,7 +122,7 @@ class AddressState extends State<Address> {
                           AsyncSnapshot<List<District>> snapshot) {
                         if (snapshot.hasData &&
                             snapshot.data != null &&
-                            _loadedProvice) {
+                            _loadedProvince) {
 //                          if (widget.district != null) {
 //                            _district = snapshot.data.firstWhere(
 //                                (d) => d.id == widget.district.id,
