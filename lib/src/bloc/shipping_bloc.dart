@@ -155,13 +155,13 @@ class ShippingBloc {
       case ShipProviderEnum.SUPERSHIP:
         Map requestParameters = {
           'access_token': _superShipToken,
-          'pickup_phone': params['seller']['number_phone'],
+          'pickup_phone': shippingFrom.phoneNumber,
           'pickup_address': shippingFrom.address,
           'pickup_commune': shippingFrom.ward.name,
           'pickup_district': shippingFrom.district.name,
           'pickup_province': shippingFrom.province.name,
-          'name': params['buyer']['name'],
-          'phone': params['buyer']['number_phone'],
+          'name': shippingTo.name,
+          'phone': shippingTo.phoneNumber,
           'email': params['buyer']['email'],
           'address': shippingTo.address,
           'province': shippingTo.province.name,
@@ -177,7 +177,6 @@ class ShippingBloc {
           'product_type': 1,
           'product': params['category'],
         };
-
         var res = await _superShipApiProvider.createOrder(requestParameters);
         if (res != null && res['status'] == 'Success') {
           return res['results']['code'];
