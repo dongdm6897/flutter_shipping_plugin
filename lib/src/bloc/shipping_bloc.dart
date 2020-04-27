@@ -175,7 +175,8 @@ class ShippingBloc {
           'service': shipProviderService.serviceCode,
           'config': 1,
           'product_type': 1,
-          'product': params['category'],
+          'note':params['note'],
+          'product': params['product_name'],
         };
         var res = await _superShipApiProvider.createOrder(requestParameters);
         if (res != null && res['status'] == 'Success') {
