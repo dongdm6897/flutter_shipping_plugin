@@ -50,9 +50,10 @@ class _ShippingStatusRealtimeReturn extends State<ShippingStatusRealtimeReturn>
     shipProvider = widget.shipProvider;
     shipProviderName = shipProvider.name;
 
-    if(shipProvider.id == ShipProviderEnum.GIAO_TAN_NOI || shipProvider.id == ShipProviderEnum.TU_DEN_LAY){
+    if (shipProvider.id == ShipProviderEnum.GIAO_TAN_NOI ||
+        shipProvider.id == ShipProviderEnum.TU_DEN_LAY) {
       shipProvider = widget.shipProviderList.firstWhere(
-              (s) => s.id == ShipProviderEnum.GIAO_TAN_NOI,
+          (s) => s.id == ShipProviderEnum.GIAO_TAN_NOI,
           orElse: () => null);
 
       shipProviderName = 'NGƯỜI MUA GIAO TẬN NƠI';
@@ -117,17 +118,17 @@ class _ShippingStatusRealtimeReturn extends State<ShippingStatusRealtimeReturn>
             _createInfoLine(
                 context: context,
                 label: "Phí trả hàng",
-                message:
-                formatCurrency(widget.shippingInformationReturn.shippingFee.toString() ?? 0) ,
+                message: formatCurrency(
+                    widget.shippingInformationReturn.shippingFee ?? 0),
                 icon: Icon(Icons.rss_feed),
                 isHorizonal: true),
-//            Container(height: 10.0),
-//            Text(
-//              "* Người mua thanh toán phí giao hàng",
-//              style: TextStyle(fontWeight: FontWeight.bold,fontStyle: FontStyle.italic),
-//            ),
             Container(height: 10.0),
-
+            Text(
+              "* Người mua thanh toán phí giao hàng",
+              style: TextStyle(
+                  fontWeight: FontWeight.bold, fontStyle: FontStyle.italic),
+            ),
+            Container(height: 10.0),
             Row(
               mainAxisSize: MainAxisSize.max,
               children: <Widget>[
