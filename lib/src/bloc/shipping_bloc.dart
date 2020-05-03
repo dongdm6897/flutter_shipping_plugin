@@ -10,13 +10,12 @@ class ShippingBloc {
   GHNApiProvider _ghnApiProvider = GHNApiProvider();
   SuperShipApiProvider _superShipApiProvider = SuperShipApiProvider();
   ShipApiProvider _shipApiProvider = ShipApiProvider();
-  String _ghnToken;
-  String _superShipToken;
+  Map _ghn;
+  Map _superShip;
 
-  ShippingBloc() {
-    //Token
-    _ghnToken = GlobalConfiguration().getString('ghn_token');
-    _superShipToken = GlobalConfiguration().getString('supership_token');
+  ShippingBloc(Map ghn, Map superShip) {
+    _ghn = ghn;
+    _superShip = superShip;
   }
 
   Future<int> calculateFee(
@@ -29,7 +28,7 @@ class ShippingBloc {
       case ShipProviderEnum.GHN:
         int weight = (params['weight'] * 1000).round();
         Map requestParameters = {
-          'Token': _ghnToken,
+          'Token': _ghn["ghn_token"],
           'FromDistrictID': shippingFrom.district.id,
           'ToDistrictID': shippingTo.district.id,
           'ServiceID': shipProviderService.serviceCode,
@@ -77,7 +76,7 @@ class ShippingBloc {
     switch (shipProvider.id) {
       case ShipProviderEnum.GHN:
         Map requestParameters = {
-          'Token': _ghnToken,
+          'Token': _ghn['ghn_token'],
           'FromDistrictID': shippingFrom.district.id,
           'ToDistrictID': shippingTo.district.id,
           'ServiceID': shipProviderService.serviceCode,
@@ -119,7 +118,7 @@ class ShippingBloc {
     switch (shipProvider.id) {
       case ShipProviderEnum.GHN:
         Map requestParameters = {
-          'token': _ghnToken,
+          'token': _ghn['ghn_token'],
           'PaymentTypeID': params['payment_method_id'],
           'FromDistrictID': shippingFrom.district.id,
           'FromWardCode': shippingFrom.ward.ghnCode,
@@ -143,7 +142,7 @@ class ShippingBloc {
           'ReturnAddress': shippingFrom.address,
           'ReturnDistrictId': shippingFrom.district.id,
           'ExternalReturnCode': uuid.v4(),
-          'AffiliateID': 1097676,
+          'AffiliateID': _ghn['ghn_affiliate_id'],
         };
         var res = await _ghnApiProvider.createOrder(requestParameters);
         if (res != null && res['code'] == 1) {
@@ -152,7 +151,7 @@ class ShippingBloc {
         break;
       case ShipProviderEnum.SUPERSHIP:
         Map requestParameters = {
-          'access_token': _superShipToken,
+          'access_token': _superShip['supership_token'],
           'pickup_phone': shippingFrom.phoneNumber,
           'pickup_address': shippingFrom.address,
           'pickup_commune': shippingFrom.ward.name,
@@ -223,7 +222,7 @@ class ShippingBloc {
   Future<List> ghnFindAvailableServices(ShippingAddress shippingFrom,
       ShippingAddress shippingTo, double weight) async {
     Map requestParameters = {
-      'Token': _ghnToken,
+      'Token': _ghn['ghn_token'],
       'FromDistrictID': shippingFrom.district.id,
       'ToDistrictID': shippingTo.district.id,
       'Weight': (weight * 1000).round()
