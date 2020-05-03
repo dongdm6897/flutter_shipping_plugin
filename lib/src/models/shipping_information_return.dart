@@ -1,6 +1,5 @@
 import 'package:shipping_plugin/shipping_plugin.dart';
 import 'package:shipping_plugin/src/models/shipping_address.dart';
-import 'package:shipping_plugin/src/models/shipping_status.dart';
 
 class ShippingInformationReturn {
   int id;

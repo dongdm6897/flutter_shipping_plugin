@@ -1,6 +1,5 @@
 import 'package:shipping_plugin/src/models/address/district.dart';
 import 'package:shipping_plugin/src/models/address/province.dart';
-import 'package:shipping_plugin/src/models/address/street.dart';
 import 'package:shipping_plugin/src/models/address/ward.dart';
 
 class ShippingAddress {
@@ -11,7 +10,6 @@ class ShippingAddress {
   Province province;
   District district;
   Ward ward;
-
 
   ShippingAddress(
       {this.id,
