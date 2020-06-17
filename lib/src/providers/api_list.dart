@@ -1,4 +1,4 @@
-class ApiList{
+class ApiList {
   static const String API_GET_PROVINCE = "get_province";
   static const String API_GET_DISTRICT = "get_district";
   static const String API_GET_WARD = "get_ward";
@@ -17,7 +17,10 @@ class ApiList{
   ///SUPER SHIP
   static const String API_SUPERSHIP_CALCULATE_FEE = "orders/fee";
   static const String API_SUPERSHIP_CREATE_ORDER = "orders/add";
-  static const String API_SUPERSHIP_GET_PROVINCE= "areas/province";
+  static const String API_SUPERSHIP_GET_PROVINCE = "areas/province";
   static const String API_SUPERSHIP_GET_DISTRICT = "areas/district";
   static const String API_SUPERSHIP_GET_COMMUNE = "areas/commune";
+
+  ///GHTK
+  static const String API_GHTK_CALCULATE_FEE = "shipment/fee";
 }

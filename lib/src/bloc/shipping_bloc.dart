@@ -2,6 +2,7 @@ import 'package:global_configuration/global_configuration.dart';
 import 'package:shipping_plugin/shipping_plugin.dart';
 import 'package:shipping_plugin/src/models/master_data.dart';
 import 'package:shipping_plugin/src/providers/ghn_api_provider.dart';
+import 'package:shipping_plugin/src/providers/ghtk_api_provider.dart';
 import 'package:shipping_plugin/src/providers/ship_api_provider.dart';
 import 'package:shipping_plugin/src/providers/supership_api_provider.dart';
 import 'package:uuid/uuid.dart';
@@ -9,13 +10,16 @@ import 'package:uuid/uuid.dart';
 class ShippingBloc {
   GHNApiProvider _ghnApiProvider = GHNApiProvider();
   SuperShipApiProvider _superShipApiProvider = SuperShipApiProvider();
+  GHTKApiProvider _ghtkApiProvider = GHTKApiProvider();
   ShipApiProvider _shipApiProvider = ShipApiProvider();
   Map _ghn;
   Map _superShip;
+  Map _ghtk;
 
-  ShippingBloc(Map ghn, Map superShip) {
+  ShippingBloc(Map ghn, Map superShip, Map ghtk) {
     _ghn = ghn;
     _superShip = superShip;
+    _ghtk = ghtk;
   }
 
   Future<int> calculateFee(
@@ -60,6 +64,24 @@ class ShippingBloc {
         break;
       case ShipProviderEnum.TU_DEN_LAY:
         return 0;
+        break;
+      case ShipProviderEnum.GHTK:
+        Map requestParameters = {
+          'Token': _ghtk["ghtk_token"],
+          "pick_province": shippingFrom.province.name,
+          "pick_district": shippingFrom.district.name,
+          "province": shippingTo.province.name,
+          "district": shippingTo.district.name,
+          "address": shippingTo.address,
+          "weight": (params['weight'] * 1000).round(),
+          "value": params['price'],
+          "transport": "road"
+        };
+        var res = await _ghtkApiProvider.calculateFee(requestParameters);
+        if (res != null && res['success']) {
+          return res['results']['fee']['fee'];
+        }
+        return -1;
         break;
       default:
         break;
@@ -172,7 +194,7 @@ class ShippingBloc {
           'service': shipProviderService.serviceCode,
           'config': 1,
           'product_type': 1,
-          'note':params['note'],
+          'note': params['note'],
           'product': params['product_name'],
         };
         var res = await _superShipApiProvider.createOrder(requestParameters);
