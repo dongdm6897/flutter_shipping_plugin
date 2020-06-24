@@ -67,7 +67,6 @@ class ShippingBloc {
         break;
       case ShipProviderEnum.GHTK:
         Map requestParameters = {
-          'Token': _ghtk["ghtk_token"],
           "pick_province": shippingFrom.province.name,
           "pick_district": shippingFrom.district.name,
           "province": shippingTo.province.name,
@@ -77,9 +76,10 @@ class ShippingBloc {
           "value": params['price'],
           "transport": "road"
         };
-        var res = await _ghtkApiProvider.calculateFee(requestParameters);
+        var res = await _ghtkApiProvider.calculateFee(requestParameters,
+            {'Token': _ghtk["ghtk_token"], 'Content-Type': 'application/json'});
         if (res != null && res['success']) {
-          return res['results']['fee']['fee'];
+          return res['fee']['fee'];
         }
         return -1;
         break;
@@ -140,7 +140,6 @@ class ShippingBloc {
     switch (shipProvider.id) {
       case ShipProviderEnum.GHN:
         Map requestParameters = {
-          'token': _ghn['ghn_token'],
           'PaymentTypeID': params['payment_method_id'],
           'FromDistrictID': shippingFrom.district.id,
           'FromWardCode': shippingFrom.ward.ghnCode,
@@ -166,14 +165,14 @@ class ShippingBloc {
           'ExternalReturnCode': uuid.v4(),
           'AffiliateID': _ghn['ghn_affiliate_id'],
         };
-        var res = await _ghnApiProvider.createOrder(requestParameters);
+        var res = await _ghnApiProvider.createOrder(requestParameters,
+            {'Content-Type': 'application/json', 'token': _ghn['ghn_token']});
         if (res != null && res['code'] == 1) {
           return res['data']['OrderCode'];
         }
         break;
       case ShipProviderEnum.SUPERSHIP:
         Map requestParameters = {
-          'access_token': _superShip['supership_token'],
           'pickup_phone': shippingFrom.phoneNumber,
           'pickup_address': shippingFrom.address,
           'pickup_commune': shippingFrom.ward.name,
@@ -189,6 +188,7 @@ class ShippingBloc {
           'amount': 0,
           'value': params['sell_price'],
           'weight': (params['weight'] * 1000).round(),
+          'soc': params['order_code'],
           //TODO
           'payer': 1,
           'service': shipProviderService.serviceCode,
@@ -197,10 +197,54 @@ class ShippingBloc {
           'note': params['note'],
           'product': params['product_name'],
         };
-        var res = await _superShipApiProvider.createOrder(requestParameters);
+        var res = await _superShipApiProvider.createOrder(requestParameters, {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ${_superShip['supership_token']}'
+        });
         if (res != null && res['status'] == 'Success') {
           return res['results']['code'];
         }
+        break;
+      case ShipProviderEnum.GHTK:
+        int isFreeShip = 0;
+        if (params['pay_method_id'] == 1) {
+          isFreeShip = 1;
+        }
+        Map requestParameters = {
+          "products": [
+            {
+              "name": params['product_name'],
+              "weight": params['weight'],
+              "quantity": 1
+            }
+          ],
+          "order": {
+            "id": params['order_code'],
+            "pick_name": shippingFrom.name,
+            "pick_address": shippingFrom.address,
+            "pick_province": shippingFrom.province.name,
+            "pick_district": shippingFrom.district.name,
+            "pick_ward": shippingFrom.ward.name,
+            "pick_tel": shippingFrom.phoneNumber,
+            "tel": shippingTo.phoneNumber,
+            "name": shippingTo.name,
+            "address": shippingTo.address,
+            "province": shippingTo.province.name,
+            "district": shippingTo.district.name,
+            "ward": shippingTo.ward.name,
+            "hamlet": "Khác",
+            "is_freeship": isFreeShip,
+            "pick_money": 0,
+            "note": params['note'],
+            'value': params['sell_price']
+          }
+        };
+        var res = await _ghtkApiProvider.createOrder(requestParameters,
+            {'Token': _ghtk["ghtk_token"], 'Content-Type': 'application/json'});
+        if (res != null && res['success']) {
+          return res['order']['label'];
+        }
+        break;
         break;
       default:
         break;
@@ -231,14 +275,6 @@ class ShippingBloc {
       int orderId, String accessToken) {
     return _shipApiProvider.getShippingInformation(
         {'order_id': orderId, 'access_token': accessToken});
-  }
-
-  Future<bool> setShippingStatus(
-      int orderId, ShippingInformation shippingInformation) {
-    return _shipApiProvider.setShippingStatus({
-      'order_id': orderId,
-      'shipping_information': shippingInformation.toJson()
-    });
   }
 
   Future<List> ghnFindAvailableServices(ShippingAddress shippingFrom,

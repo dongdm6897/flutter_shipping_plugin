@@ -8,7 +8,7 @@ import 'package:intl/intl.dart';
 import 'package:shipping_plugin/src/models/shipping_information_return.dart';
 
 class ShippingStatusRealtimeReturn extends StatefulWidget {
-  final ShippingInformationReturn shippingInformationReturn;
+  final ShippingInformation shippingInformationReturn;
   final ShipProvider shipProvider;
   final ShipPayMethod shipPayMethod;
   final List<ShipProvider> shipProviderList;
@@ -104,9 +104,9 @@ class _ShippingStatusRealtimeReturn extends State<ShippingStatusRealtimeReturn>
             _createInfoLine(
                 context: context,
                 label: "Địa chỉ trả hàng",
-                message: widget.shippingInformationReturn.shippingAddress
-                        .toString() ??
-                    "",
+                message:
+                    widget.shippingInformationReturn.shippingTo.toString() ??
+                        "",
                 icon: Icon(Icons.home),
                 isHorizonal: false),
             _createInfoLine(

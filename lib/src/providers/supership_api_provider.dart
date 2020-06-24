@@ -9,24 +9,24 @@ class SuperShipApiProvider extends ApiProvider {
     apiVersion = "v1/partner";
   }
 
-  Future<dynamic> calculateFee(Map params){
+  Future<dynamic> calculateFee(Map params) {
     return this.getData(ApiList.API_SUPERSHIP_CALCULATE_FEE, params);
   }
 
-  Future<dynamic> createOrder(Map params){
-    return this.postData(ApiList.API_SUPERSHIP_CREATE_ORDER, params);
+  Future<dynamic> createOrder(Map params, Map<String, String> headers) {
+    return this
+        .postData(ApiList.API_SUPERSHIP_CREATE_ORDER, params, headers: headers);
   }
 
-  Future<dynamic> getProvince(Map params) async{
-   return this.getData(ApiList.API_SUPERSHIP_GET_PROVINCE, params);
+  Future<dynamic> getProvince(Map params) async {
+    return this.getData(ApiList.API_SUPERSHIP_GET_PROVINCE, params);
   }
 
-  Future<dynamic> getDistrict(Map params) async{
+  Future<dynamic> getDistrict(Map params) async {
     return this.getData(ApiList.API_SUPERSHIP_GET_DISTRICT, params);
   }
 
-  Future<dynamic> getCommune(Map params) async{
+  Future<dynamic> getCommune(Map params) async {
     return this.getData(ApiList.API_SUPERSHIP_GET_COMMUNE, params);
   }
-
 }

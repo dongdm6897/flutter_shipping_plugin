@@ -4,20 +4,16 @@ import 'package:flutter/foundation.dart';
 import 'package:global_configuration/global_configuration.dart';
 import 'package:http/http.dart' show Client;
 
-
 class ApiProvider {
-
   Client _client = Client();
   String apiBaseUrl = "";
   String apiUrlSuffix = "";
   String apiVersion = "";
 
-  ApiProvider(){
+  ApiProvider() {
     apiBaseUrl = GlobalConfiguration().getString("base_url");
     apiVersion = GlobalConfiguration().getString("api_version");
   }
-
-
 
   String _makeRequest(String command, Map params) {
     if (params != null) {
@@ -29,23 +25,19 @@ class ApiProvider {
   }
 
   Future<dynamic> getData(String command, Map params,
-      {String root = ''}) async {
+      {Map<String, String> headers}) async {
     var jsonData;
 
     // Get json data
     if (apiBaseUrl != "") {
       var request = _makeRequest(command, params);
-      final response = await _client.get(request, headers: {
-        'Authorization':
-        'Bearer ${params != null ? params['access_token'] : ''}'
-      });
+      final response = await _client.get(request, headers: headers);
 
       if (response?.statusCode == 200) {
         if (response.headers['content-type'].contains('json'))
           jsonData = compute(jsonDecode, response.body);
       }
     }
-
 
     return jsonData;
   }
@@ -61,8 +53,8 @@ class ApiProvider {
     return jsonData;
   }
 
-
-  Future<dynamic> postData(String command, Map params) async {
+  Future<dynamic> postData(String command, Map params,
+      {Map<String, String> headers}) async {
     var jsonData;
 
     if (apiBaseUrl != "") {
@@ -71,16 +63,11 @@ class ApiProvider {
       if (command != null && command.isNotEmpty) {
         url = "$apiBaseUrl/$apiVersion$apiUrlSuffix/$command";
       }
-      String accessToken = params != null ? params['access_token'] : '';
-      params.remove('access_token');
       final response = await _client.post(
         url,
         body: json.encode(params),
         encoding: Encoding.getByName('utf-8'),
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer $accessToken'
-        },
+        headers: headers,
       );
       if (response?.statusCode == 200 || response?.statusCode == 201) {
         jsonData = json.decode(response.body);
@@ -88,5 +75,4 @@ class ApiProvider {
     }
     return jsonData;
   }
-
 }

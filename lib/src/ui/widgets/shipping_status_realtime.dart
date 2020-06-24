@@ -93,8 +93,7 @@ class _ShippingStatusRealtimeState extends State<ShippingStatusRealtime>
                 context: context,
                 label: "Địa chỉ giao hàng",
                 message:
-                    widget.shippingInformation?.shippingAddress?.toString() ??
-                        "",
+                    widget.shippingInformation?.shippingTo?.toString() ?? "",
                 icon: Icon(Icons.home),
                 isHorizonal: false),
             _createInfoLine(

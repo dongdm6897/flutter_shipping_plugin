@@ -8,16 +8,11 @@ class ShipApiProvider extends ApiProvider {
   }
 
   Future<ShippingInformation> getShippingInformation(Map params) async {
-    var jsonData = await this.getData(ApiList.API_GET_SHIPPING_INFORMATION, params);
+    var jsonData =
+        await this.getData(ApiList.API_GET_SHIPPING_INFORMATION, params);
     if (jsonData["status"]) {
       return ShippingInformation.fromJSON(jsonData["data"]);
     }
     throw Exception(jsonData["message"]);
   }
-
-  Future<bool> setShippingStatus(Map params) async{
-    var jsonData = await this.postData(ApiList.API_SET_SHIPPING_STATUS, params);
-    return jsonData;
-  }
-
 }

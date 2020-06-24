@@ -6,22 +6,26 @@ import 'package:shipping_plugin/src/models/shipping_information_status.dart';
 class ShippingInformation {
   int id;
   int shippingFee;
-  ShippingAddress shippingAddress;
+  ShippingAddress shippingFrom;
+  ShippingAddress shippingTo;
   List<ShippingInformationStatus> listStatus;
   String providerOrderCode;
   ShipProviderService shipProviderService;
-  ShippingInformationReturn shippingInformationReturn;
+  int type;
+  String orderCode;
   DateTime createdAt;
   DateTime updatedAt;
 
   ShippingInformation(
       {this.id,
       this.shippingFee = 0,
-      this.shippingAddress,
+      this.shippingFrom,
+      this.shippingTo,
       this.listStatus,
       this.providerOrderCode,
       this.shipProviderService,
-      this.shippingInformationReturn,
+      this.type,
+      this.orderCode,
       this.createdAt,
       this.updatedAt});
 
@@ -31,12 +35,13 @@ class ShippingInformation {
       return new ShippingInformation(
         id: json["id"],
         shippingFee: json["shipping_fee"],
-        shippingAddress: ShippingAddress.fromJSON(json["shipping_address"]),
-        listStatus: List<ShippingInformationStatus>.from(json["status"]?.map((e) => ShippingInformationStatus.fromJSON(e))),
+        shippingFrom: ShippingAddress.fromJSON(json["shipping_from"]),
+        shippingTo: ShippingAddress.fromJSON(json["shipping_to"]),
+        listStatus: List<ShippingInformationStatus>.from(
+            json["status"]?.map((e) => ShippingInformationStatus.fromJSON(e))),
         providerOrderCode: json["provider_order_code"],
         shipProviderService:
             ShipProviderService.fromJSON(json["ship_provider_service"]),
-        shippingInformationReturn: json["shipping_information_return"] != null ? ShippingInformationReturn.fromJSON(json["shipping_information_return"]) : null,
         createdAt: DateTime.parse(json['created_at']),
         updatedAt: DateTime.parse(json['updated_at']),
       );
@@ -45,12 +50,11 @@ class ShippingInformation {
   }
 
   Map<String, dynamic> toJson() => {
-    'id': id,
-    'shipping_fee': shippingFee,
-    'shipping_address_id': shippingAddress.id,
-    'shipping_status': listStatus?.map((s) => s.toJson())?.toList(),
-    'ship_provider_service_id': shipProviderService?.id??null,
-    'provider_order_code': providerOrderCode,
-    'shipping_information_return':shippingInformationReturn?.toJson()??null
-  };
+        'id': id,
+        'shipping_fee': shippingFee,
+        'shipping_to': shippingTo.id,
+        'shipping_from': shippingFrom.id,
+        'ship_provider_service_id': shipProviderService?.id ?? null,
+        'provider_order_code': providerOrderCode,
+      };
 }
