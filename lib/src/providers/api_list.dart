@@ -3,16 +3,14 @@ class ApiList {
   static const String API_GET_DISTRICT = "get_district";
   static const String API_GET_WARD = "get_ward";
   static const String API_GET_SHIPPING_INFORMATION = "get_shipping_information";
-//  static const String API_SET_SHIPPING_STATUS = "set_shipping_status";
-//  static const String API_GET_STREET = "get_street";
+  static const String API_CREATE_GHN_SHOP = "create_ghn_shop";
 
   ///GHN
-  static const String API_GHN_CALCULATE_FEE = "CalculateFee";
-  static const String API_GHN_CREATE_ORDER = "CreateOrder";
-//  static const String API_GHN_GET_PROVINCE= "/areas/province";
-  static const String API_GHN_GET_DISTRICT = "GetDistricts";
-  static const String API_GHN_GET_COMMUNE = "GetWards";
-  static const String API_GHN_FIND_AVAILABLE_SERVICES = 'FindAvailableServices';
+  static const String API_GHN_CALCULATE_FEE = "shipping-order/fee";
+  static const String API_GHN_CREATE_ORDER = "shipping-order/create";
+  static const String API_GHN_CREATE_STORE = "shop/register";
+  static const String API_GHN_FIND_AVAILABLE_SERVICES =
+      'shipping-order/available-services';
 
   ///SUPER SHIP
   static const String API_SUPERSHIP_CALCULATE_FEE = "orders/fee";

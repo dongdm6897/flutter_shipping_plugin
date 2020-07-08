@@ -10,15 +10,17 @@ class ShippingAddress {
   Province province;
   District district;
   Ward ward;
+  int ghnShopId;
 
   ShippingAddress(
       {this.id,
-        this.name,
-        this.address,
-        this.phoneNumber,
-        this.province,
-        this.district,
-        this.ward});
+      this.name,
+      this.address,
+      this.phoneNumber,
+      this.province,
+      this.district,
+      this.ward,
+      this.ghnShopId});
 
   @override
   factory ShippingAddress.fromJSON(Map<String, dynamic> json) {
@@ -31,20 +33,20 @@ class ShippingAddress {
           province: Province.fromJSON(json["province"]),
           district: District.fromJSON(json["district"]),
           ward: Ward.fromJSON(json["ward"]),
-        );
+          ghnShopId: json["ghn_shop_id"]);
     }
     return null;
   }
 
   Map<String, dynamic> toJson() => {
-    'id': id,
-    'name': name,
-    'address': address,
-    'phone_number': phoneNumber,
-    'province_id': province.id,
-    'district_id': district.id,
-    'ward_id': ward.id,
-  };
+        'id': id,
+        'name': name,
+        'address': address,
+        'phone_number': phoneNumber,
+        'province_id': province.id,
+        'district_id': district.id,
+        'ward_id': ward.id,
+      };
 
   @override
   String toString() {

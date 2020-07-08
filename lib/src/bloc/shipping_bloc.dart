@@ -1,11 +1,9 @@
-import 'package:global_configuration/global_configuration.dart';
 import 'package:shipping_plugin/shipping_plugin.dart';
 import 'package:shipping_plugin/src/models/master_data.dart';
 import 'package:shipping_plugin/src/providers/ghn_api_provider.dart';
 import 'package:shipping_plugin/src/providers/ghtk_api_provider.dart';
 import 'package:shipping_plugin/src/providers/ship_api_provider.dart';
 import 'package:shipping_plugin/src/providers/supership_api_provider.dart';
-import 'package:uuid/uuid.dart';
 
 class ShippingBloc {
   GHNApiProvider _ghnApiProvider = GHNApiProvider();
@@ -32,15 +30,25 @@ class ShippingBloc {
       case ShipProviderEnum.GHN:
         int weight = (params['weight'] * 1000).round();
         Map requestParameters = {
-          'Token': _ghn["ghn_token"],
-          'FromDistrictID': shippingFrom.district.id,
-          'ToDistrictID': shippingTo.district.id,
-          'ServiceID': shipProviderService.serviceCode,
-          'Weight': weight
+          "from_district_id": shippingFrom.district.id,
+          "service_id": null,
+          "service_type_id": shipProviderService.serviceCode,
+          "to_district_id": shippingTo.district.id,
+          "to_ward_code": shippingTo.ward.ghnCode,
+          "height": params["height"],
+          "length": params["length"],
+          "width": params["width"],
+          'weight': weight,
+          "insurance_fee": params["price"],
+          "coupon": null
         };
-        var res = await _ghnApiProvider.calculateFee(requestParameters);
-        if (res != null && res['code'] == 1) {
-          return res['data']['CalculatedFee'];
+
+        var res = await _ghnApiProvider.calculateFee(requestParameters, {
+          'Token': '${_ghn["ghn_token"]}',
+          "ShopId": '${_ghn["ghn_shop_default"]}'
+        });
+        if (res != null && res['code'] == 200) {
+          return res['data']['total'];
         }
         return -1;
         break;
@@ -89,86 +97,43 @@ class ShippingBloc {
     return -1;
   }
 
-  Future<double> calculateReturnFee(
-      ShippingAddress shippingFrom,
-      ShippingAddress shippingTo,
-      ShipProvider shipProvider,
-      ShipProviderService shipProviderService,
-      Map params) async {
-    switch (shipProvider.id) {
-      case ShipProviderEnum.GHN:
-        Map requestParameters = {
-          'Token': _ghn['ghn_token'],
-          'FromDistrictID': shippingFrom.district.id,
-          'ToDistrictID': shippingTo.district.id,
-          'ServiceID': shipProviderService.serviceCode,
-          'Weight': params['weight']
-        };
-        var res = await _ghnApiProvider.calculateFee(requestParameters);
-        if (res['status'] == 'Success') {
-          return res['results']['fee'];
-        }
-        break;
-      case ShipProviderEnum.SUPERSHIP:
-        Map requestParameters = {
-          'receiver_province': shippingFrom.province.name,
-          'receiver_district': shippingFrom.district.name,
-          'sender_province': shippingTo.province.name,
-          'sender_district': shippingTo.district.name,
-          'weight': params['weight'],
-          'price': params['price']
-        };
-        var res = await _superShipApiProvider.calculateFee(requestParameters);
-        if (res['code'] == 1) {
-          return res['data']['CalculatedFee'];
-        }
-        break;
-      default:
-        break;
-    }
-
-    return 0;
-  }
-
   Future<String> createOrder(
       ShippingAddress shippingFrom,
       ShippingAddress shippingTo,
       ShipProvider shipProvider,
       ShipProviderService shipProviderService,
       Map params) async {
-    var uuid = new Uuid();
     switch (shipProvider.id) {
       case ShipProviderEnum.GHN:
         Map requestParameters = {
-          'PaymentTypeID': params['payment_method_id'],
-          'FromDistrictID': shippingFrom.district.id,
-          'FromWardCode': shippingFrom.ward.ghnCode,
-          'ToDistrictID': shippingTo.district.id,
-          'ToWardCode': shippingTo.ward.ghnCode,
-          'coDAmount': 0,
-          'ClientContactName': shippingFrom.name,
-          'ClientContactPhone': shippingFrom.phoneNumber,
-          'ClientAddress': shippingFrom.address,
-          'CustomerName': shippingTo.name,
-          'CustomerPhone': shippingTo.phoneNumber,
-          'ShippingAddress': shippingTo.address,
-          'NoteCode': "CHOTHUHANG",
-          'ServiceID': shipProviderService.serviceCode,
-          'Weight': (params['weight'] * 1000).round(),
-          'Length': params['length'],
-          'Width': params['width'],
-          'Height': params['height'],
-          'ReturnContactName': shippingFrom.name,
-          'ReturnContactPhone': shippingFrom.phoneNumber,
-          'ReturnAddress': shippingFrom.address,
-          'ReturnDistrictId': shippingFrom.district.id,
-          'ExternalReturnCode': uuid.v4(),
-          'AffiliateID': _ghn['ghn_affiliate_id'],
+          "payment_type_id": params['payment_method_id'],
+          "note": params['note'],
+          "required_note": "CHOTHUHANG",
+          "return_phone": shippingFrom.phoneNumber,
+          "return_address": shippingFrom.address,
+          "return_district_id": shippingFrom.district.id,
+          "return_ward_code": shippingFrom.ward.ghnCode,
+          "client_order_code": params['order_code'],
+          "to_name": shippingTo.name,
+          "to_phone": shippingTo.phoneNumber,
+          "to_address": shippingTo.address,
+          "to_ward_code": shippingTo.ward.ghnCode,
+          "to_district_id": shippingTo.district.id,
+          "cod_amount": 0,
+          "content": params['product_name'],
+          "weight": (params['weight'] * 1000).round(),
+          "length": params['length'],
+          "width": params['width'],
+          "height": params['height'],
+          "pick_station_id": 0,
+          "insurance_value": params['sell_price'],
+          "service_id": shipProviderService.serviceCode,
+          "service_type_id": 0
         };
         var res = await _ghnApiProvider.createOrder(requestParameters,
             {'Content-Type': 'application/json', 'token': _ghn['ghn_token']});
-        if (res != null && res['code'] == 1) {
-          return res['data']['OrderCode'];
+        if (res != null && res['code'] == 200) {
+          return res['data']['order_code'];
         }
         break;
       case ShipProviderEnum.SUPERSHIP:
@@ -280,14 +245,13 @@ class ShippingBloc {
   Future<List> ghnFindAvailableServices(ShippingAddress shippingFrom,
       ShippingAddress shippingTo, double weight) async {
     Map requestParameters = {
-      'Token': _ghn['ghn_token'],
-      'FromDistrictID': shippingFrom.district.id,
-      'ToDistrictID': shippingTo.district.id,
-      'Weight': (weight * 1000).round()
+      'shop_id': _ghn['ghn_shop_default'],
+      "from_district": shippingFrom.district.id,
+      "to_district": shippingFrom.district.id
     };
-    var response =
-        await _ghnApiProvider.findAvailableServices(requestParameters);
-    if (response != null && response["code"] == 1) {
+    var response = await _ghnApiProvider
+        .findAvailableServices(requestParameters, {'Token': _ghn['ghn_token']});
+    if (response != null && response["code"] == 200) {
       List<int> servicesCode = [];
       (response['data'] as List).forEach((service) {
         servicesCode.add(service['ServiceID']);
@@ -295,5 +259,28 @@ class ShippingBloc {
       return servicesCode;
     }
     return [];
+  }
+
+  Future<int> ghnCreateStore(
+      ShippingAddress shippingAddress, String accessToken) async {
+    Map params = {
+      "district_id": shippingAddress.district.id,
+      "ward_code": shippingAddress.ward.ghnCode,
+      "name": shippingAddress.name,
+      "phone": shippingAddress.phoneNumber,
+      "address": shippingAddress.address
+    };
+    int shopId = 0;
+    var response =
+        await _ghnApiProvider.createStore(params, {'Token': _ghn['ghn_token']});
+    if (response != null && response['code'] == 200) {
+      shopId = response['data']['shop_id'];
+      bool res = await _shipApiProvider.createGhnShop(
+          accessToken, shippingAddress.id, shopId);
+      if (res) {
+        return shopId;
+      }
+    }
+    return shopId;
   }
 }

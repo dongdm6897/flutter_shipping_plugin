@@ -31,7 +31,8 @@ class ApiProvider {
     // Get json data
     if (apiBaseUrl != "") {
       var request = _makeRequest(command, params);
-      final response = await _client.get(request, headers: headers);
+      final response = await _client.get(request,
+          headers: headers..addAll({'Content-Type': 'application/json'}));
 
       if (response?.statusCode == 200) {
         if (response.headers['content-type'].contains('json'))
@@ -39,17 +40,6 @@ class ApiProvider {
       }
     }
 
-    return jsonData;
-  }
-
-  // Try to use isolate to decode mockup data
-  static dynamic decodeMockupData(dynamic params) {
-    final mockData = params["data"];
-    final root = params["root"];
-    var jsonData = jsonDecode(mockData);
-    if (root != '') {
-      jsonData = jsonData[root];
-    }
     return jsonData;
   }
 
@@ -67,7 +57,7 @@ class ApiProvider {
         url,
         body: json.encode(params),
         encoding: Encoding.getByName('utf-8'),
-        headers: headers,
+        headers: headers..addAll({'Content-Type': 'application/json'}),
       );
       if (response?.statusCode == 200 || response?.statusCode == 201) {
         jsonData = json.decode(response.body);

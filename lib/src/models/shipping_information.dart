@@ -1,6 +1,5 @@
 import 'package:shipping_plugin/shipping_plugin.dart';
 import 'package:shipping_plugin/src/models/shipping_address.dart';
-import 'package:shipping_plugin/src/models/shipping_information_return.dart';
 import 'package:shipping_plugin/src/models/shipping_information_status.dart';
 
 class ShippingInformation {

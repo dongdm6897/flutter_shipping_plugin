@@ -15,4 +15,15 @@ class ShipApiProvider extends ApiProvider {
     }
     throw Exception(jsonData["message"]);
   }
+
+  Future<bool> createGhnShop(
+      String accessToken, int shippingAddressId, int ghnShopId) async {
+    var jsonData = await this.postData(ApiList.API_CREATE_GHN_SHOP,
+        {'shipping_address_id': shippingAddressId, 'ghn_shop_id': ghnShopId},
+        headers: {'Authorization': 'Bearer $accessToken'});
+    if (jsonData["status"]) {
+      return true;
+    }
+    throw Exception(jsonData["message"]);
+  }
 }
