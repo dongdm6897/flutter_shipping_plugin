@@ -10,7 +10,7 @@ class GHNApiProvider extends ApiProvider {
 
   Future<dynamic> createStore(Map params, Map<String, String> headers) {
     return this
-        .postData(ApiList.API_GHN_CREATE_ORDER, params, headers: headers);
+        .postData(ApiList.API_GHN_CREATE_STORE, params, headers: headers);
   }
 
   Future<dynamic> calculateFee(Map params, Map<String, String> headers) {

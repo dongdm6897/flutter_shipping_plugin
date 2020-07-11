@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:shipping_plugin/shipping_plugin.dart';
 import 'package:shipping_plugin/src/models/master_data.dart';
 import 'package:shipping_plugin/src/providers/ghn_api_provider.dart';
@@ -39,7 +41,7 @@ class ShippingBloc {
           "length": params["length"],
           "width": params["width"],
           'weight': weight,
-          "insurance_fee": params["price"],
+          "insurance_fee": (params["price"]).ceil(),
           "coupon": null
         };
 
@@ -106,7 +108,7 @@ class ShippingBloc {
     switch (shipProvider.id) {
       case ShipProviderEnum.GHN:
         Map requestParameters = {
-          "payment_type_id": params['payment_method_id'],
+          "payment_type_id": params['ship_pay_method_id'],
           "note": params['note'],
           "required_note": "CHOTHUHANG",
           "return_phone": shippingFrom.phoneNumber,
@@ -126,14 +128,19 @@ class ShippingBloc {
           "width": params['width'],
           "height": params['height'],
           "pick_station_id": 0,
-          "insurance_value": params['sell_price'],
-          "service_id": shipProviderService.serviceCode,
-          "service_type_id": 0
+          "insurance_value": (params['sell_price'].ceil()),
+          "service_id": null,
+          "service_type_id": shipProviderService.serviceCode
         };
-        var res = await _ghnApiProvider.createOrder(requestParameters,
-            {'Content-Type': 'application/json', 'token': _ghn['ghn_token']});
-        if (res != null && res['code'] == 200) {
-          return res['data']['order_code'];
+        if (shippingFrom.ghnShopId != null) {
+          var res = await _ghnApiProvider.createOrder(requestParameters, {
+            'Content-Type': 'application/json',
+            'token': _ghn['ghn_token'],
+            'shopid': '${shippingFrom.ghnShopId}'
+          });
+          if (res != null && res['code'] == 200) {
+            return res['data']['order_code'];
+          }
         }
         break;
       case ShipProviderEnum.SUPERSHIP:
@@ -172,7 +179,7 @@ class ShippingBloc {
         break;
       case ShipProviderEnum.GHTK:
         int isFreeShip = 0;
-        if (params['pay_method_id'] == 1) {
+        if (params['ship_pay_method_id'] == 1) {
           isFreeShip = 1;
         }
         Map requestParameters = {
@@ -271,8 +278,8 @@ class ShippingBloc {
       "address": shippingAddress.address
     };
     int shopId = 0;
-    var response =
-        await _ghnApiProvider.createStore(params, {'Token': _ghn['ghn_token']});
+    var response = await _ghnApiProvider
+        .createStore(params, {'Token': '${_ghn["ghn_token"]}'});
     if (response != null && response['code'] == 200) {
       shopId = response['data']['shop_id'];
       bool res = await _shipApiProvider.createGhnShop(
