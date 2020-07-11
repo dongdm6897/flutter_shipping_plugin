@@ -10,12 +10,14 @@ class ShippingStatusRealtime extends StatefulWidget {
   final ShippingInformation shippingInformation;
   final ShipProvider shipProvider;
   final ShipPayMethod shipPayMethod;
+  final bool isShippingFailed;
 
   const ShippingStatusRealtime(
       {Key key,
       this.shippingInformation,
       this.shipProvider,
-      this.shipPayMethod})
+      this.shipPayMethod,
+      this.isShippingFailed = false})
       : super(key: key);
 
   @override
@@ -26,16 +28,12 @@ class ShippingStatusRealtime extends StatefulWidget {
 
 class _ShippingStatusRealtimeState extends State<ShippingStatusRealtime>
     with TickerProviderStateMixin {
-  bool isCompleted;
-
   Animation<double> animation;
   AnimationController _controller;
-
   String shipServiceName = '';
 
   @override
   void initState() {
-    isCompleted = false;
     //Animation
     _controller =
         new AnimationController(vsync: this, duration: Duration(seconds: 2))
@@ -120,7 +118,7 @@ class _ShippingStatusRealtimeState extends State<ShippingStatusRealtime>
                 : SizedBox(),
             Container(height: 10.0),
             Container(
-              padding: EdgeInsets.all(20.0),
+              padding: EdgeInsets.all(18.0),
               decoration: BoxDecoration(
                   color: Colors.grey.shade200,
                   borderRadius: BorderRadius.circular(8.0)),
@@ -139,6 +137,20 @@ class _ShippingStatusRealtimeState extends State<ShippingStatusRealtime>
               ),
             ),
             shippingStatus(),
+            widget.isShippingFailed
+                ? Container(
+                    padding: EdgeInsets.all(6.0),
+                    decoration: BoxDecoration(
+                        color: Colors.grey.shade200,
+                        borderRadius: BorderRadius.circular(8.0)),
+                    margin: EdgeInsets.all(10.0),
+                    child: Text(
+                      'Đơn hàng đang được xử lý và sẽ hoàn lại tiền cho người mua.',
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold, color: Colors.red),
+                    ),
+                  )
+                : const SizedBox(),
           ],
         ));
   }
