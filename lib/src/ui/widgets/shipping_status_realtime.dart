@@ -5,6 +5,7 @@ import 'package:shipping_plugin/src/helpers.dart';
 import 'package:shipping_plugin/src/models/ship_pay_method.dart';
 import 'package:shipping_plugin/src/models/ship_provider.dart';
 import 'package:intl/intl.dart';
+import 'package:shipping_plugin/src/ui/widgets/create_info_line.dart';
 
 class ShippingStatusRealtime extends StatefulWidget {
   final ShippingInformation shippingInformation;
@@ -87,26 +88,27 @@ class _ShippingStatusRealtimeState extends State<ShippingStatusRealtime>
               overflow: TextOverflow.ellipsis,
             ),
             Divider(),
-            _createInfoLine(
+            createInfoLine(
                 context: context,
                 label: "Địa chỉ giao hàng",
                 message:
                     widget.shippingInformation?.shippingTo?.toString() ?? "",
                 icon: Icon(Icons.home),
-                isHorizonal: false),
-            _createInfoLine(
+                isHorizontal: false),
+            createInfoLine(
                 context: context,
                 label: "Dịch vụ giao hàng",
                 message: shipServiceName,
+                subMessage: widget.shipProvider.description,
                 icon: Icon(Icons.person_pin),
-                isHorizonal: true),
-            _createInfoLine(
+                isHorizontal: true),
+            createInfoLine(
                 context: context,
                 label: "Phí giao hàng",
                 message: formatCurrency(
                     widget.shippingInformation?.shippingFee ?? 0),
                 icon: Icon(Icons.rss_feed),
-                isHorizonal: true),
+                isHorizontal: true),
             Container(height: 10.0),
             widget.shippingInformation.shippingFee > 0
                 ? Text(
@@ -153,77 +155,6 @@ class _ShippingStatusRealtimeState extends State<ShippingStatusRealtime>
                 : const SizedBox(),
           ],
         ));
-  }
-
-  Widget _createInfoLine(
-      {BuildContext context,
-      String label,
-      TextStyle labelStyle,
-      String message,
-      TextStyle messageStyle,
-      bool isHorizonal = true,
-      Icon icon,
-      double padding = 10.0}) {
-    return isHorizonal
-        ? Padding(
-            padding: EdgeInsets.all(padding),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                icon != null
-                    ? _createIconText(icon, label)
-                    : Text(label,
-                        style: labelStyle ??
-                            Theme.of(context)
-                                .textTheme
-                                .subtitle
-                                .copyWith(color: Colors.grey.shade600)),
-                SizedBox(width: 15.0),
-                Expanded(
-                    child: Align(
-                        alignment: Alignment.centerRight,
-                        child: Text(message,
-                            style: messageStyle ??
-                                Theme.of(context).textTheme.title)))
-              ],
-            ))
-        : Padding(
-            padding: EdgeInsets.all(padding),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: <Widget>[
-                icon != null
-                    ? _createIconText(icon, label)
-                    : Text(label,
-                        style: labelStyle ??
-                            Theme.of(context)
-                                .textTheme
-                                .subtitle
-                                .copyWith(color: Colors.grey.shade600)),
-                Padding(
-                    padding:
-                        EdgeInsets.only(left: 10.0, top: 10.0, bottom: 10.0),
-                    child: Align(
-                        alignment: Alignment.centerRight,
-                        child: Text(message,
-                            style: messageStyle ??
-                                Theme.of(context).textTheme.title)))
-              ],
-            ));
-  }
-
-  Widget _createIconText(Icon icon, String text, {TextStyle labelStyle}) {
-    return Row(children: <Widget>[
-      icon,
-      Padding(padding: EdgeInsets.all(5.0)),
-      Text(text,
-          style: labelStyle ??
-              Theme.of(context)
-                  .textTheme
-                  .subtitle
-                  .copyWith(color: Colors.grey.shade600))
-    ]);
   }
 
   Widget shippingStatus() {

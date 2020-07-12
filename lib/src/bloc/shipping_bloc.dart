@@ -244,9 +244,9 @@ class ShippingBloc {
   }
 
   Future<ShippingInformation> getShippingInformation(
-      int orderId, String accessToken) {
+      int shippingId, String accessToken) {
     return _shipApiProvider.getShippingInformation(
-        {'order_id': orderId, 'access_token': accessToken});
+        {'shipping_id': shippingId, 'access_token': accessToken});
   }
 
   Future<List> ghnFindAvailableServices(ShippingAddress shippingFrom,

@@ -30,6 +30,7 @@ class ApiProvider {
 
     // Get json data
     if (apiBaseUrl != "") {
+      if (headers == null) headers = {};
       var request = _makeRequest(command, params);
       final response = await _client.get(request,
           headers: headers..addAll({'Content-Type': 'application/json'}));
@@ -50,6 +51,7 @@ class ApiProvider {
     if (apiBaseUrl != "") {
       String url;
       url = "$apiBaseUrl";
+      if (headers == null) headers = {};
       if (command != null && command.isNotEmpty) {
         url = "$apiBaseUrl/$apiVersion$apiUrlSuffix/$command";
       }
