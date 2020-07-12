@@ -12,13 +12,17 @@ class ShippingStatusRealtime extends StatefulWidget {
   final ShipProvider shipProvider;
   final ShipPayMethod shipPayMethod;
   final bool isShippingFailed;
+  final bool isReturn;
+  final bool isBuyer;
 
   const ShippingStatusRealtime(
       {Key key,
       this.shippingInformation,
       this.shipProvider,
       this.shipPayMethod,
-      this.isShippingFailed = false})
+      this.isShippingFailed = false,
+      this.isReturn = false,
+      this.isBuyer})
       : super(key: key);
 
   @override
@@ -29,30 +33,33 @@ class ShippingStatusRealtime extends StatefulWidget {
 
 class _ShippingStatusRealtimeState extends State<ShippingStatusRealtime>
     with TickerProviderStateMixin {
-  Animation<double> animation;
-  AnimationController _controller;
-  String shipServiceName = '';
+  ShippingAddress shippingAddress;
+  String shippingAddressText = '';
 
   @override
   void initState() {
-    //Animation
-    _controller =
-        new AnimationController(vsync: this, duration: Duration(seconds: 2))
-          ..repeat();
-    animation =
-        new CurvedAnimation(parent: _controller, curve: Curves.fastOutSlowIn);
-    shipServiceName = widget.shipProvider.name;
-    if (widget.shipProvider.id == ShipProviderEnum.TU_DEN_LAY) {
-      shipServiceName = "NGƯỜI MUA " + (widget.shipProvider.name).toUpperCase();
-    } else if (widget.shipProvider.id == ShipProviderEnum.GIAO_TAN_NOI) {
-      shipServiceName = "NGƯỜI BÁN " + (widget.shipProvider.name).toUpperCase();
+    int shippingProviderId = widget.shipProvider.id;
+    if (shippingProviderId == ShipProviderEnum.TU_DEN_LAY) {
+      shippingAddress = widget.shippingInformation.shippingTo;
+      shippingAddressText = 'Địa chỉ giao hàng';
+    } else if (shippingProviderId == ShipProviderEnum.GIAO_TAN_NOI) {
+      shippingAddress = widget.shippingInformation.shippingFrom;
+      shippingAddressText = 'Địa chỉ giao hàng';
+    } else {
+      if (widget.isBuyer) {
+        shippingAddress = widget.shippingInformation.shippingTo;
+        shippingAddressText = 'Địa chỉ lấy hàng';
+      } else {
+        shippingAddress = widget.shippingInformation.shippingFrom;
+        shippingAddressText = 'Địa chỉ nhận hàng';
+      }
     }
+
     super.initState();
   }
 
   @override
   void dispose() {
-    _controller.dispose();
     super.dispose();
   }
 
@@ -83,22 +90,21 @@ class _ShippingStatusRealtimeState extends State<ShippingStatusRealtime>
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
             Text(
-              "Giao hàng",
+              widget.isReturn ? "Trả hàng" : "Giao hàng",
               style: TextStyle(fontWeight: FontWeight.bold),
               overflow: TextOverflow.ellipsis,
             ),
             Divider(),
             createInfoLine(
                 context: context,
-                label: "Địa chỉ giao hàng",
-                message:
-                    widget.shippingInformation?.shippingTo?.toString() ?? "",
+                label: shippingAddressText,
+                message: shippingAddress.toString() ?? "",
                 icon: Icon(Icons.home),
                 isHorizontal: false),
             createInfoLine(
                 context: context,
                 label: "Dịch vụ giao hàng",
-                message: shipServiceName,
+                message: widget.shipProvider.name,
                 subMessage: widget.shipProvider.description,
                 icon: Icon(Icons.person_pin),
                 isHorizontal: true),
@@ -167,8 +173,8 @@ class _ShippingStatusRealtimeState extends State<ShippingStatusRealtime>
                   Container(
                     decoration: BoxDecoration(
                         color: Colors.green, shape: BoxShape.circle),
-                    height: 20.0,
-                    width: 20.0,
+                    height: 16.0,
+                    width: 16.0,
                   ),
                   Container(
                     margin: EdgeInsets.only(left: 10.0),
