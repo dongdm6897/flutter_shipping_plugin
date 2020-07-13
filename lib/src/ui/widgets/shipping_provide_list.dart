@@ -11,10 +11,8 @@ class ShipProviderList extends StatefulWidget {
 
 class _ShipProviderList extends State<ShipProviderList> {
   List<ShipProvider> _listShipProvider;
-//  User _user;
   @override
   void initState() {
-//    _user = _appBloc.loginUser;
     _listShipProvider = widget.listShipProvider ?? [];
     super.initState();
   }
@@ -31,9 +29,7 @@ class _ShipProviderList extends State<ShipProviderList> {
 
   @override
   Widget build(BuildContext context) {
-//    var lang = S.of(context);
     var size = MediaQuery.of(context).size;
-
     return SimpleDialog(
         contentPadding: EdgeInsets.all(10.0),
         children: <Widget>[
@@ -41,65 +37,65 @@ class _ShipProviderList extends State<ShipProviderList> {
             children: <Widget>[
               new Flexible(
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text(
-                          "Ship Provider List",
-                          style: TextStyle(
-                              fontSize: 18.0,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black87),
-                        ),
-                      ),
-                      Divider(),
-                      Container(
-                        padding: EdgeInsets.all(10.0),
-                        width: size.width * 0.9,
-                        height: _listShipProvider.length * 70.0,
-                        child: ListView.builder(
-                            itemCount: _listShipProvider.length,
-                            itemBuilder: (BuildContext context, int idx) {
-                              var item = _listShipProvider[idx];
-                              return ListTile(
-                                contentPadding: EdgeInsets.all(0.0),
-                                title: Column(
-                                  children: <Widget>[
-                                    Row(children: <Widget>[
-                                      CircleAvatar(
-                                          child: Image.network(
-                                            item.logo,
-                                            height: 100.0,
-                                            width: 100.0,
-                                          )), //item.logo
-                                      Padding(padding: EdgeInsets.all(5.0)),
-                                      Column(
-                                        crossAxisAlignment:
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      "Danh sách đơn vận chuyển",
+                      style: TextStyle(
+                          fontSize: 18.0,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black87),
+                    ),
+                  ),
+                  Divider(),
+                  Container(
+                    padding: EdgeInsets.all(10.0),
+                    width: size.width * 0.9,
+                    height: _listShipProvider.length * 70.0,
+                    child: ListView.builder(
+                        itemCount: _listShipProvider.length,
+                        itemBuilder: (BuildContext context, int idx) {
+                          var item = _listShipProvider[idx];
+                          return ListTile(
+                            contentPadding: EdgeInsets.all(0.0),
+                            title: Column(
+                              children: <Widget>[
+                                Row(children: <Widget>[
+                                  CircleAvatar(
+                                      child: Image.network(
+                                    item.logo,
+                                    height: 100.0,
+                                    width: 100.0,
+                                  )), //item.logo
+                                  Padding(padding: EdgeInsets.all(5.0)),
+                                  Column(
+                                    crossAxisAlignment:
                                         CrossAxisAlignment.start,
-                                        mainAxisAlignment: MainAxisAlignment.center,
-                                        children: <Widget>[
-                                          Text(item.name,
-                                              style: TextStyle(
-                                                  fontWeight: FontWeight.bold)),
-                                          Text(
-                                            item.description ?? "Đơn vị vận chuyển",
-                                            style: TextStyle(color: Colors.grey),
-                                          ),
-                                        ],
-                                      )
-                                    ]),
-                                    Divider()
-                                  ],
-                                ),
-                                onTap: () async {
-                                  Navigator.pop(context, item);
-                                },
-                              );
-                            }),
-                      ),
-                    ],
-                  ))
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: <Widget>[
+                                      Text(item.name,
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold)),
+                                      Text(
+                                        item.description ?? "Đơn vị vận chuyển",
+                                        style: TextStyle(color: Colors.grey),
+                                      ),
+                                    ],
+                                  )
+                                ]),
+                                Divider()
+                              ],
+                            ),
+                            onTap: () async {
+                              Navigator.pop(context, item);
+                            },
+                          );
+                        }),
+                  ),
+                ],
+              ))
             ],
           )
         ]);

@@ -1,46 +1,37 @@
 import 'dart:async';
 
-
 import 'package:rxdart/rxdart.dart';
 import 'package:shipping_plugin/src/models/address/district.dart';
 import 'package:shipping_plugin/src/models/address/province.dart';
-import 'package:shipping_plugin/src/models/address/street.dart';
 import 'package:shipping_plugin/src/models/address/ward.dart';
 import 'package:shipping_plugin/src/providers/address_api_provider.dart';
+//import 'package:shipping_plugin/src/providers/ghtk_api_provider.dart';
 
 class AddressBloc {
   final _addressApiProvider = AddressApiProvider();
+//  final _ghtkApiProvider = GHTKApiProvider();
 
   /// Province
   PublishSubject<List<Province>> _provinceController =
-  PublishSubject<List<Province>>();
-
+      PublishSubject<List<Province>>();
   Stream<List<Province>> get streamProvince => _provinceController.stream;
-
   Sink<List<Province>> get provinceSink => _provinceController.sink;
 
   /// District
   PublishSubject<List<District>> _districtController =
-  PublishSubject<List<District>>();
-
+      PublishSubject<List<District>>();
   Stream<List<District>> get streamDistrict => _districtController.stream;
-
   Sink<List<District>> get districtSink => _districtController.sink;
 
   /// Ward
   PublishSubject<List<Ward>> _wardController = PublishSubject<List<Ward>>();
-
   Stream<List<Ward>> get streamWard => _wardController.stream;
-
   Sink<List<Ward>> get wardSink => _wardController.sink;
 
-  /// Street
-  PublishSubject<List<Street>> _streetController =
-  PublishSubject<List<Street>>();
-
-  Stream<List<Street>> get streamStreet => _streetController.stream;
-
-  Sink<List<Street>> get streetSink => _streetController.sink;
+  ///Hamlet
+//  PublishSubject<List> _hamletController = PublishSubject<List>();
+//  Stream<List> get streamHamlet => _hamletController.stream;
+//  Sink<List> get hamletSink => _hamletController.sink;
 
   /// Load
   PublishSubject<bool> _loadController = PublishSubject<bool>();
@@ -87,11 +78,29 @@ class AddressBloc {
     });
   }
 
+  ///Load from ghtk
+//  Future<bool> loadHamlet(
+//      String provinceName, String districtName, String wardName) async {
+//    Map params = Map();
+//    params['province'] = provinceName;
+//    params['district'] = districtName;
+//    params['ward_street'] = wardName;
+//    return await _ghtkApiProvider.getAddressLevel4(params,
+//        {"Token": "0cB1E62a480143a0ABA5C12FFa70BED070c0BBd1"}).then((values) {
+//      if (values != null && !_hamletController.isClosed) {
+//        hamletSink.add(values);
+//        loadSink.add(false);
+//        return true;
+//      }
+//      return false;
+//    });
+//  }
+
   void dispose() {
     _loadController.close();
     _provinceController.close();
-    _streetController.close();
     _districtController.close();
     _wardController.close();
+//    _hamletController.close();
   }
 }

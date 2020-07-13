@@ -290,4 +290,19 @@ class ShippingBloc {
     }
     return shopId;
   }
+
+  Future<List> loadHamlet(
+      String provinceName, String districtName, String wardName) async {
+    Map params = Map();
+    params['province'] = provinceName;
+    params['district'] = districtName;
+    params['ward_street'] = wardName;
+    return await _ghtkApiProvider
+        .getAddressLevel4(params, {"Token": _ghn['ghn_token']}).then((values) {
+      if (values != null) {
+        return values;
+      }
+      return null;
+    });
+  }
 }

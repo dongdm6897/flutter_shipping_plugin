@@ -10,6 +10,7 @@ class ShippingAddress {
   Province province;
   District district;
   Ward ward;
+  String hamlet;
   int ghnShopId;
 
   ShippingAddress(
@@ -20,6 +21,7 @@ class ShippingAddress {
       this.province,
       this.district,
       this.ward,
+      this.hamlet,
       this.ghnShopId});
 
   @override
@@ -33,6 +35,7 @@ class ShippingAddress {
           province: Province.fromJSON(json["province"]),
           district: District.fromJSON(json["district"]),
           ward: Ward.fromJSON(json["ward"]),
+          hamlet: json['hamlet'],
           ghnShopId: json["ghn_shop_id"]);
     }
     return null;

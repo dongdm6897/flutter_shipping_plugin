@@ -22,4 +22,5 @@ class ApiList {
   ///GHTK
   static const String API_GHTK_CALCULATE_FEE = "shipment/fee";
   static const String API_GHTK_CREATE_ORDER = "shipment/fee";
+  static const String API_GHTK_GET_ADDRESS_LEVEL_4 = "address/getAddressLevel4";
 }

@@ -2,25 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:shipping_plugin/src/bloc/address_bloc.dart';
 import 'package:shipping_plugin/src/models/address/district.dart';
 import 'package:shipping_plugin/src/models/address/province.dart';
-import 'package:shipping_plugin/src/models/address/street.dart';
 import 'package:shipping_plugin/src/models/address/ward.dart';
-
 
 class Address extends StatefulWidget {
   final Function callBack;
   final Province province;
   final District district;
   final Ward ward;
+//  final String hamlet;
   final String address;
 
-  const Address(
-      {Key key,
-        this.callBack,
-        this.province,
-        this.district,
-        this.ward,
-        this.address})
-      : super(key: key);
+  const Address({
+    Key key,
+    this.callBack,
+    this.province,
+    this.district,
+    this.ward,
+    this.address,
+//      this.hamlet
+  }) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
@@ -32,9 +32,10 @@ class AddressState extends State<Address> {
   AddressBloc _addressBloc;
   Province _province;
   District _district;
-  Street _street;
   Ward _ward;
+//  String _hamlet;
   bool _loadedProvince = false, _loadedDistrict = false;
+//  bool _loadedWard = false;
 
   @override
   void initState() {
@@ -70,94 +71,85 @@ class AddressState extends State<Address> {
           if (snapshot.hasData) {
             return Column(
                 children: <Widget>[
-                  StreamBuilder(
-                      stream: _addressBloc.streamProvince,
-                      builder: (BuildContext context,
-                          AsyncSnapshot<List<Province>> snapshot) {
-                        if (snapshot.hasData && snapshot.data != null) {
-                          return Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: DropdownButtonHideUnderline(
-                              child: DropdownButtonFormField<Province>(
-                                decoration: InputDecoration(labelText: "Tỉnh/Thành Phố"),
-                                value: _province,
-                                validator: (value) {
-                                  if (value == null)
-                                    return "You can't leave this empty";
-                                  return null;
-                                },
-                                items: snapshot.data
-                                    .map((val) => DropdownMenuItem<Province>(
+              StreamBuilder(
+                  stream: _addressBloc.streamProvince,
+                  builder: (BuildContext context,
+                      AsyncSnapshot<List<Province>> snapshot) {
+                    if (snapshot.hasData && snapshot.data != null) {
+                      return Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: DropdownButtonHideUnderline(
+                          child: DropdownButtonFormField<Province>(
+                            decoration:
+                                InputDecoration(labelText: "Tỉnh/Thành Phố"),
+                            value: _province,
+                            validator: (value) {
+                              if (value == null)
+                                return "Vui lòng lựa chọn Tỉnh/Thành Phố";
+                              return null;
+                            },
+                            items: snapshot.data
+                                .map((val) => DropdownMenuItem<Province>(
                                       value: val,
                                       child: Text(val.name),
                                     ))
-                                    .toList(),
-                                onChanged: (value) async {
-                                  setState(() {
-                                    _province = value;
-                                    _district = null;
-                                    _ward = null;
-                                    _street = null;
-                                    _loadedProvince = false;
-                                  });
-                                  bool res =
+                                .toList(),
+                            onChanged: (value) async {
+                              setState(() {
+                                _province = value;
+                                _district = null;
+                                _ward = null;
+                                _loadedProvince = false;
+                              });
+                              bool res =
                                   await _addressBloc.loadDistrict(value.id);
-                                  setState(() {
-                                    _loadedProvince = res;
-                                  });
-                                },
-                              ),
-                            ),
-                          );
-                        }
-                        return Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: CircularProgressIndicator(),
-                        );
-                      }),
-                  _province != null
-                      ? StreamBuilder(
+                              setState(() {
+                                _loadedProvince = res;
+                              });
+                            },
+                          ),
+                        ),
+                      );
+                    }
+                    return Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: CircularProgressIndicator(),
+                    );
+                  }),
+              _province != null
+                  ? StreamBuilder(
                       stream: _addressBloc.streamDistrict,
                       builder: (BuildContext context,
                           AsyncSnapshot<List<District>> snapshot) {
                         if (snapshot.hasData &&
                             snapshot.data != null &&
                             _loadedProvince) {
-//                          if (widget.district != null) {
-//                            _district = snapshot.data.firstWhere(
-//                                (d) => d.id == widget.district.id,
-//                                orElse: () => null);
-//                          }
                           return Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: DropdownButtonHideUnderline(
-                              child: DropdownButtonFormField<
-                                  District>(
+                              child: DropdownButtonFormField<District>(
                                 decoration:
-                                InputDecoration(labelText: "Quận/Huyện"),
+                                    InputDecoration(labelText: "Quận/Huyện"),
                                 validator: (value) {
                                   if (value == null)
-                                    return "You can't leave this empty";
+                                    return "Vui lòng lựa chọn Quận/Huyện";
                                   return null;
                                 },
                                 value: _district,
                                 items: snapshot.data
                                     .map((val) => DropdownMenuItem<District>(
-                                  value: val,
-                                  child:
-                                  Text(val.name),
-                                ))
+                                          value: val,
+                                          child: Text(val.name),
+                                        ))
                                     .toList(),
                                 onChanged: (value) async {
                                   setState(() {
                                     _district = value;
                                     _ward = null;
-                                    _street = null;
                                     _loadedDistrict = false;
-//                                    _addressBloc.loadStreet(
-//                                        _district.id, _district.provinceId);
                                   });
-                                  bool res = await _addressBloc.loadWard(_district.id);
+                                  bool res =
+                                      await _addressBloc.loadWard(_district.id);
                                   setState(() {
                                     _loadedDistrict = res;
                                   });
@@ -171,42 +163,47 @@ class AddressState extends State<Address> {
                           child: CircularProgressIndicator(),
                         );
                       })
-                      : null,
-                  _district != null
-                      ? StreamBuilder(
+                  : null,
+              _district != null
+                  ? StreamBuilder(
                       stream: _addressBloc.streamWard,
                       builder: (BuildContext context,
                           AsyncSnapshot<List<Ward>> snapshot) {
                         if (snapshot.hasData &&
                             snapshot.data != null &&
                             _loadedDistrict) {
-//                          if (widget.ward != null) {
-//                            _ward = snapshot.data.firstWhere(
-//                                (w) => w.id == widget.ward.id,
-//                                orElse: () => null);
-//                          }
                           return Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: DropdownButtonHideUnderline(
                               child: DropdownButtonFormField<Ward>(
-                                decoration: InputDecoration(labelText: "Phường/Xã"),
+                                decoration:
+                                    InputDecoration(labelText: "Phường/Xã"),
                                 value: _ward,
                                 validator: (value) {
                                   if (value == null)
-                                    return "You can't leave this empty";
+                                    return "Vui lòng lựa chọn Phường/Xã";
                                   return null;
                                 },
                                 items: snapshot.data
                                     .map((val) => DropdownMenuItem<Ward>(
-                                      value: val,
-                                      child:
-                                      Text(val.name),
-                                    ))
+                                          value: val,
+                                          child: Text(val.name),
+                                        ))
                                     .toList(),
-                                onChanged: (value) {
+                                onChanged: (value) async {
                                   setState(() {
                                     _ward = value;
+//                                    _hamlet = null;
+//                                    _loadedWard = false;
                                   });
+//
+//                                  bool res = await _addressBloc.loadHamlet(
+//                                      _province.name,
+//                                      _district.name,
+//                                      _ward.name);
+//                                  setState(() {
+//                                    _loadedWard = res;
+//                                  });
                                 },
                               ),
                             ),
@@ -217,29 +214,68 @@ class AddressState extends State<Address> {
                           child: CircularProgressIndicator(),
                         );
                       })
-                      : null,
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: TextFormField(
-                      decoration: InputDecoration(
-                          labelText: "Địa chỉ chi tiết",
-                          helperText:
-                          "Eg. Sảnh T1-Khu đô thị TimeCity - Minh Khai"),
-                      initialValue: widget.address,
-                      validator: (value) {
-                        if (value.isEmpty)
-                          return "You can't leave this empty";
-                        else if (value.length < 5)
-                          return "The address length should be 5 - 350 characters";
-                        return null;
-                      },
-                      onSaved: (value) {
-                        widget.callBack(
-                            value, _province, _district, _ward, _street);
-                      },
-                    ),
-                  ),
-                ]..removeWhere((widget) => widget == null));
+                  : null,
+//              _ward != null
+//                  ? StreamBuilder(
+//                      stream: _addressBloc.streamHamlet,
+//                      builder:
+//                          (BuildContext context, AsyncSnapshot<List> snapshot) {
+//                        if (snapshot.hasData &&
+//                            snapshot.data != null &&
+//                            _loadedWard) {
+//                          return Padding(
+//                            padding: const EdgeInsets.all(8.0),
+//                            child: DropdownButtonHideUnderline(
+//                              child: DropdownButtonFormField<String>(
+//                                decoration: InputDecoration(
+//                                    labelText: "Thôn/ấp/xóm/tổ/ngõ"),
+//                                value: _hamlet,
+//                                validator: (value) {
+//                                  if (value == null)
+//                                    return "Vui lòng lựa chọn Thôn/ấp/xóm/tổ/ngõ";
+//                                  return null;
+//                                },
+//                                items: snapshot.data
+//                                    .map((val) => DropdownMenuItem<String>(
+//                                          value: val,
+//                                          child: Text(val),
+//                                        ))
+//                                    .toList(),
+//                                onChanged: (value) {
+//                                  setState(() {
+//                                    _hamlet = value;
+//                                  });
+//                                },
+//                              ),
+//                            ),
+//                          );
+//                        }
+//                        return Padding(
+//                          padding: const EdgeInsets.all(8.0),
+//                          child: CircularProgressIndicator(),
+//                        );
+//                      })
+//                  : null,
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: TextFormField(
+                  decoration: InputDecoration(
+                      labelText: "Địa chỉ chi tiết",
+                      helperText:
+                          "Eg. Số nhà, tòa nhà, tên đường - Sảnh T1-Khu đô thị TimeCity - Minh Khai"),
+                  initialValue: widget.address,
+                  validator: (value) {
+                    if (value.isEmpty)
+                      return "Vui lòng nhập địa chỉ";
+                    else if (value.length < 5) return "Địa chỉ không khả dụng";
+                    return null;
+                  },
+                  onSaved: (value) {
+                    widget.callBack(value, _province, _district, _ward);
+                  },
+                ),
+              ),
+            ]..removeWhere((widget) => widget == null));
           }
           return CircularProgressIndicator();
         },
