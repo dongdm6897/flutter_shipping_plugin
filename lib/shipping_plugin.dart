@@ -11,5 +11,4 @@ export 'src/bloc/shipping_bloc.dart';
 export 'src/models/shipping_information.dart';
 export 'src/ui/widgets/shipping_status_realtime.dart';
 export 'src/models/shipping_information_status.dart';
-export 'src/ui/widgets/shipping_status_realtime_return.dart';
 export 'src/models/shipping_information_return.dart';
