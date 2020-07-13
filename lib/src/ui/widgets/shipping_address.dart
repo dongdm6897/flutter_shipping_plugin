@@ -317,7 +317,7 @@ class AddShippingFieldsState extends State<AddShippingFields> {
                     ),
                     Address(
                       callBack: (String address, Province province,
-                          District district, Ward ward, Street street) {
+                          District district, Ward ward) {
                         this._address = address;
                         this._province = province;
                         this._district = district;

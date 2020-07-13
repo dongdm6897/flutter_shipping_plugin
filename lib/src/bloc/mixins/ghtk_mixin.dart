@@ -11,7 +11,7 @@ mixin GHTKMixin {
     params['district'] = districtName;
     params['ward_street'] = wardName;
     return await ghtkApiProvider
-        .getAddressLevel4(params, {"Token": ghtk['ghn_token']}).then((values) {
+        .getAddressLevel4(params, {"Token": ghtk['ghtk_token']}).then((values) {
       if (values != null) {
         return values;
       }

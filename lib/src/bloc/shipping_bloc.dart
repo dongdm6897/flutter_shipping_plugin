@@ -196,7 +196,7 @@ class ShippingBloc with GHTKMixin, SuperShipMixin, GHNMixin {
             "province": shippingTo.province.name,
             "district": shippingTo.district.name,
             "ward": shippingTo.ward.name,
-            "hamlet": "Khác",
+            "hamlet": shippingTo.hamlet,
             "is_freeship": isFreeShip,
             "pick_money": 0,
             "note": params['note'],
