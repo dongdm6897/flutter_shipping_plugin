@@ -1,7 +1,7 @@
 import 'package:shipping_plugin/src/models/shipping_address.dart';
 import 'package:shipping_plugin/src/providers/ghn_api_provider.dart';
 
-class GHNBloc {
+mixin GHNMixin {
   GHNApiProvider ghnApiProvider = GHNApiProvider();
   Map ghn;
   Future<List> ghnFindAvailableServices(ShippingAddress shippingFrom,

@@ -1,11 +1,11 @@
 import 'package:shipping_plugin/shipping_plugin.dart';
-import 'package:shipping_plugin/src/bloc/ghn_bloc.dart';
-import 'package:shipping_plugin/src/bloc/ghtk_bloc.dart';
-import 'package:shipping_plugin/src/bloc/supership_bloc.dart';
+import 'package:shipping_plugin/src/bloc/mixins/ghn_mixin.dart';
+import 'package:shipping_plugin/src/bloc/mixins/ghtk_mixin.dart';
+import 'package:shipping_plugin/src/bloc/mixins/supership_mixin.dart';
 import 'package:shipping_plugin/src/models/master_data.dart';
 import 'package:shipping_plugin/src/providers/ship_api_provider.dart';
 
-class ShippingBloc with GHTKBloc, SuperShipBloc, GHNBloc {
+class ShippingBloc with GHTKMixin, SuperShipMixin, GHNMixin {
   ShipApiProvider _shipApiProvider = ShipApiProvider();
 
   ShippingBloc(Map ghn, Map superShip, Map ghtk) {

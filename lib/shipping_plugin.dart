@@ -12,3 +12,4 @@ export 'src/models/shipping_information.dart';
 export 'src/ui/widgets/shipping_status_realtime.dart';
 export 'src/models/shipping_information_status.dart';
 export 'src/models/shipping_information_return.dart';
+export 'src/ui/widgets/hamlet_list.dart';

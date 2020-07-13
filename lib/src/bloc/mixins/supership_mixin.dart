@@ -1,6 +1,6 @@
 import 'package:shipping_plugin/src/providers/supership_api_provider.dart';
 
-mixin SuperShipBloc {
+mixin SuperShipMixin {
   SuperShipApiProvider superShipApiProvider = SuperShipApiProvider();
   Map superShip;
 
