@@ -1,25 +1,17 @@
-import 'dart:ffi';
-
 import 'package:shipping_plugin/shipping_plugin.dart';
+import 'package:shipping_plugin/src/bloc/ghn_bloc.dart';
+import 'package:shipping_plugin/src/bloc/ghtk_bloc.dart';
+import 'package:shipping_plugin/src/bloc/supership_bloc.dart';
 import 'package:shipping_plugin/src/models/master_data.dart';
-import 'package:shipping_plugin/src/providers/ghn_api_provider.dart';
-import 'package:shipping_plugin/src/providers/ghtk_api_provider.dart';
 import 'package:shipping_plugin/src/providers/ship_api_provider.dart';
-import 'package:shipping_plugin/src/providers/supership_api_provider.dart';
 
-class ShippingBloc {
-  GHNApiProvider _ghnApiProvider = GHNApiProvider();
-  SuperShipApiProvider _superShipApiProvider = SuperShipApiProvider();
-  GHTKApiProvider _ghtkApiProvider = GHTKApiProvider();
+class ShippingBloc with GHTKBloc, SuperShipBloc, GHNBloc {
   ShipApiProvider _shipApiProvider = ShipApiProvider();
-  Map _ghn;
-  Map _superShip;
-  Map _ghtk;
 
   ShippingBloc(Map ghn, Map superShip, Map ghtk) {
-    _ghn = ghn;
-    _superShip = superShip;
-    _ghtk = ghtk;
+    this.ghn = ghn;
+    this.superShip = superShip;
+    this.ghtk = ghtk;
   }
 
   Future<int> calculateFee(
@@ -45,9 +37,9 @@ class ShippingBloc {
           "coupon": null
         };
 
-        var res = await _ghnApiProvider.calculateFee(requestParameters, {
-          'Token': '${_ghn["ghn_token"]}',
-          "ShopId": '${_ghn["ghn_shop_default"]}'
+        var res = await ghnApiProvider.calculateFee(requestParameters, {
+          'Token': '${ghn["ghn_token"]}',
+          "ShopId": '${ghn["ghn_shop_default"]}'
         });
         if (res != null && res['code'] == 200) {
           return res['data']['total'];
@@ -63,7 +55,7 @@ class ShippingBloc {
           'weight': (params['weight'] * 1000).round(),
           'price': params['price']
         };
-        var res = await _superShipApiProvider.calculateFee(requestParameters);
+        var res = await superShipApiProvider.calculateFee(requestParameters);
         if (res != null && res['status'] == 'Success') {
           return res['results'][0]['fee'];
         }
@@ -86,8 +78,8 @@ class ShippingBloc {
           "value": params['price'],
           "transport": "road"
         };
-        var res = await _ghtkApiProvider.calculateFee(requestParameters,
-            {'Token': _ghtk["ghtk_token"], 'Content-Type': 'application/json'});
+        var res = await ghtkApiProvider.calculateFee(requestParameters,
+            {'Token': ghtk["ghtk_token"], 'Content-Type': 'application/json'});
         if (res != null && res['success']) {
           return res['fee']['fee'];
         }
@@ -133,9 +125,9 @@ class ShippingBloc {
           "service_type_id": shipProviderService.serviceCode
         };
         if (shippingFrom.ghnShopId != null) {
-          var res = await _ghnApiProvider.createOrder(requestParameters, {
+          var res = await ghnApiProvider.createOrder(requestParameters, {
             'Content-Type': 'application/json',
-            'token': _ghn['ghn_token'],
+            'token': ghn['ghn_token'],
             'shopid': '${shippingFrom.ghnShopId}'
           });
           if (res != null && res['code'] == 200) {
@@ -169,9 +161,9 @@ class ShippingBloc {
           'note': params['note'],
           'product': params['product_name'],
         };
-        var res = await _superShipApiProvider.createOrder(requestParameters, {
+        var res = await superShipApiProvider.createOrder(requestParameters, {
           'Content-Type': 'application/json',
-          'Authorization': 'Bearer ${_superShip['supership_token']}'
+          'Authorization': 'Bearer ${superShip['supership_token']}'
         });
         if (res != null && res['status'] == 'Success') {
           return res['results']['code'];
@@ -211,8 +203,8 @@ class ShippingBloc {
             'value': params['sell_price']
           }
         };
-        var res = await _ghtkApiProvider.createOrder(requestParameters,
-            {'Token': _ghtk["ghtk_token"], 'Content-Type': 'application/json'});
+        var res = await ghtkApiProvider.createOrder(requestParameters,
+            {'Token': ghtk["ghtk_token"], 'Content-Type': 'application/json'});
         if (res != null && res['success']) {
           return res['order']['label'];
         }
@@ -224,48 +216,10 @@ class ShippingBloc {
     return "";
   }
 
-  Future<bool> checkSupportedAddress(String senderProvince,
-      String senderDistrict, double weight, double price) async {
-    String receiverProvince = "Thành phố Hà Nội";
-    String receiverDistrict = "Quận Hai Bà Trưng";
-    Map requestParameters = {
-      'receiver_province': receiverProvince,
-      'receiver_district': receiverDistrict,
-      'sender_province': senderProvince,
-      'sender_district': senderDistrict,
-      'weight': (weight * 1000).round(),
-      'price': price
-    };
-    var res = await _superShipApiProvider.calculateFee(requestParameters);
-    if (res != null && res['status'] == 'Success') {
-      return true;
-    }
-    return false;
-  }
-
   Future<ShippingInformation> getShippingInformation(
       int shippingId, String accessToken) {
     return _shipApiProvider.getShippingInformation(
         {'shipping_id': shippingId, 'access_token': accessToken});
-  }
-
-  Future<List> ghnFindAvailableServices(ShippingAddress shippingFrom,
-      ShippingAddress shippingTo, double weight) async {
-    Map requestParameters = {
-      'shop_id': _ghn['ghn_shop_default'],
-      "from_district": shippingFrom.district.id,
-      "to_district": shippingFrom.district.id
-    };
-    var response = await _ghnApiProvider
-        .findAvailableServices(requestParameters, {'Token': _ghn['ghn_token']});
-    if (response != null && response["code"] == 200) {
-      List<int> servicesCode = [];
-      (response['data'] as List).forEach((service) {
-        servicesCode.add(service['ServiceID']);
-      });
-      return servicesCode;
-    }
-    return [];
   }
 
   Future<int> ghnCreateStore(
@@ -278,8 +232,8 @@ class ShippingBloc {
       "address": shippingAddress.address
     };
     int shopId = 0;
-    var response = await _ghnApiProvider
-        .createStore(params, {'Token': '${_ghn["ghn_token"]}'});
+    var response = await ghnApiProvider
+        .createStore(params, {'Token': '${ghn["ghn_token"]}'});
     if (response != null && response['code'] == 200) {
       shopId = response['data']['shop_id'];
       bool res = await _shipApiProvider.createGhnShop(
@@ -289,20 +243,5 @@ class ShippingBloc {
       }
     }
     return shopId;
-  }
-
-  Future<List> loadHamlet(
-      String provinceName, String districtName, String wardName) async {
-    Map params = Map();
-    params['province'] = provinceName;
-    params['district'] = districtName;
-    params['ward_street'] = wardName;
-    return await _ghtkApiProvider
-        .getAddressLevel4(params, {"Token": _ghn['ghn_token']}).then((values) {
-      if (values != null) {
-        return values;
-      }
-      return null;
-    });
   }
 }
