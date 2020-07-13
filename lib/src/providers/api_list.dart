@@ -3,6 +3,7 @@ class ApiList {
   static const String API_GET_DISTRICT = "get_district";
   static const String API_GET_WARD = "get_ward";
   static const String API_GET_SHIPPING_INFORMATION = "get_shipping_information";
+  static const String API_UPDATE_SHIPPING_STATUS = "update_shipping_status";
   static const String API_CREATE_GHN_SHOP = "create_ghn_shop";
 
   ///GHN

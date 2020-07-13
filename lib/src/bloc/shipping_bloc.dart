@@ -222,6 +222,15 @@ class ShippingBloc with GHTKMixin, SuperShipMixin, GHNMixin {
         {'shipping_id': shippingId, 'access_token': accessToken});
   }
 
+  Future<dynamic> updateShippingStatus(
+      int shippingStatus, int shippingId, String accessToken) {
+    return _shipApiProvider.updateShippingStatus({
+      'shipping_id': shippingId,
+      'shipping_status': shippingStatus,
+      'access_token': accessToken
+    });
+  }
+
   Future<int> ghnCreateStore(
       ShippingAddress shippingAddress, String accessToken) async {
     Map params = {
