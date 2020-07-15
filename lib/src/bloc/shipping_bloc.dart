@@ -227,7 +227,18 @@ class ShippingBloc with GHTKMixin, SuperShipMixin, GHNMixin {
     return _shipApiProvider.updateShippingStatus({
       'shipping_id': shippingId,
       'shipping_status': shippingStatus,
-      'access_token': accessToken
+    }, {
+      'Authorization': 'Bearer $accessToken'
+    });
+  }
+
+  Future<bool> setHamlet(
+      int shippingAddressId, String hamlet, String accessToken) {
+    return _shipApiProvider.setHamlet({
+      'shipping_address_id': shippingAddressId,
+      'hamlet': hamlet,
+    }, {
+      'Authorization': 'Bearer $accessToken'
     });
   }
 

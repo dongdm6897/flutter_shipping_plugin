@@ -49,6 +49,8 @@ class ShippingAddress {
         'province_id': province.id,
         'district_id': district.id,
         'ward_id': ward.id,
+        'hamlet': hamlet,
+        'ghn_shop_id': ghnShopId
       };
 
   @override

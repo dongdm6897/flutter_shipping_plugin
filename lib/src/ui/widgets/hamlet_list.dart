@@ -15,7 +15,6 @@ class HamletListWidget extends StatefulWidget {
 
 class _HamletListWidgetState extends State<HamletListWidget> {
   GHTKBloc _ghtkBloc;
-
   @override
   void initState() {
     _ghtkBloc = GHTKBloc(widget.ghtk);
@@ -56,9 +55,9 @@ class _HamletListWidgetState extends State<HamletListWidget> {
                         List hamlets = snapshot.data;
                         int lenHamlets = hamlets.length;
                         return Container(
-                          padding: EdgeInsets.all(10.0),
-                          width: size.width * 0.9,
-                          height: lenHamlets * 50.0,
+                          padding: const EdgeInsets.only(left: 10.0),
+                          width: size.width,
+                          height: 500,
                           child: ListView.builder(
                               itemCount: lenHamlets,
                               itemBuilder: (BuildContext context, int idx) {

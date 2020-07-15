@@ -13,9 +13,12 @@ mixin GHTKMixin {
     return await ghtkApiProvider
         .getAddressLevel4(params, {"Token": ghtk['ghtk_token']}).then((values) {
       if (values != null) {
+        if (!values.contains('Khác')) {
+          values.add('Khác');
+        }
         return values;
       }
-      return null;
+      return ['Khác'];
     });
   }
 }

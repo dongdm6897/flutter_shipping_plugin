@@ -290,9 +290,9 @@ class AddShippingFieldsState extends State<AddShippingFields> {
                         initialValue: _fullName,
                         validator: (value) {
                           if (value.isEmpty)
-                            return "You can't leave this empty";
+                            return "Vui lòng nhập họ tên";
                           else if (value.length < 2)
-                            return "The name length should be 2 - 50 characters";
+                            return "Họ và tên có độ dài từ 2 - 50 ký tự";
                           else
                             _fullName = value;
                           return null;
@@ -306,9 +306,9 @@ class AddShippingFieldsState extends State<AddShippingFields> {
                         initialValue: _phoneNumber,
                         validator: (value) {
                           if (value.isEmpty)
-                            return "You can't leave this empty";
+                            return "Vui lòng nhập số điện thoại";
                           else if (value.length > 11 || value.length < 10)
-                            return "Please enter a valid phone number";
+                            return "Số điện thoại không hợp lệ";
                           else
                             _phoneNumber = value;
                           return null;

@@ -51,8 +51,8 @@ class ShippingInformation {
   Map<String, dynamic> toJson() => {
         'id': id,
         'shipping_fee': shippingFee,
-        'shipping_to': shippingTo.id,
-        'shipping_from': shippingFrom.id,
+        'shipping_to': shippingTo.toJson(),
+        'shipping_from': shippingFrom.toJson(),
         'ship_provider_service_id': shipProviderService?.id ?? null,
         'provider_order_code': providerOrderCode,
       };

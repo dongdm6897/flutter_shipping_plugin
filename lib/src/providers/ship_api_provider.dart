@@ -16,13 +16,23 @@ class ShipApiProvider extends ApiProvider {
     throw Exception(jsonData["message"]);
   }
 
-  Future<dynamic> updateShippingStatus(Map params) async {
-    var jsonData =
-        await this.getData(ApiList.API_UPDATE_SHIPPING_STATUS, params);
+  Future<dynamic> updateShippingStatus(
+      Map params, Map<String, String> headers) async {
+    var jsonData = await this
+        .postData(ApiList.API_UPDATE_SHIPPING_STATUS, params, headers: headers);
     if (jsonData["status"]) {
       return ShippingInformation.fromJSON(jsonData["data"]);
     }
     throw Exception(jsonData["message"]);
+  }
+
+  Future<bool> setHamlet(Map params, Map<String, String> headers) async {
+    var jsonData =
+        await this.postData(ApiList.API_SET_HAMLET, params, headers: headers);
+    if (jsonData["status"]) {
+      return true;
+    }
+    return false;
   }
 
   Future<bool> createGhnShop(
