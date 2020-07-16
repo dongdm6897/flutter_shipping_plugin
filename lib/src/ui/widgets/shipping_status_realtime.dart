@@ -153,7 +153,7 @@ class _ShippingStatusRealtimeState extends State<ShippingStatusRealtime>
                         borderRadius: BorderRadius.circular(8.0)),
                     margin: EdgeInsets.all(10.0),
                     child: Text(
-                      'Đơn hàng đang được xử lý và sẽ hoàn lại tiền cho người mua.',
+                      'Đơn hàng bị gặp sự cố và đang được xử lý. Chúng tôi sẽ liên lạc với bạn khi sự cố được khắc phục. ',
                       style: TextStyle(
                           fontWeight: FontWeight.bold, color: Colors.red),
                     ),
