@@ -16,7 +16,7 @@ class ShipApiProvider extends ApiProvider {
     throw Exception(jsonData["message"]);
   }
 
-  Future<dynamic> updateShippingStatus(
+  Future<ShippingInformation> updateShippingStatus(
       Map params, Map<String, String> headers) async {
     var jsonData = await this
         .postData(ApiList.API_UPDATE_SHIPPING_STATUS, params, headers: headers);

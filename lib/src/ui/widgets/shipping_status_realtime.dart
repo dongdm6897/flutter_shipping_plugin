@@ -40,10 +40,10 @@ class _ShippingStatusRealtimeState extends State<ShippingStatusRealtime>
   void initState() {
     int shippingProviderId = widget.shipProvider.id;
     if (shippingProviderId == ShipProviderEnum.TU_DEN_LAY) {
-      shippingAddress = widget.shippingInformation.shippingTo;
+      shippingAddress = widget.shippingInformation.shippingFrom;
       shippingAddressText = 'Địa chỉ giao hàng';
     } else if (shippingProviderId == ShipProviderEnum.GIAO_TAN_NOI) {
-      shippingAddress = widget.shippingInformation.shippingFrom;
+      shippingAddress = widget.shippingInformation.shippingTo;
       shippingAddressText = 'Địa chỉ giao hàng';
     } else {
       if (widget.isBuyer) {
