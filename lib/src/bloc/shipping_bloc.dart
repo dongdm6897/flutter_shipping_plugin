@@ -4,6 +4,7 @@ import 'package:shipping_plugin/src/bloc/mixins/ghtk_mixin.dart';
 import 'package:shipping_plugin/src/bloc/mixins/supership_mixin.dart';
 import 'package:shipping_plugin/src/models/master_data.dart';
 import 'package:shipping_plugin/src/providers/ship_api_provider.dart';
+import 'package:uuid/uuid.dart';
 
 class ShippingBloc with GHTKMixin, SuperShipMixin, GHNMixin {
   ShipApiProvider _shipApiProvider = ShipApiProvider();
@@ -209,6 +210,11 @@ class ShippingBloc with GHTKMixin, SuperShipMixin, GHNMixin {
           return res['order']['label'];
         }
         break;
+      case ShipProviderEnum.TU_DEN_LAY:
+        return Uuid().v4();
+        break;
+      case ShipProviderEnum.GIAO_TAN_NOI:
+        return Uuid().v4();
         break;
       default:
         break;
