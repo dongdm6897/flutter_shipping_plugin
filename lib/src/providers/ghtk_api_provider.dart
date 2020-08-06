@@ -5,7 +5,8 @@ import 'api_provider.dart';
 
 class GHTKApiProvider extends ApiProvider {
   GHTKApiProvider() : super() {
-    apiBaseUrl = "https://dev.ghtk.vn";
+    apiBaseUrl = "https://services.giaohangtietkiem.vn";
+//    apiBaseUrl = "https://dev.ghtk.vn";
     apiVersion = "services";
   }
 
