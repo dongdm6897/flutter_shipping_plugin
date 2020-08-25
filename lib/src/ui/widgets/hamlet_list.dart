@@ -57,8 +57,9 @@ class _HamletListWidgetState extends State<HamletListWidget> {
                         return Container(
                           padding: const EdgeInsets.only(left: 10.0),
                           width: size.width,
-                          height: 500,
+                          height: lenHamlets * 75.0,
                           child: ListView.builder(
+                              physics: NeverScrollableScrollPhysics(),
                               itemCount: lenHamlets,
                               itemBuilder: (BuildContext context, int idx) {
                                 var item = hamlets[idx];
