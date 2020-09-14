@@ -37,7 +37,6 @@ class ShippingBloc with GHTKMixin, SuperShipMixin, GHNMixin {
           "insurance_fee": (params["price"]).ceil(),
           "coupon": null
         };
-
         var res = await ghnApiProvider.calculateFee(requestParameters, {
           'Token': '${ghn["ghn_token"]}',
           "ShopId": '${ghn["ghn_shop_default"]}'

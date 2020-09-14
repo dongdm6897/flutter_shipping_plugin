@@ -4,8 +4,8 @@ import 'api_provider.dart';
 
 class GHNApiProvider extends ApiProvider {
   GHNApiProvider() : super() {
-    apiBaseUrl = "https://khachhang.ghn.vn";
-//    apiBaseUrl = "https://dev-online-gateway.ghn.vn/shiip/public-api";
+    apiBaseUrl = "https://online-gateway.ghn.vn/shiip/public-api";
+    // apiBaseUrl = "https://dev-online-gateway.ghn.vn/shiip/public-api";
     apiVersion = "v2";
   }
 
