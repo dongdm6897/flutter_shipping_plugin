@@ -39,19 +39,37 @@ class _ShippingStatusRealtimeState extends State<ShippingStatusRealtime>
   @override
   void initState() {
     int shippingProviderId = widget.shipProvider.id;
-    if (shippingProviderId == ShipProviderEnum.TU_DEN_LAY) {
-      shippingAddress = widget.shippingInformation.shippingFrom;
-      shippingAddressText = 'Địa chỉ giao hàng';
-    } else if (shippingProviderId == ShipProviderEnum.GIAO_TAN_NOI) {
-      shippingAddress = widget.shippingInformation.shippingTo;
-      shippingAddressText = 'Địa chỉ giao hàng';
+    if (widget.isReturn) {
+      if (widget.isBuyer) {
+        shippingAddressText = 'Địa chỉ trả hàng';
+        shippingAddress = widget.shippingInformation.shippingFrom;
+        if (shippingProviderId == ShipProviderEnum.GIAO_TAN_NOI) {
+          shippingAddress = widget.shippingInformation.shippingTo;
+        }
+      } else {
+        shippingAddressText = 'Địa chỉ nhận hàng';
+        shippingAddress = widget.shippingInformation.shippingTo;
+        if (shippingProviderId == ShipProviderEnum.TU_DEN_LAY) {
+          shippingAddress = widget.shippingInformation.shippingFrom;
+          shippingAddressText = 'Địa chỉ trả hàng';
+        }
+      }
     } else {
       if (widget.isBuyer) {
-        shippingAddress = widget.shippingInformation.shippingTo;
-        shippingAddressText = 'Địa chỉ lấy hàng';
-      } else {
-        shippingAddress = widget.shippingInformation.shippingFrom;
         shippingAddressText = 'Địa chỉ nhận hàng';
+        shippingAddress = widget.shippingInformation.shippingFrom;
+        if (shippingProviderId == ShipProviderEnum.TU_DEN_LAY) {
+          shippingAddress = widget.shippingInformation.shippingTo;
+          shippingAddressText = 'Địa chỉ lấy hàng';
+        }
+      } else {
+        shippingAddressText = 'Địa chỉ giao hàng';
+        shippingAddress = widget.shippingInformation.shippingTo;
+        if (shippingProviderId == ShipProviderEnum.TU_DEN_LAY) {
+          shippingAddress = widget.shippingInformation.shippingFrom;
+        } else if (shippingProviderId == ShipProviderEnum.GIAO_TAN_NOI) {
+          shippingAddress = widget.shippingInformation.shippingTo;
+        }
       }
     }
 
@@ -103,14 +121,15 @@ class _ShippingStatusRealtimeState extends State<ShippingStatusRealtime>
                 isHorizontal: false),
             createInfoLine(
                 context: context,
-                label: "Dịch vụ giao hàng",
+                label:
+                    widget.isReturn ? "Dịch vụ trả hàng" : "Dịch vụ giao hàng",
                 message: widget.shipProvider.name,
                 subMessage: widget.shipProvider.description,
                 icon: Icon(Icons.person_pin),
                 isHorizontal: true),
             createInfoLine(
                 context: context,
-                label: "Phí giao hàng",
+                label: widget.isReturn ? "Phí trả hàng" : "Phí giao hàng",
                 message: formatCurrency(
                     widget.shippingInformation?.shippingFee ?? 0),
                 subMessage: (widget.shippingInformation.shippingFee > 0)
@@ -130,7 +149,9 @@ class _ShippingStatusRealtimeState extends State<ShippingStatusRealtime>
                   Expanded(
                       child: Container(
                     child: Text(
-                      'Trạng thái giao hàng',
+                      widget.isReturn
+                          ? 'Trạng thái trả hàng'
+                          : 'Trạng thái giao hàng',
                       style: TextStyle(color: Colors.grey.shade700),
                     ),
                   )),
