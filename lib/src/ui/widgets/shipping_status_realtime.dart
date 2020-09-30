@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:shipping_plugin/shipping_plugin.dart';
 import 'package:shipping_plugin/src/helpers.dart';
 import 'package:shipping_plugin/src/models/ship_pay_method.dart';
 import 'package:shipping_plugin/src/models/ship_provider.dart';
-import 'package:intl/intl.dart';
 import 'package:shipping_plugin/src/ui/widgets/create_info_line.dart';
 
 class ShippingStatusRealtime extends StatefulWidget {
@@ -113,18 +113,11 @@ class _ShippingStatusRealtimeState extends State<ShippingStatusRealtime>
                 label: "Phí giao hàng",
                 message: formatCurrency(
                     widget.shippingInformation?.shippingFee ?? 0),
-                icon: Icon(Icons.rss_feed),
+                subMessage: (widget.shippingInformation.shippingFee > 0)
+                    ? "* ${widget.shipPayMethod.description}"
+                    : "",
+                icon: Icon(Icons.ac_unit),
                 isHorizontal: true),
-            Container(height: 10.0),
-            widget.shippingInformation.shippingFee > 0
-                ? Text(
-                    "* ${widget.shipPayMethod.description}",
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontStyle: FontStyle.italic),
-                  )
-                : SizedBox(),
-            Container(height: 10.0),
             Container(
               padding: EdgeInsets.all(18.0),
               decoration: BoxDecoration(
