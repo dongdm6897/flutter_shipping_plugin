@@ -8,10 +8,14 @@ class ShipProviderEnum {
 
 class ShippingStatusEnum {
   static const int PENDING = 1;
-  static const int PICK_UP = 2;
-  static const int PICKED_UP = 3;
-  static const int PICKUP_FAILED = 4;
-  static const int DELIVERING = 5;
-  static const int DELIVERED = 6;
-  static const int DELIVER_FAILED = 7;
+  static const int CREATE_SHIPPING_ORDER = 2;
+  static const int PICK_UP = 3;
+  static const int PICKED_UP = 4;
+  static const int PICKUP_FAILED = 5;
+  static const int DELIVERING = 6;
+  static const int DELIVERED = 7;
+  static const int DELIVER_FAILED = 8;
+  static const int RETURN = 9;
+  static const int RETURNED = 10;
+  static const int LOST = 11;
 }

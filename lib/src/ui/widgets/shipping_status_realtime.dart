@@ -35,6 +35,7 @@ class _ShippingStatusRealtimeState extends State<ShippingStatusRealtime>
     with TickerProviderStateMixin {
   ShippingAddress shippingAddress;
   String shippingAddressText = '';
+  String shipPayMethodDescription = '';
 
   @override
   void initState() {
@@ -54,6 +55,7 @@ class _ShippingStatusRealtimeState extends State<ShippingStatusRealtime>
           shippingAddressText = 'Địa chỉ lấy hàng';
         }
       }
+      shipPayMethodDescription = 'Người mua thanh toán';
     } else {
       if (widget.isBuyer) {
         shippingAddressText = 'Địa chỉ nhận hàng';
@@ -69,6 +71,7 @@ class _ShippingStatusRealtimeState extends State<ShippingStatusRealtime>
           shippingAddress = widget.shippingInformation.shippingTo;
         }
       }
+      shipPayMethodDescription = widget.shipPayMethod.description;
     }
 
     super.initState();
@@ -131,7 +134,7 @@ class _ShippingStatusRealtimeState extends State<ShippingStatusRealtime>
                 message: formatCurrency(
                     widget.shippingInformation?.shippingFee ?? 0),
                 subMessage: (widget.shippingInformation.shippingFee > 0)
-                    ? "* ${widget.shipPayMethod.description}"
+                    ? "* $shipPayMethodDescription"
                     : "",
                 icon: Icon(Icons.ac_unit),
                 isHorizontal: true),
