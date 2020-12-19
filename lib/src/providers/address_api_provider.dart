@@ -10,11 +10,10 @@ class AddressApiProvider extends ApiProvider {
   }
 
   Future<List<Province>> getProvince() async {
-    var jsonData = await this.getData(ApiList.API_GET_PROVINCE, null);
+    var jsonData = await this.getData(ApiList.API_GET_PROVINCE, null, cache: true);
 
     if (jsonData != null) {
-      return List<Province>.from(
-          jsonData['data'].map((e) => Province.fromJSON(e)));
+      return List<Province>.from(jsonData['data'].map((e) => Province.fromJSON(e)));
     }
     return null;
   }
@@ -23,8 +22,7 @@ class AddressApiProvider extends ApiProvider {
     var jsonData = await this.getData(ApiList.API_GET_DISTRICT, params);
 
     if (jsonData != null) {
-      return List<District>.from(
-          jsonData['data'].map((e) => District.fromJSON(e)));
+      return List<District>.from(jsonData['data'].map((e) => District.fromJSON(e)));
     }
     return null;
   }

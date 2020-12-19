@@ -17,6 +17,7 @@ dependencies:
   rxdart: ^0.24.1
   modal_progress_hud: ^0.1.3
   uuid: ^2.2.0
+  flutter_cache_manager: ^2.0.0
 
 dev_dependencies:
   flutter_test:
