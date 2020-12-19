@@ -5,21 +5,17 @@ import 'package:shipping_plugin/src/models/address/district.dart';
 import 'package:shipping_plugin/src/models/address/province.dart';
 import 'package:shipping_plugin/src/models/address/ward.dart';
 import 'package:shipping_plugin/src/providers/address_api_provider.dart';
-//import 'package:shipping_plugin/src/providers/ghtk_api_provider.dart';
 
 class AddressBloc {
   final _addressApiProvider = AddressApiProvider();
-//  final _ghtkApiProvider = GHTKApiProvider();
 
   /// Province
-  PublishSubject<List<Province>> _provinceController =
-      PublishSubject<List<Province>>();
+  PublishSubject<List<Province>> _provinceController = PublishSubject<List<Province>>();
   Stream<List<Province>> get streamProvince => _provinceController.stream;
   Sink<List<Province>> get provinceSink => _provinceController.sink;
 
   /// District
-  PublishSubject<List<District>> _districtController =
-      PublishSubject<List<District>>();
+  PublishSubject<List<District>> _districtController = PublishSubject<List<District>>();
   Stream<List<District>> get streamDistrict => _districtController.stream;
   Sink<List<District>> get districtSink => _districtController.sink;
 
@@ -40,10 +36,11 @@ class AddressBloc {
 
   Sink<bool> get loadSink => _loadController.sink;
 
-  AddressBloc() {
+  AddressBloc({insertAllProvinces = false}) {
     loadSink.add(true);
     _addressApiProvider.getProvince().then((values) {
       if (!_provinceController.isClosed) {
+        if (insertAllProvinces) values.insert(0, Province(id: 0, name: 'Tất cả'));
         provinceSink.add(values);
         loadSink.add(false);
       }
