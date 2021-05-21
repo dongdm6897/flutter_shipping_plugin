@@ -16,7 +16,7 @@ class GHNApiProvider extends ApiProvider {
     return this.postData(ApiList.API_GHN_CALCULATE_FEE, params, headers: headers);
   }
 
-  Future<dynamic> findAvailableServices(Map params, Map<String, dynamic> headers) {
+  Future<dynamic> findAvailableServices(Map params, Map<String, String> headers) {
     return this.postData(ApiList.API_GHN_FIND_AVAILABLE_SERVICES, params, headers: headers);
   }
 }
