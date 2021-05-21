@@ -1,32 +1,22 @@
 import 'dart:async';
+import 'package:flutter/foundation.dart';
 import 'package:shipping_plugin/src/providers/api_list.dart';
 import 'api_provider.dart';
 
 class GHNApiProvider extends ApiProvider {
   GHNApiProvider() : super() {
-    apiBaseUrl = "https://online-gateway.ghn.vn/shiip/public-api";
-    // apiBaseUrl = "https://dev-online-gateway.ghn.vn/shiip/public-api";
+    if (kReleaseMode)
+      apiBaseUrl = "https://online-gateway.ghn.vn/shiip/public-api";
+    else
+      apiBaseUrl = "https://dev-online-gateway.ghn.vn/shiip/public-api";
     apiVersion = "v2";
   }
 
-  Future<dynamic> createStore(Map params, Map<String, String> headers) {
-    return this
-        .postData(ApiList.API_GHN_CREATE_STORE, params, headers: headers);
-  }
-
   Future<dynamic> calculateFee(Map params, Map<String, String> headers) {
-    return this
-        .postData(ApiList.API_GHN_CALCULATE_FEE, params, headers: headers);
+    return this.postData(ApiList.API_GHN_CALCULATE_FEE, params, headers: headers);
   }
 
-  Future<dynamic> createOrder(Map params, Map<String, String> headers) {
-    return this
-        .postData(ApiList.API_GHN_CREATE_ORDER, params, headers: headers);
-  }
-
-  Future<dynamic> findAvailableServices(
-      Map params, Map<String, dynamic> headers) {
-    return this.postData(ApiList.API_GHN_FIND_AVAILABLE_SERVICES, params,
-        headers: headers);
+  Future<dynamic> findAvailableServices(Map params, Map<String, dynamic> headers) {
+    return this.postData(ApiList.API_GHN_FIND_AVAILABLE_SERVICES, params, headers: headers);
   }
 }
