@@ -9,7 +9,7 @@ class GHTKApiProvider extends ApiProvider {
     if (kReleaseMode)
       apiBaseUrl = "https://services.giaohangtietkiem.vn";
     else
-      apiBaseUrl = "https://dev.ghtk.vn";
+      apiBaseUrl = "https://khachhang.ghtklab.com";
     apiVersion = "services";
   }
 
